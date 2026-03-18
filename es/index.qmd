@@ -16,17 +16,17 @@ about:
       href: mailto:adrimh.outmani@gmail.com
 ---
 
-## 💊 Transformando el Genoma en Decisiones Clínicas
+## Transformando el Genoma en Decisiones Clínicas
 
-Soy un profesional con base en **Farmacia** y una especialización avanzada en **Bioinformática**. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para interpretar grandes volúmenes de datos genómicos.
+Soy un profesional con base en **Farmacia** y una especialización avanzada en **Bioinformática**. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para materializar grandes volúmenes de datos genómicos en información útil, con el fin de mejorar la eficacia de los tratamientos y reducir los casos de fracaso terapéutico.
 
-Mi trayectoria en la **Farmacogenómica** comenzó con mi investigación sobre la hipertensión y ha evolucionado hacia el desarrollo de modelos de **Deep Learning** que identifican el tratamiento óptimo para cada paciente, minimizando riesgos y maximizando la eficacia terapéutica.
+Mi trayectoria en la **Farmacogenómica** comenzó con una revisión bibliográfica sobre la hipertensión y ha evolucionado hacia el desarrollo de modelos de **Deep Learning** que identifican el tratamiento óptimo para cada paciente, minimizando riesgos y maximizando la eficacia terapéutica.
 
 ---
 
-### 🚀 Proyectos y Especialización: Pharmagen
+### Proyectos y Especialización: Pharmagen
 
-Mi proyecto principal, **Pharmagen**, es la culminación de mi formación técnica y clínica. Es un sistema integral que automatiza desde el procesamiento de datos **NGS** en entornos **Debian 13** hasta la predicción fenotípica mediante redes neuronales híbridas.
+Mi primer y mayor proyecto a día de hoy, **Pharmagen**, busca entrelazar las aptitudes que he desarrollado de forma independiente en campos no tan cercanos a primera vista. Es un sistema integral que automatiza desde el procesamiento de datos **NGS** en entornos **Debian 13** hasta la predicción fenotípica mediante redes neuronales híbridas de clasificación categórica.
 
 * **Precisión Clínica:** Inferencia multi-etiqueta con una exactitud del **86.89%** en categorías fenotípicas.
 * **Ingeniería de Datos:** Pipelines robustos que integran herramientas como **BWA, GATK y Samtools**.
@@ -34,7 +34,7 @@ Mi proyecto principal, **Pharmagen**, es la culminación de mi formación técni
 
 ---
 
-### 🛠️ Perfil Técnico & Certificaciones
+### Perfil Técnico & Certificaciones
 
 He complementado mi base sanitaria con una sólida formación en análisis de datos y programación:
 
@@ -48,7 +48,7 @@ He complementado mi base sanitaria con una sólida formación en análisis de da
 ### 📚 Formación Académica
 
 * **Máster en Bioinformática** | Universidad Internacional de Valencia (2025-2026).
-* **Grado en Farmacia** | Universidad de Granada (Enfoque en Farmacogenómica).
+* **Grado en Farmacia** | Universidad de Granada.
 * **Curso en Nanomedicamentos** | Academia de Farmacia Sta. María de España.
 
 ---
