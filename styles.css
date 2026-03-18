@@ -1,0 +1,5 @@
+/* css styles */
+/*-- scss:defaults --*/
+$theme-blue: #2c3e50;    /* Un azul oscuro profesional */
+$primary: #18bc9c;       /* Un verde "farmacia/salud" para botones y enlaces */
+$body-bg: #fdfdfd;       /* Fondo casi blanco para que el texto sea legible */
