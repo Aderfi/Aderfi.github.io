@@ -3,7 +3,7 @@ title: "Pharmagen: Inteligencia Artificial y Medicina Personalizada"
 subtitle: "Diseño de pipelines NGS y modelos de predicción farmacogenómica mediante Deep Learning"
 date: "2026-03-09"
 categories: [Bioinformática, Deep Learning, Farmacogenómica, PyTorch, Linux]
-image: "../media/dna.gif"
+image: "../../media/dna.gif"
 ---
 
 ## 💊 El Problema: La Falacia de la "Dosificación Estándar"
@@ -71,4 +71,4 @@ El proyecto evoluciona hacia una versión 2.0 (arquitectura **Twin-Tower**) util
 * **Infraestructura:** Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).
 * **Bioinformática:** BWA, Picard, Freebayes, VCFtools, Ensembl VEP.
 
-{{< fa brands github >}} [Acceder al código íntegro en GitHub](https://github.com/Aderfi/Pharmagen) 
+[Acceder al código íntegro en GitHub](https://github.com/Aderfi/Pharmagen) 

@@ -1,5 +1,100 @@
 /* css styles */
 /*-- scss:defaults --*/
-$theme-blue: #2c3e50;    /* Un azul oscuro profesional */
-$primary: #18bc9c;       /* Un verde "farmacia/salud" para botones y enlaces */
-$body-bg: #fdfdfd;       /* Fondo casi blanco para que el texto sea legible */
+#dna-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Se sitúa detrás de todo el contenido */
+    overflow: hidden;
+    pointer-events: none; /* Permite hacer clic en los botones de los paneles a través del ADN */
+}
+
+.about-image{
+    width: 250px !important;
+    height: 250px !important;
+    object-fit: cover;
+    z-index: -2;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.quarto-about-jolla {
+    justify-content: center !important;
+    padding-top: 0 !important;
+    margin-top: 3rem !important;
+}
+
+.quarto-about-jolla .about-contents {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 20rem !important;
+}
+
+.quarto-about-jolla .about-entity {
+    margin-top: 0 !important;
+    padding-bottom: 10px !important;
+}
+
+.grid {
+    column-gap: 5rem !important; 
+}
+
+.glass-panel {
+    background: rgba(53, 52, 52, 0.712);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    height: 100%; 
+    transition: transform 0.3s ease;
+    text-align: left;
+    margin-bottom: -20px;
+    padding-bottom: 20rem;
+}
+
+.glass-panel:hover {
+    transform: translateY(-20px);
+    background: rgba(99, 97, 97, 0.712);
+}
+
+.glass-panel h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.glass-panel h3 {
+    text-align: center;
+}
+
+.column-screen-inset {
+    max-width: 70% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+code {
+    color: rgb(189, 231, 74) !important;      
+    background-color: #2c313a !important; 
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+
+.about-link {
+    padding: 0.2rem 1.2rem !important;
+    border-radius: 20px !important;
+    transition: all 0.3s ease;
+    margin: 0 1.5rem !important;
+}
+
+.about-link:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-3px);
+}

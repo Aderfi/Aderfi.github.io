@@ -1,16 +1,63 @@
 project:
-  type: website  
+  type: website
   output-dir: _site
 
-website:  
+website:
+  title: Adrim Portfolio
+  description: "Pharmacist & Bioinformatics Researcher | AI in Precision Medicine"
+  site-url: "https://Aderfi.github.io"
+  
+  # Configuración del Navbar (Barra superior)
   navbar:
+    search: true
+    background: primary
+    left:
+      - icon: logo
+        href: media/logo.png
+      - text: "Inicio"
+        href: es/index.qmd
+      - text: "Pharmagen"
+        href: projects/pharmagen.qmd
+      - text: "Blog"
+        menu:
+          - text: "Análisis DeepFM"
+            href: posts/analisis-deepfm.qmd
+    
     right:
       - icon: translate
         text: "Idioma"
         menu:
           - text: "Español"
-            href: /es/index.qmd
+            href: es/index.qmd
           - text: "English"
-            href: /en/index.qmd
+            href: en/index.qmd
       - icon: github
         href: https://github.com/Aderfi
+      - icon: linkedin
+        href: https://linkedin.com/in/adrim-hamed-outmani-047491290
+
+  # Pie de página profesional
+  page-footer:
+    left: "© 2026 Adrim Hamed Outmani"
+    right: 
+      - icon: code-slash
+        text: "Desarrollado en Debian 13 con Quarto"
+
+# Configuración visual y técnica
+format:
+  html:
+    theme:
+      light: [cosmo, styles.css]
+      dark: [darkly, styles.css]     
+    toc-title: "Contenido"
+    code-fold: true          
+    code-copy: true          
+    code-summary: "Ver código"
+    highlight-style: media/themes/onedark.theme
+    number-sections: false    
+    lang: es-ES
+
+
+execute:
+  freeze: auto               
+  echo: true                 

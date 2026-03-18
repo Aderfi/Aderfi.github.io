@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "name": "One Dark Plus",
+    "revision": 1,
+    "author": "Aderfi"
+  },
+  "text-color": "#abb2bf",
+  "background-color": "#282c34",
+  "line-number-color": "#4b5263",
+  "line-number-background-color": "#282c34",
+  "text-styles": {
+    "Other": { "text-color": "#abb2bf" },
+    "Attribute": { "text-color": "#d19a66" },
+    "Annotation": { "text-color": "#e5c07b" },
+    "Comment": { "text-color": "#5c6370", "italic": true },
+    "Variable": { "text-color": "#e06c75" },
+    "ControlFlow": { "text-color": "#c678dd", "bold": true },
+    "Operator": { "text-color": "#56b6c2" },
+    "Keyword": { "text-color": "#c678dd" },
+    "Function": { "text-color": "#61afef" },
+    "DataType": { "text-color": "#e5c07b" },
+    "DecVal": { "text-color": "#d19a66" },
+    "BaseN": { "text-color": "#d19a66" },
+    "Float": { "text-color": "#d19a66" },
+    "Constant": { "text-color": "#d19a66", "bold": true },
+    "Char": { "text-color": "#98c379" },
+    "SpecialChar": { "text-color": "#56b6c2" },
+    "String": { "text-color": "#98c379" },
+    "VerbatimString": { "text-color": "#98c379" },
+    "Import": { "text-color": "#98c379" },
+    "Preprocessor": { "text-color": "#c678dd" },
+    "SpecialString": { "text-color": "#98c379" },
+    "Alert": { "text-color": "#e06c75", "backgroundColor": "#282c34", "bold": true },
+    "Error": { "text-color": "#e06c75", "underline": true },
+    "Information": { "text-color": "#e5c07b", "italic": true },
+    "Warning": { "text-color": "#e5c07b", "bold": true }
+  }
+}
