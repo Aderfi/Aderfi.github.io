@@ -1,0 +1,57 @@
+---
+---
+title: "Adrim Hamed"
+subtitle: "Pharmacist & Bioinformatics Researcher"
+image: profile.jpg # Si tienes una foto, ponla en la carpeta raíz
+about:
+  template: jolla # Este template de Quarto queda muy profesional para perfiles personales
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/tu-perfil
+    - icon: github
+      text: GitHub
+      href: https://github.com/Aderfi
+    - icon: envelope
+      text: Contacto
+      href: mailto:tu-email@ejemplo.com
+---
+
+## 💊 Transformando Datos en Decisiones Clínicas
+
+Soy **Farmacéutico** con un **Máster en Bioinformática**, enfocado en el desarrollo de herramientas computacionales que aceleran la medicina de precisión. Mi enfoque combina el rigor científico de la farmacología con la potencia del **Deep Learning** y la automatización en entornos **Linux**.
+
+---
+
+### 🚀 Proyectos Destacados
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+#### [Pharmagen](proyectos/pharmagen.qmd)
+**Deep Learning para Predicción Farmacogenética.**
+Un sistema integral que utiliza arquitecturas *DeepFM* para predecir la eficacia y toxicidad de fármacos basada en perfiles genómicos (VCF/FASTQ).
+[Ver Proyecto →](proyectos/pharmagen.qmd)
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### [Análisis de Variantes NGS]
+**Pipeline de Bioinformática en Bash.**
+Automatización del procesamiento de datos de secuenciación masiva, desde el control de calidad hasta el *variant calling*, optimizado para entornos Debian.
+*(Próximamente)*
+:::
+
+:::
+
+---
+
+### 🛠️ Tech Stack & Herramientas
+
+* **Lenguajes:** Python (PyTorch, Scikit-learn, Pandas), Bash, R.
+* **Bioinformática:** Procesamiento de archivos VCF, FASTQ, manejo de herramientas como BWA, GATK y Samtools.
+* **Entorno de Desarrollo:** Debian 13 (Trixie), Docker, Git.
+* **Visualización:** Streamlit, Plotly, Quarto.
+
+---
+
+> "Mi objetivo es cerrar la brecha entre la investigación ómica y la práctica farmacéutica mediante el desarrollo de software robusto y reproducible."

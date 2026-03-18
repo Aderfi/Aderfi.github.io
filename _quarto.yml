@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "Adrim Hamed Outmani | Farmacéutico y Bioinformático"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: proyectos/pharmagen.qmd
+        text: Pharmagen
+      - text: "Blog Técnico"
+        menu:
+          - text: "Análisis DeepFM"
+            href: posts/analisis-deepfm.qmd
+    right:
+      - icon: github
+        href: https://github.com/Aderfi
+      - icon: linkedin
+        href: https://linkedin.com/in/adrim-hamed-outmani-047491290
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true  # Índice a la derecha, muy útil en posts técnicos
