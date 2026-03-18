@@ -23,4 +23,4 @@ format:
   html:
     theme: darkly
     css: styles.css
-    toc: true  # Índice a la derecha, muy útil en posts técnicos
+    toc: true 

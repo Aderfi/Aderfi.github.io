@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Adrim Hamed",
@@ -12,12 +19,5 @@
     "title": "Adrim Hamed",
     "section": "💊 Transformando Datos en Decisiones Clínicas",
     "text": "💊 Transformando Datos en Decisiones Clínicas\nSoy Farmacéutico con un Máster en Bioinformática, enfocado en el desarrollo de herramientas computacionales que aceleran la medicina de precisión. Mi enfoque combina el rigor científico de la farmacología con la potencia del Deep Learning y la automatización en entornos Linux.\n\n\n🚀 Proyectos Destacados\n\n\nPharmagen\nDeep Learning para Predicción Farmacogenética. Un sistema integral que utiliza arquitecturas DeepFM para predecir la eficacia y toxicidad de fármacos basada en perfiles genómicos (VCF/FASTQ). Ver Proyecto →\n\n\n[Análisis de Variantes NGS]\nPipeline de Bioinformática en Bash. Automatización del procesamiento de datos de secuenciación masiva, desde el control de calidad hasta el variant calling, optimizado para entornos Debian. (Próximamente)\n\n\n\n\n\n🛠️ Tech Stack & Herramientas\n\nLenguajes: Python (PyTorch, Scikit-learn, Pandas), Bash, R.\nBioinformática: Procesamiento de archivos VCF, FASTQ, manejo de herramientas como BWA, GATK y Samtools.\nEntorno de Desarrollo: Debian 13 (Trixie), Docker, Git.\nVisualización: Streamlit, Plotly, Quarto.\n\n\n\n“Mi objetivo es cerrar la brecha entre la investigación ómica y la práctica farmacéutica mediante el desarrollo de software robusto y reproducible.”"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
   }
 ]
