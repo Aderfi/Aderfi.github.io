@@ -11,13 +11,55 @@
     "href": "index.html",
     "title": "Adrim Hamed",
     "section": "",
-    "text": "title: “Adrim Hamed” subtitle: “Pharmacist & Bioinformatics Researcher” image: profile.jpg # Si tienes una foto, ponla en la carpeta raíz about: template: jolla # Este template de Quarto queda muy profesional para perfiles personales links: - icon: linkedin text: LinkedIn href: https://linkedin.com/in/tu-perfil - icon: github text: GitHub href: https://github.com/Aderfi - icon: envelope text: Contacto href: mailto:tu-email@ejemplo.com"
+    "text": "title: “Adrim Hamed” subtitle: “Pharmacist & Bioinformatics Researcher” image: media/profile.jpg about: template: jolla links: - icon: linkedin text: LinkedIn href: https://linkedin.com/in/adrim-hamed-outmani-047491290 - icon: github text: GitHub href: https://github.com/Aderfi - icon: envelope text: Contacto href: mailto:adrimh.outmani@gmail.com"
   },
   {
     "objectID": "index.html#transformando-datos-en-decisiones-clínicas",
     "href": "index.html#transformando-datos-en-decisiones-clínicas",
     "title": "Adrim Hamed",
     "section": "💊 Transformando Datos en Decisiones Clínicas",
-    "text": "💊 Transformando Datos en Decisiones Clínicas\nSoy Farmacéutico con un Máster en Bioinformática, enfocado en el desarrollo de herramientas computacionales que aceleran la medicina de precisión. Mi enfoque combina el rigor científico de la farmacología con la potencia del Deep Learning y la automatización en entornos Linux.\n\n\n🚀 Proyectos Destacados\n\n\nPharmagen\nDeep Learning para Predicción Farmacogenética. Un sistema integral que utiliza arquitecturas DeepFM para predecir la eficacia y toxicidad de fármacos basada en perfiles genómicos (VCF/FASTQ). Ver Proyecto →\n\n\n[Análisis de Variantes NGS]\nPipeline de Bioinformática en Bash. Automatización del procesamiento de datos de secuenciación masiva, desde el control de calidad hasta el variant calling, optimizado para entornos Debian. (Próximamente)\n\n\n\n\n\n🛠️ Tech Stack & Herramientas\n\nLenguajes: Python (PyTorch, Scikit-learn, Pandas), Bash, R.\nBioinformática: Procesamiento de archivos VCF, FASTQ, manejo de herramientas como BWA, GATK y Samtools.\nEntorno de Desarrollo: Debian 13 (Trixie), Docker, Git.\nVisualización: Streamlit, Plotly, Quarto.\n\n\n\n“Mi objetivo es cerrar la brecha entre la investigación ómica y la práctica farmacéutica mediante el desarrollo de software robusto y reproducible.”"
+    "text": "💊 Transformando Datos en Decisiones Clínicas\nSoy Farmacéutico con un Máster en Bioinformática, enfocado en el desarrollo de herramientas computacionales que aceleran la medicina de precisión. Mi enfoque combina el rigor científico de la farmacología con la potencia del Deep Learning y la automatización en entornos Linux.\n\n\n🚀 Proyectos Destacados\n\n\nPharmagen\nDeep Learning para Predicción Farmacogenética. Un sistema integral que utiliza arquitecturas DeepFM para predecir la eficacia y toxicidad de fármacos basada en perfiles genómicos (VCF/FASTQ). Ver Proyecto →\n\n\n[Análisis de Variantes NGS]\nPipeline de Bioinformática en Bash. Automatización del procesamiento de datos de secuenciación masiva, desde el control de calidad hasta el variant calling, optimizado para entornos Debian. (Próximamente)\n\n\n\n\n\n🛠️ Tech Stack & Herramientas\n\nLenguajes: Python orientado a Data Science y MachineLearning, Bash, R.\nBioinformática: Procesamiento de archivos VCF, FASTQ, manejo de herramientas como BWA, GATK y Samtools.\nEntorno de Desarrollo: Debian 13 (Trixie), Docker, Git.\nVisualización: Streamlit, Plotly, Quarto.\n\n\n\n“Mi objetivo es cerrar la brecha entre la investigación ómica y la práctica farmacéutica mediante el desarrollo de software robusto y reproducible.”"
+  },
+  {
+    "objectID": "proyectos/pharmagen.html",
+    "href": "proyectos/pharmagen.html",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "",
+    "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
+  },
+  {
+    "objectID": "proyectos/pharmagen.html#el-problema-la-falacia-de-la-dosificación-estándar",
+    "href": "proyectos/pharmagen.html#el-problema-la-falacia-de-la-dosificación-estándar",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "",
+    "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
+  },
+  {
+    "objectID": "proyectos/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
+    "href": "proyectos/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "🧬 Fase I: Pipeline Bioinformático Orquestado",
+    "text": "🧬 Fase I: Pipeline Bioinformático Orquestado\nHe diseñado un pipeline bioinformático modular orquestado en Python 3.10 sobre Debian 13 (Trixie). El sistema automatiza el procesamiento de lecturas masivas (NGS) garantizando la reproducibilidad mediante el gestor de entornos uv.\n\nEl Flujo de Trabajo (Fase I):\n\nControl de Calidad: FastQC y FastP para el filtrado de lecturas de baja calidad y recorte de adaptadores.\nAlineamiento: Mapeo contra el genoma de referencia GRCh38 mediante BWA-MEM.\nProcesamiento de BAM: Identificación de duplicados de PCR con Picard (MarkDuplicates) para evitar sesgos alélicos.\nVariant Calling: Extracción de SNPs e Indels basada en haplotipos con Freebayes y filtrado estricto con VCFtools.\nAnotación Funcional: Uso de Ensembl VEP en modo offline para determinar el impacto transcripcional de cada variante."
+  },
+  {
+    "objectID": "proyectos/pharmagen.html#fase-ii-arquitectura-deepfm-y-multi-task-learning",
+    "href": "proyectos/pharmagen.html#fase-ii-arquitectura-deepfm-y-multi-task-learning",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning",
+    "text": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning\nPara la inferencia clínica, desarrollé una arquitectura de red neuronal híbrida entrenada sobre datos curados de ClinPGx y dbSNP.\n\nDecisiones Críticas de Ingeniería de Características:\n\nIdentificadores Químicos Puros: Sustituí la clasificación ATC por PubChem CID. Los modelos requieren representar interacciones fisicoquímicas reales, no categorías terapéuticas abstractas.\nVariable “Genalle”: Creación de un identificador sintético que fusiona el rsID con la notación HGVS, permitiendo una normalización alélica estricta.\nGestión del Desbalance: Implementación de Adaptive Focal Loss y Asymmetric Loss para penalizar errores en efectos adversos raros pero críticos, priorizando la seguridad del paciente.\n\n\n\nEl Modelo Matemático\nLa arquitectura combina Máquinas de Factorización (FM) para interacciones de segundo orden y un Transformer Encoder con mecanismos de Self-Attention para capturar fenómenos complejos como la epistasia.\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "proyectos/pharmagen.html#resultados-y-capacidad-predictiva",
+    "href": "proyectos/pharmagen.html#resultados-y-capacidad-predictiva",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "📊 Resultados y Capacidad Predictiva",
+    "text": "📊 Resultados y Capacidad Predictiva\nTras una optimización estocástica de 40 estudios con Optuna y una Validación Cruzada de 5 iteraciones, el modelo alcanzó métricas de nivel traslacional:\n\n\n\nTarea Clínica\nMétrica (Precisión / Balanced Accuracy)\n\n\n\n\nCategoría Fenotípica\n86.89% (Precisión Global)\n\n\nAjuste de Dosis (Dosage)\n0.8328 (Balanced Accuracy)\n\n\nFarmacocinética (PK)\n0.8037 (Balanced Accuracy)\n\n\nDirección del Efecto\n66.07% (Increased/Decreased)\n\n\n\n\nEl “Semáforo Rojo” Clínico\nEl sistema integra una variable binaria de éxito/fracaso terapéutico. Por ejemplo, si el modelo detecta una combinación de Toxicity + Increased + Risk, asigna automáticamente un fallo terapéutico, funcionando como un Sistema de Soporte a la Decisión Clínica (CDSS)."
+  },
+  {
+    "objectID": "proyectos/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
+    "href": "proyectos/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)",
+    "text": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)\nEl proyecto evoluciona hacia una versión 2.0 (arquitectura Twin-Tower) utilizando PyTorch Geometric. El objetivo es representar los fármacos como grafos moleculares (átomos como nodos y enlaces como aristas) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan a procesar.\n\n\n🛠️ Stack Técnico Detallado\n\nOrquestación: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfraestructura: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformática: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\n{{&lt; fa brands github &gt;}} Acceder al código íntegro en GitHub"
   }
 ]

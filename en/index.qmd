@@ -1,0 +1,56 @@
+---
+title: "Adrim Hamed Outmani"
+subtitle: "Pharmacist & Bioinformatician | AI & Precision Medicine Specialist"
+image: ../media/profile.jpg 
+about:
+  template: trestles
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/adrim-hamed-outmani-047491290
+    - icon: github
+      text: GitHub
+      href: https://github.com/Aderfi
+    - icon: envelope
+      text: Contact
+      href: mailto:adrimh.outmani@gmail.com
+---
+
+## 💊 Transforming the Genome into Clinical Decisions
+
+I am a professional with a background in **Pharmacy** and advanced specialization in **Bioinformatics**. My focus is on merging clinical laboratory precision with computational power to interpret large volumes of genomic data.
+
+My career in **Pharmacogenomics** began with my research on hypertension and has evolved towards the development of **Deep Learning** models that identify the optimal treatment for each patient, minimizing risks and maximizing therapeutic efficacy.
+
+---
+
+### 🚀 Projects and Specialization: Pharmagen
+
+My main project, **Pharmagen**, is the culmination of my technical and clinical training. It is a comprehensive system that automates everything from **NGS** data processing in **Debian 13** environments to phenotypic prediction using hybrid neural networks.
+
+* **Clinical Precision:** Multi-label inference with an accuracy of **86.89%** in phenotypic categories.
+* **Data Engineering:** Robust pipelines integrating tools such as **BWA, GATK, and Samtools**.
+* **Innovation:** Development of **DeepFM** architectures and transition towards **Graph Neural Networks (GNN)**.
+
+---
+
+### 🛠️ Technical Profile & Certifications
+
+I have complemented my healthcare background with solid training in data analysis and programming:
+
+* **Programming:** Specialist in **Python** (300h certification from UOC) and **C++**.
+* **Machine Learning & Big Data:** Specific 100h training at the **University of Granada** applied to Bioinformatics.
+* **Environment:** Proficiency in administration and development in **GNU/Linux (Debian)**.
+* **Languages:** Bilingual profile in **Spanish** and **Tamazight**, with professional proficiency in **English (B2)**.
+
+---
+
+### 📚 Academic Background
+
+* **Master's in Bioinformatics** | Valencia International University (2025-2026).
+* **Degree in Pharmacy** | University of Granada (Focus on Pharmacogenomics).
+* **Course in Nanomedicines** | Pharmacy Academy Sta. María de España.
+
+---
+
+> "My mission is to bridge the gap between genomic Big Data and the patient, transforming biological variability into precise and reproducible health algorithms."
