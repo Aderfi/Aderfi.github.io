@@ -1,4 +1,8 @@
-website:
+project:
+  type: website  
+  output-dir: _site
+
+website:  
   navbar:
     right:
       - icon: translate
