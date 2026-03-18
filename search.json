@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Adrim Hamed",
     "section": "",
-    "text": "title: “Adrim Hamed” subtitle: “Pharmacist & Bioinformatics Researcher” image: profile.jpg # Si tienes una foto, ponla en la carpeta raíz about: template: jolla # Este template de Quarto queda muy profesional para perfiles personales links: - icon: linkedin text: LinkedIn href: https://linkedin.com/in/tu-perfil - icon: github text: GitHub href: https://github.com/Aderfi - icon: envelope text: Contacto href: mailto:tu-email@ejemplo.com"
+    "text": "title: “Adrim Hamed” subtitle: “Pharmacist & Bioinformatics Researcher” image: profile.jpg # Si tienes una foto, ponla en la carpeta raíz about: template: jolla # Este template de Quarto queda muy profesional para perfiles personales links: - icon: linkedin text: LinkedIn href: https://linkedin.com/in/tu-perfil - icon: github text: GitHub href: https://github.com/Aderfi - icon: envelope text: Contacto href: mailto:tu-email@ejemplo.com —"
   },
   {
     "objectID": "index.html#transformando-datos-en-decisiones-clínicas",
