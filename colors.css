@@ -1,0 +1,29 @@
+/* css styles */
+/*-- scss:defaults --*/
+/* Modo Claro — Base blanca limpia, acentos púrpura y azul */
+:root {
+    --subtitle-color: #5a6270;
+    --bg-body: #fafafa;
+    --text-main: #1e2028;
+    --text-accent: #5a6270;
+    --bg-dna: #f2f2f2;
+
+    --navbar-bg: rgba(255, 255, 255, 0.88);
+    --navbar-border: rgba(90, 60, 140, 0.2);
+    --nav-link-color: #1e2028;
+
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-bg-hover: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(90, 60, 140, 0.1);
+
+    --code-color: #2056a8;
+    --code-bg: #edf1f8;
+
+    --image-border: rgba(132, 81, 148, 0.5);
+    --btn-hover-bg: rgba(132, 81, 148, 0.08);
+
+    --button-bg: rgba(100, 55, 135, 0.88);
+    --button-link-bg: rgba(237, 241, 248, 0.9);
+    --button-link-text: rgb(100, 55, 135);
+    --button-link-text-color: #1e2028;
+}

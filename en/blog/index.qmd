@@ -1,0 +1,11 @@
+---
+title: "Blog"
+subtitle: "Reflections, analysis and notes on bioinformatics, AI and precision medicine"
+listing:
+  contents: ["*.qmd", "*.md"]
+  sort: "date desc"
+  type: default
+  categories: true
+  feed: true
+  fields: [image, date, title, subtitle, categories]
+---

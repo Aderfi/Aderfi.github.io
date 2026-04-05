@@ -1,0 +1,29 @@
+/* css styles */
+/*-- scss:defaults --*/
+/* Modo Oscuro */
+:root {
+    --subtitle-color: #9a9a9a;
+    --bg-body: #1e2028;
+    --text-main: #cdd0d6;
+    --text-accent: #8a8a8a;
+    --bg-dna: transparent;
+
+    --navbar-bg: rgba(15, 16, 20, 0.8);
+    --navbar-border: rgba(132, 81, 148, 0.4);
+    --nav-link-color: #d0d0d0;
+
+    --glass-bg: rgba(40, 42, 54, 0.7);
+    --glass-bg-hover: rgba(55, 58, 72, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --code-color: rgb(189, 231, 74);
+    --code-bg: #2c313a;
+
+    --image-border: rgba(132, 81, 148, 0.6);
+    --btn-hover-bg: rgba(255, 255, 255, 0.08);
+
+    --button-bg: rgba(132, 81, 148, 0.8);
+    --button-link-bg: rgba(60, 62, 72, 0.8);
+    --button-link-text: rgb(190, 150, 210);
+    --button-link-text-color: #d0d0d0;
+}

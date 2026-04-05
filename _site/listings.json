@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/en/blog/index.html",
+    "items": [
+      "/en/blog/analisis-deepfm.html"
+    ]
+  },
+  {
+    "listing": "/es/blog/index.html",
+    "items": [
+      "/es/blog/analisis-deepfm.html"
+    ]
+  }
+]

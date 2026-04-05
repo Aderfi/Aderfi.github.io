@@ -1,9 +1,11 @@
 ---
 title: "Adrim Hamed Outmani"
-subtitle: "Pharmacist & Bioinformatician | AI & Precision Medicine Specialist"
-image: ../media/profile.jpg 
+subtitle: "Pharmacist | Bioinformatician | AI Developer for Precision Medicine"
+pagetitle: "Adrim Hamed | Bioinformatics & AI in Pharmacogenomics"
+description: "Portfolio of Adrim Hamed Outmani — Pharmacist and bioinformatician specializing in NGS pipelines, deep learning for pharmacogenomics, molecular docking and genomic data analysis with Python and PyTorch."
+image: ../media/profile.jpg
 about:
-  template: trestles
+  template: jolla
   links:
     - icon: linkedin
       text: LinkedIn
@@ -16,41 +18,104 @@ about:
       href: mailto:adrimh.outmani@gmail.com
 ---
 
-## 💊 Transforming the Genome into Clinical Decisions
+```{=html}
+<canvas id="dnaCanvas" style="position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;"></canvas>
+<script src="../media/dna-helix.js"></script>
+```
 
-I am a professional with a background in **Pharmacy** and advanced specialization in **Bioinformatics**. My focus is on merging clinical laboratory precision with computational power to interpret large volumes of genomic data.
+::: {.column-screen-inset}
+::: {.panel-grid}
 
-My career in **Pharmacogenomics** began with my research on hypertension and has evolved towards the development of **Deep Learning** models that identify the optimal treatment for each patient, minimizing risks and maximizing therapeutic efficacy.
+::: {.glass-panel .p-4 .panel-wide}
+
+## About Me
+
+Pharmacist by training with specialization in **Bioinformatics** and **Machine Learning** applied to the pharmaceutical sector. My profile combines clinical drug knowledge with the technical ability to design genomic analysis pipelines, train predictive models and work with large-scale datasets.
+
+I aim to contribute to **pharmaceutical R&D**, **clinical bioinformatics** or **computational drug development** teams, bringing a cross-disciplinary perspective between biology, chemistry and data science.
+
+:::
+
+::: {.glass-panel .p-4}
+
+## Technical Skills
+
+::: {.skills-grid}
+
+**Programming & Data**
+`Python` · `PyTorch` · `Pandas` · `Polars` · `NumPy` · `Scikit-learn` · `C++` · `Bash` · `SQL` · `Git`
+
+**Machine Learning & Deep Learning**
+`Neural Networks` · `DeepFM` · `Transformers` · `Multi-Task Learning` · `Optuna` · `Cross-Validation` · `Focal Loss` · `GNN (in development)`
+
+**Bioinformatics & Genomics**
+`BWA-MEM` · `GATK` · `Samtools` · `Picard` · `Freebayes` · `VCFtools` · `Ensembl VEP` · `FastQC` · `FastP` · `NGS Pipelines`
+
+**Computational Pharmacology**
+`Pharmacogenomics` · `PharmGKB` · `ClinPGx` · `dbSNP` · `Molecular Docking` · `ADMET` · `Structure-Activity Relationship`
+
+**Infrastructure**
+`GNU/Linux (Debian)` · `WSL` · `Hyprland/Sway` · `Quarto` · `Streamlit` · `uv`
+
+:::
+:::
+
+::: {.glass-panel .p-4}
+
+## Education
+
+* **Master's in Bioinformatics** — Valencia International University *(2025–2026)*
+* **Degree in Pharmacy** — University of Granada — *Focus on Pharmacogenomics*
+* **Python for Data Science** — Universitat Oberta de Catalunya *(300h)*
+* **ML & Big Data for Bioinformatics** — University of Granada *(100h)*
+* **Nanomedicines** — Pharmacy Academy Santa María de España
 
 ---
 
-### 🚀 Projects and Specialization: Pharmagen
+### Languages
 
-My main project, **Pharmagen**, is the culmination of my technical and clinical training. It is a comprehensive system that automates everything from **NGS** data processing in **Debian 13** environments to phenotypic prediction using hybrid neural networks.
+* **Spanish** — Native
+* **Tamazight** — Native
+* **English** — B2 (Professional proficiency)
 
-* **Clinical Precision:** Multi-label inference with an accuracy of **86.89%** in phenotypic categories.
-* **Data Engineering:** Robust pipelines integrating tools such as **BWA, GATK, and Samtools**.
-* **Innovation:** Development of **DeepFM** architectures and transition towards **Graph Neural Networks (GNN)**.
+:::
+
+::: {.glass-panel .p-4 .panel-wide}
+
+## Featured Projects
+
+### Pharmagen — AI for Pharmacogenomic Prediction
+
+End-to-end platform integrating a complete bioinformatics pipeline (FASTQ → VCF → Annotation) with a **hybrid Deep Learning model (DeepFM + Transformer)** to predict a patient's phenotypic response to specific drugs.
+
+| Clinical Task | Result |
+| :--- | :--- |
+| Phenotypic Classification | **86.89%** Precision |
+| Dosage Adjustment | **0.8328** Balanced Accuracy |
+| Pharmacokinetics | **0.8037** Balanced Accuracy |
+
+**Stack:** Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit
+
+[**View Full Project →**](projects/pharmagen.qmd){.btn .btn-primary role="button" id="explore-button"}
 
 ---
 
-### 🛠️ Technical Profile & Certifications
+### Other Repositories
 
-I have complemented my healthcare background with solid training in data analysis and programming:
+* **Pgen_dev** — Active development repository for Pharmagen. Architecture and dataset experimentation.
+* **dotfiles_Aderfi** — Hyprland/Sway environment configuration for Debian and WSL. Reflects Linux administration proficiency.
 
-* **Programming:** Specialist in **Python** (300h certification from UOC) and **C++**.
-* **Machine Learning & Big Data:** Specific 100h training at the **University of Granada** applied to Bioinformatics.
-* **Environment:** Proficiency in administration and development in **GNU/Linux (Debian)**.
-* **Languages:** Bilingual profile in **Spanish** and **Tamazight**, with professional proficiency in **English (B2)**.
+:::
 
----
+::: {.glass-panel .p-4 .panel-wide}
 
-### 📚 Academic Background
+## Blog
 
-* **Master's in Bioinformatics** | Valencia International University (2025-2026).
-* **Degree in Pharmacy** | University of Granada (Focus on Pharmacogenomics).
-* **Course in Nanomedicines** | Pharmacy Academy Sta. María de España.
+Posts on engineering decisions, deep learning architecture analysis and reflections on applied bioinformatics.
 
----
+[**Read Posts →**](blog/index.qmd){.btn .btn-primary role="button" id="explore-button"}
 
-> "My mission is to bridge the gap between genomic Big Data and the patient, transforming biological variability into precise and reproducible health algorithms."
+:::
+
+:::
+:::

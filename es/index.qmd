@@ -1,9 +1,11 @@
 ---
 title: "Adrim Hamed Outmani"
-subtitle: "Farmacéutico & Bioinformático | Especialista en IA y Medicina de Precisión"
-image: ../media/profile.jpg 
+subtitle: "Farmacéutico | Bioinformático | Desarrollador de IA para Medicina de Precisión"
+pagetitle: "Adrim Hamed | Bioinformática & IA en Farmacogenómica"
+description: "Portfolio de Adrim Hamed Outmani — Farmacéutico y bioinformático especializado en pipelines NGS, deep learning aplicado a farmacogenómica, docking molecular y análisis de datos genómicos con Python y PyTorch."
+image: ../media/profile.jpg
 about:
-  template: trestles
+  template: jolla
   links:
     - icon: linkedin
       text: LinkedIn
@@ -16,41 +18,104 @@ about:
       href: mailto:adrimh.outmani@gmail.com
 ---
 
-## Transformando el Genoma en Decisiones Clínicas
+```{=html}
+<canvas id="dnaCanvas" style="position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;"></canvas>
+<script src="../media/dna-helix.js"></script>
+```
 
-Soy un profesional con base en **Farmacia** y una especialización avanzada en **Bioinformática**. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para materializar grandes volúmenes de datos genómicos en información útil, con el fin de mejorar la eficacia de los tratamientos y reducir los casos de fracaso terapéutico.
+::: {.column-screen-inset}
+::: {.panel-grid}
 
-Mi trayectoria en la **Farmacogenómica** comenzó con una revisión bibliográfica sobre la hipertensión y ha evolucionado hacia el desarrollo de modelos de **Deep Learning** que identifican el tratamiento óptimo para cada paciente, minimizando riesgos y maximizando la eficacia terapéutica.
+::: {.glass-panel .p-4 .panel-wide}
+
+## Sobre mí
+
+Farmacéutico de formación con especialización en **Bioinformática** y **Machine Learning** aplicado al sector farmacéutico. Mi perfil combina el conocimiento clínico del medicamento con la capacidad técnica para diseñar pipelines de análisis genómico, entrenar modelos predictivos y trabajar con datasets a gran escala.
+
+Busco contribuir en equipos de **I+D farmacéutico**, **bioinformática clínica** o **desarrollo computacional de fármacos**, aportando una visión transversal entre la biología, la química y la ciencia de datos.
+
+::: 
+
+::: {.glass-panel .p-4}
+
+## Competencias Técnicas
+
+::: {.skills-grid}
+
+**Programación & Datos**
+`Python` · `PyTorch` · `Pandas` · `Polars` · `NumPy` · `Scikit-learn` · `C++` · `Bash` · `SQL` · `Git`
+
+**Machine Learning & Deep Learning**
+`Redes Neuronales` · `DeepFM` · `Transformers` · `Multi-Task Learning` · `Optuna` · `Validación Cruzada` · `Focal Loss` · `GNN (en desarrollo)`
+
+**Bioinformática & Genómica**
+`BWA-MEM` · `GATK` · `Samtools` · `Picard` · `Freebayes` · `VCFtools` · `Ensembl VEP` · `FastQC` · `FastP` · `Pipelines NGS`
+
+**Farmacología Computacional**
+`Farmacogenómica` · `PharmGKB` · `ClinPGx` · `dbSNP` · `Docking Molecular` · `ADMET` · `Relación Estructura-Actividad`
+
+**Infraestructura**
+`GNU/Linux (Debian)` · `WSL` · `Hyprland/Sway` · `Quarto` · `Streamlit` · `uv`
+
+:::
+:::
+
+::: {.glass-panel .p-4 .skills-grid}
+
+## Formación Académica
+
+* **Máster en Bioinformática** — Universidad Internacional de Valencia *(2025–2026)*
+* **Grado en Farmacia** — Universidad de Granada — *Orientación en Farmacogenómica*
+* **Python para Data Science** — Universitat Oberta de Catalunya *(300h)*
+* **ML & Big Data aplicado a Bioinformática** — Universidad de Granada *(100h)*
+* **Nanomedicamentos** — Academia de Farmacia Santa María de España
 
 ---
 
-### Proyectos y Especialización: Pharmagen
+### Idiomas
 
-Mi primer y mayor proyecto a día de hoy, **Pharmagen**, busca entrelazar las aptitudes que he desarrollado de forma independiente en campos no tan cercanos a primera vista. Es un sistema integral que automatiza desde el procesamiento de datos **NGS** en entornos **Debian 13** hasta la predicción fenotípica mediante redes neuronales híbridas de clasificación categórica.
+* **Castellano** — Nativo
+* **Tamazight** — Nativo
+* **Inglés** — B2 (Competencia profesional)
 
-* **Precisión Clínica:** Inferencia multi-etiqueta con una exactitud del **86.89%** en categorías fenotípicas.
-* **Ingeniería de Datos:** Pipelines robustos que integran herramientas como **BWA, GATK y Samtools**.
-* **Innovación:** Desarrollo de arquitecturas **DeepFM** y transición hacia **Redes Neuronales de Grafos (GNN)**.
+:::
+
+::: {.glass-panel .p-4 .panel-wide}
+
+## Proyectos Destacados
+
+### Pharmagen — IA para Predicción Farmacogenómica
+
+Plataforma end-to-end que integra un pipeline bioinformático completo (FASTQ → VCF → Anotación) con un modelo de **Deep Learning híbrido (DeepFM + Transformer)** para predecir la respuesta fenotípica de un paciente a fármacos específicos.
+
+| Tarea Clínica | Resultado |
+| :--- | :--- |
+| Clasificación Fenotípica | **86.89%** Precisión |
+| Ajuste de Dosis | **0.8328** Balanced Accuracy |
+| Farmacocinética | **0.8037** Balanced Accuracy |
+
+**Stack:** Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit
+
+[**Ver Proyecto Completo →**](proyectos/pharmagen.qmd){.btn .btn-primary role="button" id="explore-button"}
 
 ---
 
-### Perfil Técnico & Certificaciones
+### Otros Repositorios
 
-He complementado mi base sanitaria con una sólida formación en análisis de datos y programación:
+* **Pgen_dev** — Repositorio de desarrollo activo de Pharmagen. Experimentación con arquitecturas y datasets.
+* **dotfiles_Aderfi** — Configuración de entorno Hyprland/Sway para Debian y WSL. Refleja dominio de administración Linux.
 
-* **Programación:** Especialista en **Python** (Certificación de 300h por la UOC) y **C++**.
-* **Machine Learning & Big Data:** Formación específica de 100h en la **Universidad de Granada** aplicada a la Bioinformática.
-* **Entorno:** Dominio de administración y desarrollo en **GNU/Linux (Debian)**.
-* **Idiomas:** Perfil bilingüe en **Castellano** y **Tamazight**, con competencia profesional en **Inglés (B2)**.
+:::
 
----
+::: {.glass-panel .p-4 .panel-wide}
 
-### 📚 Formación Académica
+## Blog
 
-* **Máster en Bioinformática** | Universidad Internacional de Valencia (2025-2026).
-* **Grado en Farmacia** | Universidad de Granada.
-* **Curso en Nanomedicamentos** | Academia de Farmacia Sta. María de España.
+Publicaciones sobre decisiones de ingeniería, análisis de arquitecturas de deep learning y reflexiones sobre bioinformática aplicada.
 
----
+[**Leer Publicaciones →**](blog/index.qmd){.btn .btn-primary role="button" id="explore-button"}
 
-> "Mi misión es cerrar la brecha entre el Big Data genómico y el paciente, transformando la variabilidad biológica en algoritmos de salud precisos y reproducibles."
+:::
+
+:::
+:::

@@ -1,0 +1,74 @@
+---
+title: "Pharmagen: Artificial Intelligence and Personalized Medicine"
+subtitle: "NGS pipeline design and pharmacogenomic prediction models via Deep Learning"
+date: "2026-03-09"
+categories: [Bioinformatics, Deep Learning, Pharmacogenomics, PyTorch, Linux]
+image: "../../media/dna.gif"
+---
+
+## The Problem: The "Standard Dosing" Fallacy
+
+Traditional medicine often relies on one-size-fits-all population statistics, assuming Gaussian metabolism curves that ignore extreme phenotypes such as **poor or ultrarapid metabolizers**. For narrow therapeutic index drugs like **acenocoumarol** or **5-Fluorouracil (5-FU)**, this lack of personalization leads to therapeutic failures or lethal toxicities.
+
+**Pharmagen** was created to close this gap, integrating a complete workflow from raw genomic data to clinical prediction.
+
+---
+
+## Phase I: Orchestrated Bioinformatics Pipeline
+
+I designed a modular bioinformatics pipeline orchestrated in **Python 3.10** on **Debian 13 (Trixie)**. The system automates the processing of massive reads (NGS), ensuring reproducibility through the `uv` environment manager.
+
+### Workflow (Phase I):
+1. **Quality Control:** `FastQC` and `FastP` for low-quality read filtering and adapter trimming.
+2. **Alignment:** Mapping against the **GRCh38** reference genome using `BWA-MEM`.
+3. **BAM Processing:** PCR duplicate identification with `Picard (MarkDuplicates)` to prevent allelic bias.
+4. **Variant Calling:** Haplotype-based SNP and Indel extraction with `Freebayes` and strict filtering via `VCFtools`.
+5. **Functional Annotation:** `Ensembl VEP` in offline mode to determine the transcriptional impact of each variant.
+
+---
+
+## Phase II: DeepFM Architecture and Multi-Task Learning
+
+For clinical inference, I developed a **hybrid neural network** architecture trained on curated data from **ClinPGx** and **dbSNP**.
+
+### Critical Feature Engineering Decisions:
+* **Pure Chemical Identifiers:** Replaced ATC classification with **PubChem CID**. Models need to represent real physicochemical interactions, not abstract therapeutic categories.
+* **"Genalle" Variable:** A synthetic identifier fusing the **rsID** with **HGVS notation**, enabling strict allelic normalization.
+* **Imbalance Management:** Implementation of **Adaptive Focal Loss** and **Asymmetric Loss** to penalize errors in rare but critical adverse effects, prioritizing patient safety.
+
+### The Mathematical Model
+The architecture combines **Factorization Machines (FM)** for second-order interactions and a **Transformer Encoder** with *Self-Attention* mechanisms to capture complex phenomena such as **epistasis**.
+
+$$\hat{y} = \sigma \left( w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \langle v_i, v_j \rangle x_i x_j + y_{DNN} \right)$$
+
+---
+
+## Results and Predictive Capacity
+
+After stochastic optimization of 40 studies with **Optuna** and **5-fold Cross-Validation**, the model achieved translational-level metrics:
+
+| Clinical Task | Metric (Precision / Balanced Accuracy) |
+| :--- | :--- |
+| **Phenotypic Category** | **86.89%** (Global Precision) |
+| **Dosage Adjustment** | **0.8328** (Balanced Accuracy) |
+| **Pharmacokinetics (PK)** | **0.8037** (Balanced Accuracy) |
+| **Effect Direction** | **66.07%** (Increased/Decreased) |
+
+### The Clinical "Red Light"
+The system integrates a binary **therapeutic success/failure** variable. For instance, if the model detects a combination of `Toxicity + Increased + Risk`, it automatically assigns a therapeutic failure, functioning as a **Clinical Decision Support System (CDSS)**.
+
+---
+
+## Future: Towards Graph Neural Networks (GNN)
+
+The project evolves towards a 2.0 version (**Twin-Tower** architecture) using **PyTorch Geometric**. The goal is to represent drugs as molecular graphs (atoms as nodes, bonds as edges) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.
+
+---
+
+### Detailed Tech Stack
+* **Orchestration:** Python 3.11, Bash.
+* **Deep Learning:** PyTorch, AdamW, Optuna, GELU.
+* **Infrastructure:** Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).
+* **Bioinformatics:** BWA, Picard, Freebayes, VCFtools, Ensembl VEP.
+
+[Access full source code on GitHub](https://github.com/Aderfi/Pharmagen)

@@ -1,143 +1,21 @@
 ---
-title: "Adrim Hamed Outmani"
 pagetitle: "Adrim Hamed | Portfolio"
-image: media/profile.jpg
-about:
-  template: jolla
-  links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://linkedin.com/in/adrim-hamed-outmani-047491290
-    - icon: github
-      text: GitHub
-      href: https://github.com/Aderfi
-    - icon: envelope
-      text: Contacto
-      href: mailto:adrimh.outmani@gmail.com
+format:
+  html:
+    minimal: true
+    toc: false
 ---
+
 ```{=html}
-<canvas id="dnaCanvas" style="position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;"></canvas>
-
 <script>
-    const canvas = document.getElementById('dnaCanvas');
-    const ctx = canvas.getContext('2d');
-
-    let width, height;
-    const layerCount = 55;   // Número de pares de bases
-    const layerGap = 35;     // Espacio vertical
-    const radius = 120;       // Anchura de la hélice
-    const speed = 0.015;     // Velocidad de rotación
-
-    const colorStrand1 = 'rgb(209, 0, 45)'; 
-    const colorStrand2 = 'rgb(50, 115, 219)'; 
-    
-    let offset = 0;
-
-    function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    function render() {
-        ctx.clearRect(0, 0, width, height);
-
-        const centerX = width / 2;
-        const centerY = height / 2;
-
-        ctx.save(); 
-        ctx.translate(centerX, centerY);
-        ctx.rotate(Math.PI / 4);
-        ctx.translate(-centerX, -centerY);
-
-        const helixHeight = layerCount * layerGap;
-        const startY = centerY - (helixHeight / 2);
-
-        for (let i = 0; i < layerCount; i++) {
-            const y = startY + (i * layerGap);
-            const angle = (i * 0.25) + offset;
-
-            // Proyección 3D básica
-            const x1 = Math.cos(angle) * radius;
-            const z1 = Math.sin(angle) * radius;
-            const x2 = Math.cos(angle + Math.PI) * radius;
-            const z2 = Math.sin(angle + Math.PI) * radius;
-
-            const scale1 = (z1 + 250) / 250;
-            const scale2 = (z2 + 250) / 250;
-            const alpha1 = Math.max(0.1, (z1 + radius) / (2 * radius));
-            const alpha2 = Math.max(0.1, (z2 + radius) / (2 * radius));
-
-            // Dibujar el peldaño (enlace de hidrógeno)
-            ctx.beginPath();
-            ctx.moveTo(centerX + x1, y);
-            ctx.lineTo(centerX + x2, y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${(alpha1 + alpha2) / 6})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            // Hebra 1
-            ctx.beginPath();
-            ctx.arc(centerX + x1, y, 7 * scale1, 0, Math.PI * 2);
-            ctx.fillStyle = colorStrand1;
-            ctx.globalAlpha = alpha1;
-            ctx.fill();
-
-            // Hebra 2
-            ctx.beginPath();
-            ctx.arc(centerX + x2, y, 7 * scale2, 0, Math.PI * 2);
-            ctx.fillStyle = colorStrand2;
-            ctx.globalAlpha = alpha2;
-            ctx.fill();
-            
-            ctx.globalAlpha = 1.0;
-        }
-        ctx.restore();
-
-        offset -= speed;
-        requestAnimationFrame(render);
-    }
-    render();
+  const lang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  if (lang.startsWith('es')) {
+    window.location.replace('es/index.html');
+  } else {
+    window.location.replace('en/index.html');
+  }
 </script>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=es/index.html">
+</noscript>
 ```
-
-::: {.column-screen-inset}
-::: {.grid style="column-gap: 8rem; margin: 0 2rem;"}
-
-::: {.g-col-12 .g-col-md-6 .glass-panel .p-4 .text-start}
-## 🇪🇸
-
-Soy un profesional con base en **Farmacia** y una especialización avanzada en **Bioinformática**. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para interpretar grandes volúmenes de datos genómicos.
-
-### Especialización técnica
-* Mi trayectoria se inició con la investigación en farmacogenómica de la hipertensión.
-* He desarrollado **Pharmagen**, un sistema que automatiza el procesamiento de datos **NGS** en entornos **Debian 13**.
-* Cuento con una formación sólida en **Python** (300h en la UOC) y **Machine Learning** aplicado (100h en la UGR).
-
-### Resultados y Visión
-Mi modelo ha alcanzado una precisión del **86.89%** en la clasificación de categorías fenotípicas. Mi objetivo es transformar la variabilidad biológica en algoritmos de salud precisos y reproducibles.
-
-[**Explorar Portfolio Completo →**](es/index.qmd){.btn .btn-primary .w-100 role="button"}
-:::
-
-::: {.g-col-12 .g-col-md-6 .glass-panel .p-4 .text-start}
-## 🇬🇧
-
-I am a professional with a background in **Pharmacy** and advanced specialization in **Bioinformatics**. My focus is on merging clinical laboratory precision with computational power to interpret large volumes of genomic data.
-
-### Technical Specialization
-* My career began with research on the pharmacogenomics of hypertension.
-* I developed **Pharmagen**, a system that automates **NGS** data processing within **Debian 13** environments.
-* I hold solid training in **Python** (300h from UOC) and applied **Machine Learning** (100h from UGR).
-
-### Results and Vision
-My model achieved an accuracy of **86.89%** in classifying phenotypic categories. My goal is to transform biological variability into precise and reproducible health algorithms.
-
-[**Explore Full Portfolio →**](en/index.qmd){.btn .btn-outline-primary .w-100 role="button"}
-:::
-:::
-:::
