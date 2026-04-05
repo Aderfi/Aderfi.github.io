@@ -24,6 +24,13 @@ body {
     padding-left: var(--padding, 2rem) !important;
 }
 
+.description {
+    margin-top: 1rem !important;
+    margin-bottom: 1.25rem !important;
+    max-width: calc(100vw - 2 * var(--padding, 30rem));
+    padding-left: var(--padding, 2rem) !important;
+}
+
 
 /* ── DNA Canvas ───────────────────────────────────── */
 
@@ -80,8 +87,8 @@ body {
 /* ── Foto de perfil ───────────────────────────────── */
 
 .about-image {
-    width: 190px !important;
-    height: 190px !important;
+    width: 250px !important;
+    height: 250px !important;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--image-border);
@@ -113,13 +120,19 @@ body {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     align-items: stretch;
-    gap: 1.5rem;
+    gap: 2rem !important;
     margin: 1rem auto !important;
     padding: 0 var(--padding);
 }
 
 .panel-wide {
     grid-column: 1 / -1;
+}
+
+.panel-grid .glass-panel {
+    height: 100%;
+    padding: auto !important;
+    padding-top: 0.2rem !important;
 }
 
 
@@ -139,7 +152,7 @@ body {
 }
 
 .glass-panel:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
     background: var(--glass-bg-hover);
 }
 
@@ -206,7 +219,7 @@ body {
 
 .glass-panel .btn:hover {
     filter: brightness(1.12);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 
@@ -217,7 +230,7 @@ body {
     border-radius: 10px !important;
     transition: all 0.2s ease;
     margin: 0 0.4rem !important;
-    background-color: var(--button-link-bg);
+    background-color: var(--button-link-bg);    
 }
 
 .about-link i {

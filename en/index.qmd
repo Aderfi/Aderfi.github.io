@@ -3,7 +3,7 @@ title: "Adrim Hamed Outmani"
 subtitle: "Pharmacist | Bioinformatician | AI Developer for Precision Medicine"
 pagetitle: "Adrim Hamed | Bioinformatics & AI in Pharmacogenomics"
 description: "Portfolio of Adrim Hamed Outmani — Pharmacist and bioinformatician specializing in NGS pipelines, deep learning for pharmacogenomics, molecular docking and genomic data analysis with Python and PyTorch."
-image: ../media/profile.jpg
+image: ../media/profile_ink.png
 about:
   template: jolla
   links:

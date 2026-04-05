@@ -3,7 +3,7 @@ title: "Adrim Hamed Outmani"
 subtitle: "Farmacéutico | Bioinformático | Desarrollador de IA para Medicina de Precisión"
 pagetitle: "Adrim Hamed | Bioinformática & IA en Farmacogenómica"
 description: "Portfolio de Adrim Hamed Outmani — Farmacéutico y bioinformático especializado en pipelines NGS, deep learning aplicado a farmacogenómica, docking molecular y análisis de datos genómicos con Python y PyTorch."
-image: ../media/profile.jpg
+image: ../media/profile_ink.png
 about:
   template: jolla
   links:
