@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Adrim Portfolio</title>
+<link>https://Aderfi.github.io/es/blog/</link>
+<atom:link href="https://Aderfi.github.io/es/blog/index.xml" rel="self" type="application/rss+xml"/>
+<description>Pharmacist &amp; Bioinformatics Researcher | AI in Precision Medicine</description>
+<generator>quarto-1.9.36</generator>
+<lastBuildDate>Sun, 15 Mar 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Análisis de la Arquitectura DeepFM en Farmacogenómica</title>
+  <link>https://Aderfi.github.io/es/blog/analisis-deepfm.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="por-qué-deepfm-y-no-un-modelo-tabular-clásico" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-deepfm-y-no-un-modelo-tabular-clásico">Por qué DeepFM y no un modelo tabular clásico</h2>
+<p>La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son <strong>combinatorias y no lineales</strong>. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.</p>
+<p>La arquitectura <strong>DeepFM</strong> combina lo mejor de dos mundos:</p>
+<ul>
+<li><strong>Máquinas de Factorización (FM):</strong> Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.</li>
+<li><strong>Red Neuronal Profunda (DNN):</strong> Aprende patrones de orden superior que las FM no alcanzan.</li>
+</ul>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7By%7D%20=%20%5Csigma%20%5Cleft(%20w_0%20+%20%5Csum_%7Bi=1%7D%5En%20w_i%20x_i%20+%20%5Csum_%7Bi=1%7D%5En%20%5Csum_%7Bj=i+1%7D%5En%20%5Clangle%20v_i,%20v_j%20%5Crangle%20x_i%20x_j%20+%20y_%7BDNN%7D%20%5Cright)"></p>
+<hr>
+</section>
+<section id="ingeniería-de-características-las-decisiones-que-importan" class="level2">
+<h2 class="anchored" data-anchor-id="ingeniería-de-características-las-decisiones-que-importan">Ingeniería de características: las decisiones que importan</h2>
+<section id="pubchem-cid-en-lugar-de-atc" class="level3">
+<h3 class="anchored" data-anchor-id="pubchem-cid-en-lugar-de-atc">PubChem CID en lugar de ATC</h3>
+<p>La clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar <strong>PubChem CID</strong>, el modelo trabaja con identidades químicas reales.</p>
+</section>
+<section id="la-variable-sintética-genalle" class="level3">
+<h3 class="anchored" data-anchor-id="la-variable-sintética-genalle">La variable sintética Genalle</h3>
+<p>Fusionar el <code>rsID</code> con la notación <code>HGVS</code> en un solo identificador (<code>Genalle</code>) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.</p>
+</section>
+<section id="gestión-del-desbalance-con-focal-loss" class="level3">
+<h3 class="anchored" data-anchor-id="gestión-del-desbalance-con-focal-loss">Gestión del desbalance con Focal Loss</h3>
+<p>En farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La <strong>Adaptive Focal Loss</strong> penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global.</p>
+<hr>
+</section>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tarea</th>
+<th style="text-align: left;">Métrica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Categoría Fenotípica</td>
+<td style="text-align: left;"><strong>86.89%</strong> Precisión</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ajuste de Dosis</td>
+<td style="text-align: left;"><strong>0.8328</strong> Balanced Accuracy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Farmacocinética</td>
+<td style="text-align: left;"><strong>0.8037</strong> Balanced Accuracy</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dirección del Efecto</td>
+<td style="text-align: left;"><strong>66.07%</strong> Precisión</td>
+</tr>
+</tbody>
+</table>
+<p>La tarea de <strong>dirección del efecto</strong> (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas.</p>
+<hr>
+</section>
+<section id="lecciones-aprendidas" class="level2">
+<h2 class="anchored" data-anchor-id="lecciones-aprendidas">Lecciones aprendidas</h2>
+<ol type="1">
+<li><strong>La ingeniería de características importa más que la arquitectura.</strong> Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.</li>
+<li><strong>El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.</strong> Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.</li>
+<li><strong>Optuna + validación cruzada estratificada</strong> es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.</li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>Deep Learning</category>
+  <category>Farmacogenómica</category>
+  <category>PyTorch</category>
+  <guid>https://Aderfi.github.io/es/blog/analisis-deepfm.html</guid>
+  <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://Aderfi.github.io/media/dna.gif" medium="image" type="image/gif"/>
+</item>
+</channel>
+</rss>

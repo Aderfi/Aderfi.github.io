@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "en/index.html#about-me",
+    "href": "en/index.html#about-me",
+    "title": "Adrim Hamed Outmani",
+    "section": "About Me",
+    "text": "About Me\nPharmacist by training with specialization in Bioinformatics and Machine Learning applied to the pharmaceutical sector. My profile combines clinical drug knowledge with the technical ability to design genomic analysis pipelines, train predictive models and work with large-scale datasets.\nI aim to contribute to pharmaceutical R&D, clinical bioinformatics or computational drug development teams, bringing a cross-disciplinary perspective between biology, chemistry and data science."
+  },
+  {
+    "objectID": "en/index.html#technical-skills",
+    "href": "en/index.html#technical-skills",
+    "title": "Adrim Hamed Outmani",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\nProgramming & Data Python · PyTorch · Pandas · Polars · NumPy · Scikit-learn · C++ · Bash · SQL · Git\nMachine Learning & Deep Learning Neural Networks · DeepFM · Transformers · Multi-Task Learning · Optuna · Cross-Validation · Focal Loss · GNN (in development)\nBioinformatics & Genomics BWA-MEM · GATK · Samtools · Picard · Freebayes · VCFtools · Ensembl VEP · FastQC · FastP · NGS Pipelines\nComputational Pharmacology Pharmacogenomics · PharmGKB · ClinPGx · dbSNP · Molecular Docking · ADMET · Structure-Activity Relationship\nInfrastructure GNU/Linux (Debian) · WSL · Hyprland/Sway · Quarto · Streamlit · uv"
+  },
+  {
+    "objectID": "en/index.html#education",
+    "href": "en/index.html#education",
+    "title": "Adrim Hamed Outmani",
+    "section": "Education",
+    "text": "Education\n\nMaster’s in Bioinformatics — Valencia International University (2025–2026)\nDegree in Pharmacy — University of Granada — Focus on Pharmacogenomics\nPython for Data Science — Universitat Oberta de Catalunya (300h)\nML & Big Data for Bioinformatics — University of Granada (100h)\nNanomedicines — Pharmacy Academy Santa María de España\n\n\n\nLanguages\n\nSpanish — Native\nTamazight — Native\nEnglish — B2 (Professional proficiency)"
+  },
+  {
+    "objectID": "en/index.html#featured-projects",
+    "href": "en/index.html#featured-projects",
+    "title": "Adrim Hamed Outmani",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\nPharmagen — AI for Pharmacogenomic Prediction\nEnd-to-end platform integrating a complete bioinformatics pipeline (FASTQ → VCF → Annotation) with a hybrid Deep Learning model (DeepFM + Transformer) to predict a patient’s phenotypic response to specific drugs.\n\n\n\nClinical Task\nResult\n\n\n\n\nPhenotypic Classification\n86.89% Precision\n\n\nDosage Adjustment\n0.8328 Balanced Accuracy\n\n\nPharmacokinetics\n0.8037 Balanced Accuracy\n\n\n\nStack: Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit\nView Full Project →\n\n\n\nOther Repositories\n\nPgen_dev — Active development repository for Pharmagen. Architecture and dataset experimentation.\ndotfiles_Aderfi — Hyprland/Sway environment configuration for Debian and WSL. Reflects Linux administration proficiency."
+  },
+  {
+    "objectID": "en/index.html#blog",
+    "href": "en/index.html#blog",
+    "title": "Adrim Hamed Outmani",
+    "section": "Blog",
+    "text": "Blog\nPosts on engineering decisions, deep learning architecture analysis and reflections on applied bioinformatics.\nRead Posts →"
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html",
+    "href": "en/blog/analisis-deepfm.html",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "",
+    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
+    "href": "en/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "",
+    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
+    "href": "en/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "Ingeniería de características: las decisiones que importan",
+    "text": "Ingeniería de características: las decisiones que importan\n\nPubChem CID en lugar de ATC\nLa clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar PubChem CID, el modelo trabaja con identidades químicas reales.\n\n\nLa variable sintética Genalle\nFusionar el rsID con la notación HGVS en un solo identificador (Genalle) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.\n\n\nGestión del desbalance con Focal Loss\nEn farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La Adaptive Focal Loss penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global."
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#resultados",
+    "href": "en/blog/analisis-deepfm.html#resultados",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "Resultados",
+    "text": "Resultados\n\n\n\nTarea\nMétrica\n\n\n\n\nCategoría Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\nDirección del Efecto\n66.07% Precisión\n\n\n\nLa tarea de dirección del efecto (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas."
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#lecciones-aprendidas",
+    "href": "en/blog/analisis-deepfm.html#lecciones-aprendidas",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "Lecciones aprendidas",
+    "text": "Lecciones aprendidas\n\nLa ingeniería de características importa más que la arquitectura. Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.\nEl desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético. Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.\nOptuna + validación cruzada estratificada es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger."
+  },
+  {
     "objectID": "es/proyectos/pharmagen.html",
     "href": "es/proyectos/pharmagen.html",
     "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
@@ -42,129 +112,129 @@
     "text": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)\nEl proyecto evoluciona hacia una versión 2.0 (arquitectura Twin-Tower) utilizando PyTorch Geometric. El objetivo es representar los fármacos como grafos moleculares (átomos como nodos y enlaces como aristas) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan a procesar.\n\n\n🛠️ Stack Técnico Detallado\n\nOrquestación: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfraestructura: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformática: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\nAcceder al código íntegro en GitHub"
   },
   {
-    "objectID": "es/index.html",
-    "href": "es/index.html",
+    "objectID": "es/blog/index.html",
+    "href": "es/blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Análisis de la Arquitectura DeepFM en Farmacogenómica\n\n\nDecisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen\n\n\n\nDeep Learning\n\nFarmacogenómica\n\nPyTorch\n\n\n\n\n\n\n15 mar 2026\n\n\n\n\n\nNo hay resultados"
+  },
+  {
+    "objectID": "es/blog/analisis-deepfm.html",
+    "href": "es/blog/analisis-deepfm.html",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "",
+    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "es/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
+    "href": "es/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "",
+    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "es/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
+    "href": "es/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "Ingeniería de características: las decisiones que importan",
+    "text": "Ingeniería de características: las decisiones que importan\n\nPubChem CID en lugar de ATC\nLa clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar PubChem CID, el modelo trabaja con identidades químicas reales.\n\n\nLa variable sintética Genalle\nFusionar el rsID con la notación HGVS en un solo identificador (Genalle) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.\n\n\nGestión del desbalance con Focal Loss\nEn farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La Adaptive Focal Loss penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global."
+  },
+  {
+    "objectID": "es/blog/analisis-deepfm.html#resultados",
+    "href": "es/blog/analisis-deepfm.html#resultados",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "Resultados",
+    "text": "Resultados\n\n\n\nTarea\nMétrica\n\n\n\n\nCategoría Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\nDirección del Efecto\n66.07% Precisión\n\n\n\nLa tarea de dirección del efecto (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas."
+  },
+  {
+    "objectID": "es/blog/analisis-deepfm.html#lecciones-aprendidas",
+    "href": "es/blog/analisis-deepfm.html#lecciones-aprendidas",
+    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "section": "Lecciones aprendidas",
+    "text": "Lecciones aprendidas\n\nLa ingeniería de características importa más que la arquitectura. Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.\nEl desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético. Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.\nOptuna + validación cruzada estratificada es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger."
+  },
+  {
+    "objectID": "es/index.html#sobre-mí",
+    "href": "es/index.html#sobre-mí",
     "title": "Adrim Hamed Outmani",
-    "section": "",
-    "text": "Soy un profesional con base en Farmacia y una especialización avanzada en Bioinformática. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para materializar grandes volúmenes de datos genómicos en información útil, con el fin de mejorar la eficacia de los tratamientos y reducir los casos de fracaso terapéutico.\nMi trayectoria en la Farmacogenómica comenzó con una revisión bibliográfica sobre la hipertensión y ha evolucionado hacia el desarrollo de modelos de Deep Learning que identifican el tratamiento óptimo para cada paciente, minimizando riesgos y maximizando la eficacia terapéutica.\n\n\n\nMi primer y mayor proyecto a día de hoy, Pharmagen, busca entrelazar las aptitudes que he desarrollado de forma independiente en campos no tan cercanos a primera vista. Es un sistema integral que automatiza desde el procesamiento de datos NGS en entornos Debian 13 hasta la predicción fenotípica mediante redes neuronales híbridas de clasificación categórica.\n\nPrecisión Clínica: Inferencia multi-etiqueta con una exactitud del 86.89% en categorías fenotípicas.\nIngeniería de Datos: Pipelines robustos que integran herramientas como BWA, GATK y Samtools.\nInnovación: Desarrollo de arquitecturas DeepFM y transición hacia Redes Neuronales de Grafos (GNN).\n\n\n\n\n\nHe complementado mi base sanitaria con una sólida formación en análisis de datos y programación:\n\nProgramación: Especialista en Python (Certificación de 300h por la UOC) y C++.\nMachine Learning & Big Data: Formación específica de 100h en la Universidad de Granada aplicada a la Bioinformática.\nEntorno: Dominio de administración y desarrollo en GNU/Linux (Debian).\nIdiomas: Perfil bilingüe en Castellano y Tamazight, con competencia profesional en Inglés (B2).\n\n\n\n\n\n\nMáster en Bioinformática | Universidad Internacional de Valencia (2025-2026).\nGrado en Farmacia | Universidad de Granada.\nCurso en Nanomedicamentos | Academia de Farmacia Sta. María de España.\n\n\n\n“Mi misión es cerrar la brecha entre el Big Data genómico y el paciente, transformando la variabilidad biológica en algoritmos de salud precisos y reproducibles.”"
+    "section": "Sobre mí",
+    "text": "Sobre mí\nFarmacéutico de formación con especialización en Bioinformática y Machine Learning aplicado al sector farmacéutico. Mi perfil combina el conocimiento clínico del medicamento con la capacidad técnica para diseñar pipelines de análisis genómico, entrenar modelos predictivos y trabajar con datasets a gran escala.\nBusco contribuir en equipos de I+D farmacéutico, bioinformática clínica o desarrollo computacional de fármacos, aportando una visión transversal entre la biología, la química y la ciencia de datos."
   },
   {
-    "objectID": "es/index.html#transformando-el-genoma-en-decisiones-clínicas",
-    "href": "es/index.html#transformando-el-genoma-en-decisiones-clínicas",
+    "objectID": "es/index.html#competencias-técnicas",
+    "href": "es/index.html#competencias-técnicas",
     "title": "Adrim Hamed Outmani",
-    "section": "",
-    "text": "Soy un profesional con base en Farmacia y una especialización avanzada en Bioinformática. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para materializar grandes volúmenes de datos genómicos en información útil, con el fin de mejorar la eficacia de los tratamientos y reducir los casos de fracaso terapéutico.\nMi trayectoria en la Farmacogenómica comenzó con una revisión bibliográfica sobre la hipertensión y ha evolucionado hacia el desarrollo de modelos de Deep Learning que identifican el tratamiento óptimo para cada paciente, minimizando riesgos y maximizando la eficacia terapéutica.\n\n\n\nMi primer y mayor proyecto a día de hoy, Pharmagen, busca entrelazar las aptitudes que he desarrollado de forma independiente en campos no tan cercanos a primera vista. Es un sistema integral que automatiza desde el procesamiento de datos NGS en entornos Debian 13 hasta la predicción fenotípica mediante redes neuronales híbridas de clasificación categórica.\n\nPrecisión Clínica: Inferencia multi-etiqueta con una exactitud del 86.89% en categorías fenotípicas.\nIngeniería de Datos: Pipelines robustos que integran herramientas como BWA, GATK y Samtools.\nInnovación: Desarrollo de arquitecturas DeepFM y transición hacia Redes Neuronales de Grafos (GNN).\n\n\n\n\n\nHe complementado mi base sanitaria con una sólida formación en análisis de datos y programación:\n\nProgramación: Especialista en Python (Certificación de 300h por la UOC) y C++.\nMachine Learning & Big Data: Formación específica de 100h en la Universidad de Granada aplicada a la Bioinformática.\nEntorno: Dominio de administración y desarrollo en GNU/Linux (Debian).\nIdiomas: Perfil bilingüe en Castellano y Tamazight, con competencia profesional en Inglés (B2).\n\n\n\n\n\n\nMáster en Bioinformática | Universidad Internacional de Valencia (2025-2026).\nGrado en Farmacia | Universidad de Granada.\nCurso en Nanomedicamentos | Academia de Farmacia Sta. María de España.\n\n\n\n“Mi misión es cerrar la brecha entre el Big Data genómico y el paciente, transformando la variabilidad biológica en algoritmos de salud precisos y reproducibles.”"
+    "section": "Competencias Técnicas",
+    "text": "Competencias Técnicas\n\nProgramación & Datos Python · PyTorch · Pandas · Polars · NumPy · Scikit-learn · C++ · Bash · SQL · Git\nMachine Learning & Deep Learning Redes Neuronales · DeepFM · Transformers · Multi-Task Learning · Optuna · Validación Cruzada · Focal Loss · GNN (en desarrollo)\nBioinformática & Genómica BWA-MEM · GATK · Samtools · Picard · Freebayes · VCFtools · Ensembl VEP · FastQC · FastP · Pipelines NGS\nFarmacología Computacional Farmacogenómica · PharmGKB · ClinPGx · dbSNP · Docking Molecular · ADMET · Relación Estructura-Actividad\nInfraestructura GNU/Linux (Debian) · WSL · Hyprland/Sway · Quarto · Streamlit · uv"
   },
   {
-    "objectID": "en/proyectos/pharmagen.html",
-    "href": "en/proyectos/pharmagen.html",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "",
-    "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
-  },
-  {
-    "objectID": "en/proyectos/pharmagen.html#el-problema-la-falacia-de-la-dosificación-estándar",
-    "href": "en/proyectos/pharmagen.html#el-problema-la-falacia-de-la-dosificación-estándar",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "",
-    "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
-  },
-  {
-    "objectID": "en/proyectos/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
-    "href": "en/proyectos/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🧬 Fase I: Pipeline Bioinformático Orquestado",
-    "text": "🧬 Fase I: Pipeline Bioinformático Orquestado\nHe diseñado un pipeline bioinformático modular orquestado en Python 3.10 sobre Debian 13 (Trixie). El sistema automatiza el procesamiento de lecturas masivas (NGS) garantizando la reproducibilidad mediante el gestor de entornos uv.\n\nEl Flujo de Trabajo (Fase I):\n\nControl de Calidad: FastQC y FastP para el filtrado de lecturas de baja calidad y recorte de adaptadores.\nAlineamiento: Mapeo contra el genoma de referencia GRCh38 mediante BWA-MEM.\nProcesamiento de BAM: Identificación de duplicados de PCR con Picard (MarkDuplicates) para evitar sesgos alélicos.\nVariant Calling: Extracción de SNPs e Indels basada en haplotipos con Freebayes y filtrado estricto con VCFtools.\nAnotación Funcional: Uso de Ensembl VEP en modo offline para determinar el impacto transcripcional de cada variante."
-  },
-  {
-    "objectID": "en/proyectos/pharmagen.html#fase-ii-arquitectura-deepfm-y-multi-task-learning",
-    "href": "en/proyectos/pharmagen.html#fase-ii-arquitectura-deepfm-y-multi-task-learning",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning",
-    "text": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning\nPara la inferencia clínica, desarrollé una arquitectura de red neuronal híbrida entrenada sobre datos curados de ClinPGx y dbSNP.\n\nDecisiones Críticas de Ingeniería de Características:\n\nIdentificadores Químicos Puros: Sustituí la clasificación ATC por PubChem CID. Los modelos requieren representar interacciones fisicoquímicas reales, no categorías terapéuticas abstractas.\nVariable “Genalle”: Creación de un identificador sintético que fusiona el rsID con la notación HGVS, permitiendo una normalización alélica estricta.\nGestión del Desbalance: Implementación de Adaptive Focal Loss y Asymmetric Loss para penalizar errores en efectos adversos raros pero críticos, priorizando la seguridad del paciente.\n\n\n\nEl Modelo Matemático\nLa arquitectura combina Máquinas de Factorización (FM) para interacciones de segundo orden y un Transformer Encoder con mecanismos de Self-Attention para capturar fenómenos complejos como la epistasia.\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
-  },
-  {
-    "objectID": "en/proyectos/pharmagen.html#resultados-y-capacidad-predictiva",
-    "href": "en/proyectos/pharmagen.html#resultados-y-capacidad-predictiva",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "📊 Resultados y Capacidad Predictiva",
-    "text": "📊 Resultados y Capacidad Predictiva\nTras una optimización estocástica de 40 estudios con Optuna y una Validación Cruzada de 5 iteraciones, el modelo alcanzó métricas de nivel traslacional:\n\n\n\nTarea Clínica\nMétrica (Precisión / Balanced Accuracy)\n\n\n\n\nCategoría Fenotípica\n86.89% (Precisión Global)\n\n\nAjuste de Dosis (Dosage)\n0.8328 (Balanced Accuracy)\n\n\nFarmacocinética (PK)\n0.8037 (Balanced Accuracy)\n\n\nDirección del Efecto\n66.07% (Increased/Decreased)\n\n\n\n\nEl “Semáforo Rojo” Clínico\nEl sistema integra una variable binaria de éxito/fracaso terapéutico. Por ejemplo, si el modelo detecta una combinación de Toxicity + Increased + Risk, asigna automáticamente un fallo terapéutico, funcionando como un Sistema de Soporte a la Decisión Clínica (CDSS)."
-  },
-  {
-    "objectID": "en/proyectos/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
-    "href": "en/proyectos/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)",
-    "text": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)\nEl proyecto evoluciona hacia una versión 2.0 (arquitectura Twin-Tower) utilizando PyTorch Geometric. El objetivo es representar los fármacos como grafos moleculares (átomos como nodos y enlaces como aristas) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan a procesar.\n\n\n🛠️ Stack Técnico Detallado\n\nOrquestación: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfraestructura: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformática: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\n{{&lt; fa brands github &gt;}} Acceder al código íntegro en GitHub"
-  },
-  {
-    "objectID": "en/index.html",
-    "href": "en/index.html",
+    "objectID": "es/index.html#formación-académica",
+    "href": "es/index.html#formación-académica",
     "title": "Adrim Hamed Outmani",
-    "section": "",
-    "text": "I am a professional with a background in Pharmacy and advanced specialization in Bioinformatics. My focus is on merging clinical laboratory precision with computational power to interpret large volumes of genomic data.\nMy career in Pharmacogenomics began with my research on hypertension and has evolved towards the development of Deep Learning models that identify the optimal treatment for each patient, minimizing risks and maximizing therapeutic efficacy.\n\n\n\nMy main project, Pharmagen, is the culmination of my technical and clinical training. It is a comprehensive system that automates everything from NGS data processing in Debian 13 environments to phenotypic prediction using hybrid neural networks.\n\nClinical Precision: Multi-label inference with an accuracy of 86.89% in phenotypic categories.\nData Engineering: Robust pipelines integrating tools such as BWA, GATK, and Samtools.\nInnovation: Development of DeepFM architectures and transition towards Graph Neural Networks (GNN).\n\n\n\n\n\nI have complemented my healthcare background with solid training in data analysis and programming:\n\nProgramming: Specialist in Python (300h certification from UOC) and C++.\nMachine Learning & Big Data: Specific 100h training at the University of Granada applied to Bioinformatics.\nEnvironment: Proficiency in administration and development in GNU/Linux (Debian).\nLanguages: Bilingual profile in Spanish and Tamazight, with professional proficiency in English (B2).\n\n\n\n\n\n\nMaster’s in Bioinformatics | Valencia International University (2025-2026).\nDegree in Pharmacy | University of Granada (Focus on Pharmacogenomics).\nCourse in Nanomedicines | Pharmacy Academy Sta. María de España.\n\n\n\n“My mission is to bridge the gap between genomic Big Data and the patient, transforming biological variability into precise and reproducible health algorithms.”"
+    "section": "Formación Académica",
+    "text": "Formación Académica\n\nMáster en Bioinformática — Universidad Internacional de Valencia (2025–2026)\nGrado en Farmacia — Universidad de Granada — Orientación en Farmacogenómica\nPython para Data Science — Universitat Oberta de Catalunya (300h)\nML & Big Data aplicado a Bioinformática — Universidad de Granada (100h)\nNanomedicamentos — Academia de Farmacia Santa María de España\n\n\n\nIdiomas\n\nCastellano — Nativo\nTamazight — Nativo\nInglés — B2 (Competencia profesional)"
   },
   {
-    "objectID": "en/index.html#transforming-the-genome-into-clinical-decisions",
-    "href": "en/index.html#transforming-the-genome-into-clinical-decisions",
+    "objectID": "es/index.html#proyectos-destacados",
+    "href": "es/index.html#proyectos-destacados",
     "title": "Adrim Hamed Outmani",
-    "section": "",
-    "text": "I am a professional with a background in Pharmacy and advanced specialization in Bioinformatics. My focus is on merging clinical laboratory precision with computational power to interpret large volumes of genomic data.\nMy career in Pharmacogenomics began with my research on hypertension and has evolved towards the development of Deep Learning models that identify the optimal treatment for each patient, minimizing risks and maximizing therapeutic efficacy.\n\n\n\nMy main project, Pharmagen, is the culmination of my technical and clinical training. It is a comprehensive system that automates everything from NGS data processing in Debian 13 environments to phenotypic prediction using hybrid neural networks.\n\nClinical Precision: Multi-label inference with an accuracy of 86.89% in phenotypic categories.\nData Engineering: Robust pipelines integrating tools such as BWA, GATK, and Samtools.\nInnovation: Development of DeepFM architectures and transition towards Graph Neural Networks (GNN).\n\n\n\n\n\nI have complemented my healthcare background with solid training in data analysis and programming:\n\nProgramming: Specialist in Python (300h certification from UOC) and C++.\nMachine Learning & Big Data: Specific 100h training at the University of Granada applied to Bioinformatics.\nEnvironment: Proficiency in administration and development in GNU/Linux (Debian).\nLanguages: Bilingual profile in Spanish and Tamazight, with professional proficiency in English (B2).\n\n\n\n\n\n\nMaster’s in Bioinformatics | Valencia International University (2025-2026).\nDegree in Pharmacy | University of Granada (Focus on Pharmacogenomics).\nCourse in Nanomedicines | Pharmacy Academy Sta. María de España.\n\n\n\n“My mission is to bridge the gap between genomic Big Data and the patient, transforming biological variability into precise and reproducible health algorithms.”"
+    "section": "Proyectos Destacados",
+    "text": "Proyectos Destacados\n\nPharmagen — IA para Predicción Farmacogenómica\nPlataforma end-to-end que integra un pipeline bioinformático completo (FASTQ → VCF → Anotación) con un modelo de Deep Learning híbrido (DeepFM + Transformer) para predecir la respuesta fenotípica de un paciente a fármacos específicos.\n\n\n\nTarea Clínica\nResultado\n\n\n\n\nClasificación Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\n\nStack: Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit\nVer Proyecto Completo →\n\n\n\nOtros Repositorios\n\nPgen_dev — Repositorio de desarrollo activo de Pharmagen. Experimentación con arquitecturas y datasets.\ndotfiles_Aderfi — Configuración de entorno Hyprland/Sway para Debian y WSL. Refleja dominio de administración Linux."
   },
   {
-    "objectID": "projects/pharmagen.html",
-    "href": "projects/pharmagen.html",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "",
-    "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
-  },
-  {
-    "objectID": "projects/pharmagen.html#el-problema-la-falacia-de-la-dosificación-estándar",
-    "href": "projects/pharmagen.html#el-problema-la-falacia-de-la-dosificación-estándar",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "",
-    "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
-  },
-  {
-    "objectID": "projects/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
-    "href": "projects/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🧬 Fase I: Pipeline Bioinformático Orquestado",
-    "text": "🧬 Fase I: Pipeline Bioinformático Orquestado\nHe diseñado un pipeline bioinformático modular orquestado en Python 3.10 sobre Debian 13 (Trixie). El sistema automatiza el procesamiento de lecturas masivas (NGS) garantizando la reproducibilidad mediante el gestor de entornos uv.\n\nEl Flujo de Trabajo (Fase I):\n\nControl de Calidad: FastQC y FastP para el filtrado de lecturas de baja calidad y recorte de adaptadores.\nAlineamiento: Mapeo contra el genoma de referencia GRCh38 mediante BWA-MEM.\nProcesamiento de BAM: Identificación de duplicados de PCR con Picard (MarkDuplicates) para evitar sesgos alélicos.\nVariant Calling: Extracción de SNPs e Indels basada en haplotipos con Freebayes y filtrado estricto con VCFtools.\nAnotación Funcional: Uso de Ensembl VEP en modo offline para determinar el impacto transcripcional de cada variante."
-  },
-  {
-    "objectID": "projects/pharmagen.html#fase-ii-arquitectura-deepfm-y-multi-task-learning",
-    "href": "projects/pharmagen.html#fase-ii-arquitectura-deepfm-y-multi-task-learning",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning",
-    "text": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning\nPara la inferencia clínica, desarrollé una arquitectura de red neuronal híbrida entrenada sobre datos curados de ClinPGx y dbSNP.\n\nDecisiones Críticas de Ingeniería de Características:\n\nIdentificadores Químicos Puros: Sustituí la clasificación ATC por PubChem CID. Los modelos requieren representar interacciones fisicoquímicas reales, no categorías terapéuticas abstractas.\nVariable “Genalle”: Creación de un identificador sintético que fusiona el rsID con la notación HGVS, permitiendo una normalización alélica estricta.\nGestión del Desbalance: Implementación de Adaptive Focal Loss y Asymmetric Loss para penalizar errores en efectos adversos raros pero críticos, priorizando la seguridad del paciente.\n\n\n\nEl Modelo Matemático\nLa arquitectura combina Máquinas de Factorización (FM) para interacciones de segundo orden y un Transformer Encoder con mecanismos de Self-Attention para capturar fenómenos complejos como la epistasia.\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
-  },
-  {
-    "objectID": "projects/pharmagen.html#resultados-y-capacidad-predictiva",
-    "href": "projects/pharmagen.html#resultados-y-capacidad-predictiva",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "📊 Resultados y Capacidad Predictiva",
-    "text": "📊 Resultados y Capacidad Predictiva\nTras una optimización estocástica de 40 estudios con Optuna y una Validación Cruzada de 5 iteraciones, el modelo alcanzó métricas de nivel traslacional:\n\n\n\nTarea Clínica\nMétrica (Precisión / Balanced Accuracy)\n\n\n\n\nCategoría Fenotípica\n86.89% (Precisión Global)\n\n\nAjuste de Dosis (Dosage)\n0.8328 (Balanced Accuracy)\n\n\nFarmacocinética (PK)\n0.8037 (Balanced Accuracy)\n\n\nDirección del Efecto\n66.07% (Increased/Decreased)\n\n\n\n\nEl “Semáforo Rojo” Clínico\nEl sistema integra una variable binaria de éxito/fracaso terapéutico. Por ejemplo, si el modelo detecta una combinación de Toxicity + Increased + Risk, asigna automáticamente un fallo terapéutico, funcionando como un Sistema de Soporte a la Decisión Clínica (CDSS)."
-  },
-  {
-    "objectID": "projects/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
-    "href": "projects/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
-    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)",
-    "text": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)\nEl proyecto evoluciona hacia una versión 2.0 (arquitectura Twin-Tower) utilizando PyTorch Geometric. El objetivo es representar los fármacos como grafos moleculares (átomos como nodos y enlaces como aristas) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan a procesar.\n\n\n🛠️ Stack Técnico Detallado\n\nOrquestación: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfraestructura: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformática: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\n{{&lt; fa brands github &gt;}} Acceder al código íntegro en GitHub"
-  },
-  {
-    "objectID": "index.html#section",
-    "href": "index.html#section",
+    "objectID": "es/index.html#blog",
+    "href": "es/index.html#blog",
     "title": "Adrim Hamed Outmani",
-    "section": "🇪🇸",
-    "text": "🇪🇸\nSoy un profesional con base en Farmacia y una especialización avanzada en Bioinformática. Mi enfoque se centra en fusionar la precisión del laboratorio clínico con la potencia computacional para interpretar grandes volúmenes de datos genómicos.\n\nEspecialización técnica\n\nMi trayectoria se inició con la investigación en farmacogenómica de la hipertensión.\nHe desarrollado Pharmagen, un sistema que automatiza el procesamiento de datos NGS en entornos Debian 13.\nCuento con una formación sólida en Python (300h en la UOC) y Machine Learning aplicado (100h en la UGR).\n\n\n\nResultados y Visión\nMi modelo ha alcanzado una precisión del 86.89% en la clasificación de categorías fenotípicas. Mi objetivo es transformar la variabilidad biológica en algoritmos de salud precisos y reproducibles.\nExplorar Portfolio Completo →"
+    "section": "Blog",
+    "text": "Blog\nPublicaciones sobre decisiones de ingeniería, análisis de arquitecturas de deep learning y reflexiones sobre bioinformática aplicada.\nLeer Publicaciones →"
   },
   {
-    "objectID": "index.html#section-1",
-    "href": "index.html#section-1",
-    "title": "Adrim Hamed Outmani",
-    "section": "🇬🇧",
-    "text": "🇬🇧\nI am a professional with a background in Pharmacy and advanced specialization in Bioinformatics. My focus is on merging clinical laboratory precision with computational power to interpret large volumes of genomic data.\n\nTechnical Specialization\n\nMy career began with research on the pharmacogenomics of hypertension.\nI developed Pharmagen, a system that automates NGS data processing within Debian 13 environments.\nI hold solid training in Python (300h from UOC) and applied Machine Learning (100h from UGR).\n\n\n\nResults and Vision\nMy model achieved an accuracy of 86.89% in classifying phenotypic categories. My goal is to transform biological variability into precise and reproducible health algorithms.\nExplore Full Portfolio →"
+    "objectID": "en/projects/pharmagen.html",
+    "href": "en/projects/pharmagen.html",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "",
+    "text": "Traditional medicine often relies on one-size-fits-all population statistics, assuming Gaussian metabolism curves that ignore extreme phenotypes such as poor or ultrarapid metabolizers. For narrow therapeutic index drugs like acenocoumarol or 5-Fluorouracil (5-FU), this lack of personalization leads to therapeutic failures or lethal toxicities.\nPharmagen was created to close this gap, integrating a complete workflow from raw genomic data to clinical prediction."
+  },
+  {
+    "objectID": "en/projects/pharmagen.html#the-problem-the-standard-dosing-fallacy",
+    "href": "en/projects/pharmagen.html#the-problem-the-standard-dosing-fallacy",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "",
+    "text": "Traditional medicine often relies on one-size-fits-all population statistics, assuming Gaussian metabolism curves that ignore extreme phenotypes such as poor or ultrarapid metabolizers. For narrow therapeutic index drugs like acenocoumarol or 5-Fluorouracil (5-FU), this lack of personalization leads to therapeutic failures or lethal toxicities.\nPharmagen was created to close this gap, integrating a complete workflow from raw genomic data to clinical prediction."
+  },
+  {
+    "objectID": "en/projects/pharmagen.html#phase-i-orchestrated-bioinformatics-pipeline",
+    "href": "en/projects/pharmagen.html#phase-i-orchestrated-bioinformatics-pipeline",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "Phase I: Orchestrated Bioinformatics Pipeline",
+    "text": "Phase I: Orchestrated Bioinformatics Pipeline\nI designed a modular bioinformatics pipeline orchestrated in Python 3.10 on Debian 13 (Trixie). The system automates the processing of massive reads (NGS), ensuring reproducibility through the uv environment manager.\n\nWorkflow (Phase I):\n\nQuality Control: FastQC and FastP for low-quality read filtering and adapter trimming.\nAlignment: Mapping against the GRCh38 reference genome using BWA-MEM.\nBAM Processing: PCR duplicate identification with Picard (MarkDuplicates) to prevent allelic bias.\nVariant Calling: Haplotype-based SNP and Indel extraction with Freebayes and strict filtering via VCFtools.\nFunctional Annotation: Ensembl VEP in offline mode to determine the transcriptional impact of each variant."
+  },
+  {
+    "objectID": "en/projects/pharmagen.html#phase-ii-deepfm-architecture-and-multi-task-learning",
+    "href": "en/projects/pharmagen.html#phase-ii-deepfm-architecture-and-multi-task-learning",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "Phase II: DeepFM Architecture and Multi-Task Learning",
+    "text": "Phase II: DeepFM Architecture and Multi-Task Learning\nFor clinical inference, I developed a hybrid neural network architecture trained on curated data from ClinPGx and dbSNP.\n\nCritical Feature Engineering Decisions:\n\nPure Chemical Identifiers: Replaced ATC classification with PubChem CID. Models need to represent real physicochemical interactions, not abstract therapeutic categories.\n“Genalle” Variable: A synthetic identifier fusing the rsID with HGVS notation, enabling strict allelic normalization.\nImbalance Management: Implementation of Adaptive Focal Loss and Asymmetric Loss to penalize errors in rare but critical adverse effects, prioritizing patient safety.\n\n\n\nThe Mathematical Model\nThe architecture combines Factorization Machines (FM) for second-order interactions and a Transformer Encoder with Self-Attention mechanisms to capture complex phenomena such as epistasis.\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "en/projects/pharmagen.html#results-and-predictive-capacity",
+    "href": "en/projects/pharmagen.html#results-and-predictive-capacity",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "Results and Predictive Capacity",
+    "text": "Results and Predictive Capacity\nAfter stochastic optimization of 40 studies with Optuna and 5-fold Cross-Validation, the model achieved translational-level metrics:\n\n\n\nClinical Task\nMetric (Precision / Balanced Accuracy)\n\n\n\n\nPhenotypic Category\n86.89% (Global Precision)\n\n\nDosage Adjustment\n0.8328 (Balanced Accuracy)\n\n\nPharmacokinetics (PK)\n0.8037 (Balanced Accuracy)\n\n\nEffect Direction\n66.07% (Increased/Decreased)\n\n\n\n\nThe Clinical “Red Light”\nThe system integrates a binary therapeutic success/failure variable. For instance, if the model detects a combination of Toxicity + Increased + Risk, it automatically assigns a therapeutic failure, functioning as a Clinical Decision Support System (CDSS)."
+  },
+  {
+    "objectID": "en/projects/pharmagen.html#future-towards-graph-neural-networks-gnn",
+    "href": "en/projects/pharmagen.html#future-towards-graph-neural-networks-gnn",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "Future: Towards Graph Neural Networks (GNN)",
+    "text": "Future: Towards Graph Neural Networks (GNN)\nThe project evolves towards a 2.0 version (Twin-Tower architecture) using PyTorch Geometric. The goal is to represent drugs as molecular graphs (atoms as nodes, bonds as edges) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.\n\n\nDetailed Tech Stack\n\nOrchestration: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfrastructure: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformatics: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\nAccess full source code on GitHub"
+  },
+  {
+    "objectID": "en/blog/index.html",
+    "href": "en/blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Análisis de la Arquitectura DeepFM en Farmacogenómica\n\n\nDecisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen\n\n\n\nDeep Learning\n\nFarmacogenómica\n\nPyTorch\n\n\n\n\n\n\n15 mar 2026\n\n\n\n\n\nNo hay resultados"
   }
 ]

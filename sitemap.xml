@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Aderfi.github.io/es/proyectos/pharmagen.html</loc>
-    <lastmod>2026-03-18T21:00:46.249Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Aderfi.github.io/es/index.html</loc>
-    <lastmod>2026-03-18T21:00:46.249Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Aderfi.github.io/en/proyectos/pharmagen.html</loc>
-    <lastmod>2026-03-18T21:00:46.249Z</lastmod>
-  </url>
-  <url>
     <loc>https://Aderfi.github.io/en/index.html</loc>
-    <lastmod>2026-03-18T21:00:46.248Z</lastmod>
+    <lastmod>2026-04-05T03:51:45.582Z</lastmod>
   </url>
   <url>
-    <loc>https://Aderfi.github.io/projects/pharmagen.html</loc>
-    <lastmod>2026-03-18T21:00:46.257Z</lastmod>
+    <loc>https://Aderfi.github.io/en/blog/analisis-deepfm.html</loc>
+    <lastmod>2026-04-05T03:51:45.582Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Aderfi.github.io/es/proyectos/pharmagen.html</loc>
+    <lastmod>2026-04-05T03:51:45.583Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Aderfi.github.io/es/blog/index.html</loc>
+    <lastmod>2026-04-05T03:51:45.583Z</lastmod>
   </url>
   <url>
     <loc>https://Aderfi.github.io/index.html</loc>
-    <lastmod>2026-03-18T21:00:46.249Z</lastmod>
+    <lastmod>2026-04-05T03:51:45.583Z</lastmod>
   </url>
   <url>
-    <loc>https://Aderfi.github.io/posts/analisis-deepfm.html</loc>
-    <lastmod>2026-03-18T21:00:46.256Z</lastmod>
+    <loc>https://Aderfi.github.io/es/blog/analisis-deepfm.html</loc>
+    <lastmod>2026-04-05T03:51:45.583Z</lastmod>
   </url>
   <url>
-    <loc>https://Aderfi.github.io/en/posts/analisis-deepfm.html</loc>
-    <lastmod>2026-03-18T21:00:46.249Z</lastmod>
+    <loc>https://Aderfi.github.io/es/index.html</loc>
+    <lastmod>2026-04-05T03:51:45.583Z</lastmod>
   </url>
   <url>
-    <loc>https://Aderfi.github.io/about.html</loc>
-    <lastmod>2026-03-18T21:00:46.248Z</lastmod>
+    <loc>https://Aderfi.github.io/en/projects/pharmagen.html</loc>
+    <lastmod>2026-04-05T03:51:45.582Z</lastmod>
   </url>
   <url>
-    <loc>https://Aderfi.github.io/es/posts/analisis-deepfm.html</loc>
-    <lastmod>2026-03-18T21:00:46.249Z</lastmod>
+    <loc>https://Aderfi.github.io/en/blog/index.html</loc>
+    <lastmod>2026-04-05T03:51:45.582Z</lastmod>
   </url>
 </urlset>
