@@ -46,13 +46,6 @@ body {
     pointer-events: none;
 }
 
-@media (max-width: 768px) {
-    #dnaCanvas {
-        opacity: 0.25;
-    }
-}
-
-
 /* ── Navbar ────────────────────────────────────────── */
 
 .navbar {
@@ -347,5 +340,13 @@ code {
     .subtitle {
         padding-left: 1rem !important;
         max-width: 100%;
+    }
+
+    #dnaCanvas {
+        opacity: 0.25;
+    }
+
+    .description {
+    max-width: 95%;
     }
 }
