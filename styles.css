@@ -46,6 +46,12 @@ body {
     pointer-events: none;
 }
 
+@media (max-width: 768px) {
+    #dnaCanvas {
+        opacity: 0.25;
+    }
+}
+
 
 /* ── Navbar ────────────────────────────────────────── */
 
