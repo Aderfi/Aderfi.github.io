@@ -1,0 +1,54 @@
+---
+title: "De prototipo a producción: lo que aprendí endureciendo Pharmagen"
+subtitle: "Por qué migro a grafos, adopto estándares de industria y rehago la evaluación desde cero"
+date: "2026-07-10"
+categories: [Ingeniería, Deep Learning, GNN, Buenas prácticas, Farmacogenómica]
+image: "../../media/pharmagen-architecture.svg"
+---
+
+Cuando empecé **Pharmagen** era farmacéutico aprendiendo a programar modelos. La v1 funcionó: un DeepFM + Transformer que aprendía a predecir la respuesta fenotípica a fármacos a partir de variantes genéticas. Pero un prototipo que funciona en tu máquina y un software en el que otros pueden confiar son dos cosas distintas. Este post trata del camino entre ambas, incluida la parte incómoda.
+
+## La métrica que decidí no usar
+
+La v1 daba números altos. Y precisamente por altos me hicieron desconfiar. Al revisar el flujo con más criterio del que tenía cuando lo diseñé, encontré **asunciones en la preparación y partición de los datos** —en la normalización alélica y en cómo separaba entrenamiento de test— que, con toda probabilidad, dejaban filtrar información entre conjuntos. Es el clásico *data leakage*: el modelo parece brillante porque, sin quererlo, ha visto parte de la respuesta.
+
+Podría haber dejado el 86,89% en el portfolio y a nadie le habría extrañado. Decidí no hacerlo. **Una métrica que no puedo defender metodológicamente no es un logro, es un riesgo.** Publicarla como definitiva sería, además de incorrecto, exactamente el tipo de práctica que quiero evitar en un dominio clínico donde un error se traduce en una decisión sobre un paciente.
+
+Lo que la v1 sí demostró se mantiene: la señal gen–fármaco es aprendible con esta representación, y decisiones como usar PubChem CID en lugar de ATC o el identificador `Genalle` funcionan. Eso es lo que me llevo. La cifra, no.
+
+## Por qué grafos (v2, frente científico)
+
+La v1 representaba fármacos y variantes como vectores tabulares. Pero una molécula **es** un grafo (átomos, enlaces) y el contexto genómico también tiene topología. Forzar esa estructura dentro de una tabla pierde información.
+
+La v2 adopta una arquitectura **Two-Tower GATv2** con PyTorch Geometric:
+
+- **Torre del fármaco:** grafos moleculares construidos con RDKit desde SMILES canónicos.
+- **Torre del genotipo:** grafos posicionales de variantes, validados contra GRCh38.
+- Ambas torres se fusionan en cabezas multi-tarea.
+
+La atención sobre grafos (GATv2) permite que el modelo aprenda qué partes de la molécula y del contexto genómico importan para cada interacción, en lugar de asumirlo yo con *feature engineering* manual.
+
+## Por qué estándares de industria (v2, frente de ingeniería)
+
+Cuando diseñé la v1 no sabía lo que no sabía. No usaba validación de tipos, ni tests, ni un servicio de inferencia, ni CI. Funcionaba, pero era frágil: un cambio en un sitio rompía otro en silencio.
+
+La v2 incorpora lo que la primera versión no tenía:
+
+- **Pydantic v2** tipando cada frontera de datos (`Drug`, `Variant`, `Genotype`, peticiones de la API…). Si un dato entra mal, falla fuerte y pronto, no tres capas más abajo.
+- **FastAPI** como servicio de inferencia, con OpenAPI y *health/readiness probes*.
+- **CI con ruff + pytest** (~240 tests unitarios) en cada push y PR.
+- **`uv`** para dependencias reproducibles, con *lockfile* como fuente de verdad.
+
+Nada de esto mejora la métrica del modelo. Lo que mejora es la **confianza**: que el proyecto se pueda mantener, auditar y desplegar, y que otra persona —o un tribunal, o un supervisor— pueda leer el código y creer en él.
+
+## Rehacer la evaluación
+
+La pieza central de la v2 no es la arquitectura, es el **protocolo de evaluación**. Particiones sin fugas, una línea base explícita contra la que comparar, y métricas balanceadas reportadas siempre junto a la metodología que las produjo. Cuando tenga cifras que pueda defender, se publicarán aquí con ese protocolo al lado. Ni antes, ni sin él.
+
+## Lo que me llevo
+
+He aprendido más corrigiendo la v1 que construyéndola. Detectar el problema de evaluación por mí mismo, aceptar que las cifras bonitas no valían, y reconstruir el proyecto con rigor ha sido la parte más formativa de todo Pharmagen. Si algo define a un buen investigador o ingeniero no es no equivocarse nunca, sino **ver el error, admitirlo y corregirlo con método**. En eso estoy.
+
+---
+
+*¿Comentarios o quieres seguir el desarrollo? El código está en [GitHub](https://github.com/Aderfi/Pharmagen) y puedes escribirme por [LinkedIn](https://linkedin.com/in/adrim-hamed-outmani-047491290).*

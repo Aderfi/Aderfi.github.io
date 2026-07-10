@@ -1,0 +1,55 @@
+---
+title: "Durin: Software Clínico para Polifarmacia"
+subtitle: "Detección de riesgos e interacciones en pacientes geriátricos polimedicados"
+date: "2026-07-01"
+categories: [Software Clínico, Farmacología, Pydantic, FastAPI]
+image: "../../media/dna.gif"
+---
+
+::: {.callout-note title="Estado: desarrollo temprano"}
+Durin está en fase inicial. Las APIs, los modelos de datos y el alcance aún se mueven. **No es un dispositivo médico**, no ofrece consejo clínico y no debe usarse para tomar decisiones terapéuticas. Todas las salidas son experimentales y no validadas.
+:::
+
+## 💊 El problema: la polifarmacia geriátrica
+
+La **polifarmacia** en personas mayores es una de las causas principales —y en buena medida prevenibles— de hospitalización. El número de interacciones posibles crece de forma **combinatoria** con cada fármaco añadido, y buena parte del conocimiento relevante está disperso en referencias difíciles de aplicar con rapidez a pie de cama.
+
+**Durin** es un intento de hacer ese conocimiento **estructurado, consultable y accionable**: ingiere la lista de medicación y el perfil clínico de un paciente y busca surfacear los **riesgos que merecen la atención del clínico** —interacciones peligrosas, problemas de dosificación y carga acumulada de efectos adversos.
+
+---
+
+## 🧱 Lo que ya existe
+
+El foco actual es una **base de datos sólida y bien tipada**, no la herramienta terminada:
+
+- **Modelos de dominio (Pydantic v2)** para fármacos y pacientes, con validación: códigos ATC, dosis, efectos adversos, interacciones y perfiles de medicación.
+- **Catálogo ATC/DDD** construido por un *scraper* propio (`scripts/atc_scraper.py`), que mapea cada fármaco a sus clases anatómica/terapéutica/farmacológica.
+- **Internacionalización** mediante catálogos de idioma JSON5 (español / inglés).
+- Andamiaje de un **servicio FastAPI** para la capa de servicio.
+
+---
+
+## 🗺️ Hoja de ruta
+
+Aún por construir:
+
+- **Motor de interacciones y riesgo:** la lógica que evalúa combinaciones de fármacos y cuantifica el riesgo.
+- **Capa de IA:** modelos para **priorizar y explicar** los riesgos, ayudando al clínico a decidir dónde mirar primero.
+- **Interfaz de usuario.**
+
+---
+
+## 🎯 Por qué este proyecto
+
+Durin nace de mi doble perfil: **farmacéutico** que conoce la clínica del medicamento y **desarrollador** que sabe construir el software para explotarla. Es la contraparte aplicada y clínica de [Pharmagen](pharmagen.qmd): donde Pharmagen investiga la predicción gen–fármaco, Durin busca convertir conocimiento farmacológico en una herramienta de seguridad utilizable.
+
+---
+
+### 🛠️ Stack técnico
+* **Lenguaje:** Python 3.14 (gestionado con `uv`).
+* **Datos y validación:** Pydantic v2.
+* **Servicio:** FastAPI.
+* **Scraping:** BeautifulSoup.
+* **Análisis (previsto):** Polars, scikit-learn.
+
+[Ver el proyecto en GitHub](https://github.com/Aderfi/Durin)

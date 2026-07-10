@@ -1,0 +1,54 @@
+---
+title: "From prototype to production: what I learned hardening Pharmagen"
+subtitle: "Why I'm migrating to graphs, adopting industry standards, and rebuilding the evaluation from scratch"
+date: "2026-07-10"
+categories: [Engineering, Deep Learning, GNN, Best practices, Pharmacogenomics]
+image: "../../media/pharmagen-architecture.svg"
+---
+
+When I started **Pharmagen** I was a pharmacist learning to code models. v1 worked: a DeepFM + Transformer that learned to predict phenotypic drug response from genetic variants. But a prototype that runs on your machine and software others can trust are two different things. This post is about the road between them — including the uncomfortable part.
+
+## The metric I chose not to use
+
+v1 produced high numbers. And precisely because they were high, they made me suspicious. Reviewing the pipeline with more judgment than I had when I designed it, I found **assumptions in data preparation and splitting** — in the allelic normalization and in how I separated training from test — that, in all likelihood, let information leak between sets. This is classic *data leakage*: the model looks brilliant because, unintentionally, it has already seen part of the answer.
+
+I could have left the 86.89% on the portfolio and nobody would have blinked. I decided not to. **A metric I can't defend methodologically isn't an achievement, it's a liability.** Publishing it as final would be not only incorrect but exactly the kind of practice I want to avoid in a clinical domain where an error translates into a decision about a patient.
+
+What v1 did prove still stands: the gene–drug signal is learnable with this representation, and choices like using PubChem CID over ATC or the `Genalle` identifier work. That's what I keep. The number, I don't.
+
+## Why graphs (v2, scientific front)
+
+v1 represented drugs and variants as tabular vectors. But a molecule **is** a graph (atoms, bonds), and genomic context has topology too. Forcing that structure into a table loses information.
+
+v2 adopts a **Two-Tower GATv2** architecture with PyTorch Geometric:
+
+- **Drug tower:** molecular graphs built with RDKit from canonical SMILES.
+- **Genotype tower:** positional variant graphs, validated against GRCh38.
+- Both towers are fused into multi-task heads.
+
+Attention over graphs (GATv2) lets the model learn which parts of the molecule and the genomic context matter for each interaction, instead of me assuming it through manual feature engineering.
+
+## Why industry standards (v2, engineering front)
+
+When I designed v1 I didn't know what I didn't know. No type validation, no tests, no inference service, no CI. It worked, but it was fragile: a change in one place broke another silently.
+
+v2 brings in what the first version lacked:
+
+- **Pydantic v2** typing every data boundary (`Drug`, `Variant`, `Genotype`, API requests…). If bad data enters, it fails loudly and early, not three layers down.
+- **FastAPI** as the inference service, with OpenAPI and health/readiness probes.
+- **CI with ruff + pytest** (~240 unit tests) on every push and PR.
+- **`uv`** for reproducible dependencies, with a lockfile as the source of truth.
+
+None of this improves the model's metric. What it improves is **trust**: that the project can be maintained, audited, and deployed, and that another person — or an examiner, or a supervisor — can read the code and believe in it.
+
+## Rebuilding the evaluation
+
+The centerpiece of v2 is not the architecture, it's the **evaluation protocol**. Leakage-free splits, an explicit baseline to compare against, and balanced metrics always reported alongside the methodology that produced them. When I have figures I can defend, they'll be published here with that protocol next to them. Not before, and not without it.
+
+## What I take away
+
+I've learned more fixing v1 than building it. Catching the evaluation problem myself, accepting that the pretty numbers didn't hold, and rebuilding the project with rigor has been the most formative part of all of Pharmagen. If anything defines a good researcher or engineer, it isn't never being wrong — it's **seeing the error, owning it, and correcting it with method.** That's where I am.
+
+---
+
+*Comments, or want to follow the development? The code is on [GitHub](https://github.com/Aderfi/Pharmagen) and you can reach me on [LinkedIn](https://linkedin.com/in/adrim-hamed-outmani-047491290).*

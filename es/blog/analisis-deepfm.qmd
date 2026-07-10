@@ -6,6 +6,10 @@ categories: [Deep Learning, Farmacogenómica, PyTorch]
 image: "../../media/dna.gif"
 ---
 
+::: {.callout-warning title="Actualización — nota de honestidad"}
+Este artículo documenta la **v1** de Pharmagen. Una revisión posterior detectó asunciones en la preparación y partición de los datos que probablemente introdujeron **fuga de información** e **inflaron** las métricas que aparecen más abajo: las considero **preliminares y optimistas**, no un resultado definitivo. La **v2** rehace la evaluación con particiones sin fugas y métricas reportadas junto a su metodología. El contexto completo está en el post [*De prototipo a producción*](de-prototipo-a-produccion.qmd) y en la [página del proyecto](../proyectos/pharmagen.qmd).
+:::
+
 ## Por qué DeepFM y no un modelo tabular clásico
 
 La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son **combinatorias y no lineales**. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.
@@ -35,14 +39,16 @@ En farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacci
 
 ---
 
-## Resultados
+## Resultados preliminares (v1) *(ver nota de honestidad arriba)*
 
-| Tarea | Métrica |
+Estas cifras corresponden a las particiones internas de la v1 y **probablemente están infladas por fuga de datos**. Las dejo por transparencia y trazabilidad, no como resultado validado:
+
+| Tarea | Métrica (preliminar) |
 | :--- | :--- |
-| Categoría Fenotípica | **86.89%** Precisión |
-| Ajuste de Dosis | **0.8328** Balanced Accuracy |
-| Farmacocinética | **0.8037** Balanced Accuracy |
-| Dirección del Efecto | **66.07%** Precisión |
+| Categoría Fenotípica | 86.89% Precisión |
+| Ajuste de Dosis | 0.8328 Balanced Accuracy |
+| Farmacocinética | 0.8037 Balanced Accuracy |
+| Dirección del Efecto | 66.07% Precisión |
 
 La tarea de **dirección del efecto** (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas.
 
@@ -53,3 +59,4 @@ La tarea de **dirección del efecto** (increased/decreased) es la más difícil 
 1. **La ingeniería de características importa más que la arquitectura.** Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.
 2. **El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.** Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.
 3. **Optuna + validación cruzada estratificada** es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.
+4. **La evaluación es tan importante como el modelo.** Una métrica alta no vale nada si el protocolo permite fuga de datos. Detectarlo yo mismo y rehacer la validación en la v2 ha sido la lección más valiosa de todo el proyecto: es lo que separa un experimento de una herramienta fiable.

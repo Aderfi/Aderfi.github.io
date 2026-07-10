@@ -30,9 +30,9 @@ about:
 
 ## Sobre mí
 
-Farmacéutico de formación con especialización en **Bioinformática** y **Machine Learning** aplicado al sector farmacéutico. Mi perfil combina el conocimiento clínico del medicamento con la capacidad técnica para diseñar pipelines de análisis genómico, entrenar modelos predictivos y trabajar con datasets a gran escala.
+Farmacéutico de formación que programa **Machine Learning** para **descubrimiento de fármacos** y **farmacogenómica**. Mi perfil combina el conocimiento clínico del medicamento con la capacidad técnica para diseñar pipelines de análisis genómico, modelar interacciones gen–fármaco con redes neuronales de grafos (GNN) y construir el software que las sostiene.
 
-Busco contribuir en equipos de **I+D farmacéutico**, **bioinformática clínica** o **desarrollo computacional de fármacos**, aportando una visión transversal entre la biología, la química y la ciencia de datos.
+Busco contribuir en equipos de **I+D farmacéutico**, **bioinformática clínica** o **desarrollo computacional de fármacos**, aportando una visión transversal entre biología, química y ciencia de datos. Autodidacta, en aprendizaje continuo y **abierto a colaboraciones de investigación y programas de doctorado (PhD/CDT)**.
 
 ::: 
 
@@ -46,16 +46,19 @@ Busco contribuir en equipos de **I+D farmacéutico**, **bioinformática clínica
 `Python` · `PyTorch` · `Pandas` · `Polars` · `NumPy` · `Scikit-learn` · `C++` · `Bash` · `SQL` · `Git`
 
 **Machine Learning & Deep Learning**
-`Redes Neuronales` · `DeepFM` · `Transformers` · `Multi-Task Learning` · `Optuna` · `Validación Cruzada` · `Focal Loss` · `GNN (en desarrollo)`
+`Redes Neuronales` · `GNN (GATv2)` · `PyTorch Geometric` · `DeepFM` · `Transformers` · `Multi-Task Learning` · `Optuna` · `Validación Cruzada` · `Focal Loss`
 
 **Bioinformática & Genómica**
 `BWA-MEM` · `GATK` · `Samtools` · `Picard` · `Freebayes` · `VCFtools` · `Ensembl VEP` · `FastQC` · `FastP` · `Pipelines NGS`
 
 **Farmacología Computacional**
-`Farmacogenómica` · `PharmGKB` · `ClinPGx` · `dbSNP` · `Docking Molecular` · `ADMET` · `Relación Estructura-Actividad`
+`Farmacogenómica` · `PharmGKB` · `ClinPGx` · `dbSNP` · `RDKit` · `Grafos moleculares` · `Docking Molecular` · `ADMET` · `Relación Estructura-Actividad`
+
+**Ingeniería de Software & MLOps**
+`Pydantic v2` · `FastAPI` · `pytest` · `ruff` · `CI (GitHub Actions)` · `Diseño tipado` · `APIs REST`
 
 **Infraestructura**
-`GNU/Linux (Debian)` · `WSL` · `Hyprland/Sway` · `Quarto` · `Streamlit` · `uv`
+`GNU/Linux (Debian)` · `WSL` · `Hyprland/Sway` · `Quarto` · `uv` · `Git`
 
 :::
 :::
@@ -86,23 +89,31 @@ Busco contribuir en equipos de **I+D farmacéutico**, **bioinformática clínica
 
 ### Pharmagen — IA para Predicción Farmacogenómica
 
-Plataforma end-to-end que integra un pipeline bioinformático completo (FASTQ → VCF → Anotación) con un modelo de **Deep Learning híbrido (DeepFM + Transformer)** para predecir la respuesta fenotípica de un paciente a fármacos específicos.
+Plataforma end-to-end que integra un pipeline bioinformático completo (FASTQ → VCF → Anotación) con un modelo de **Deep Learning** para predecir la respuesta fenotípica de un paciente a fármacos concretos.
 
-| Tarea Clínica | Resultado |
-| :--- | :--- |
-| Clasificación Fenotípica | **86.89%** Precisión |
-| Ajuste de Dosis | **0.8328** Balanced Accuracy |
-| Farmacocinética | **0.8037** Balanced Accuracy |
+El proyecto evoluciona en dos frentes: **v1** (prototipo de investigación, DeepFM + Transformer) que validó la hipótesis, y **v2** (en curso), que migra a una arquitectura **Two-Tower GATv2** de grafos y endurece el código a estándares de industria (Pydantic v2, FastAPI, CI) con un protocolo de **evaluación riguroso y sin fugas de datos**.
 
-**Stack:** Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit
+**Stack:** Python 3.14 · PyTorch · PyTorch Geometric (GATv2) · RDKit · Optuna · FastAPI · Pydantic v2 · BWA · Freebayes · Ensembl VEP
 
 [**Ver Proyecto Completo →**](proyectos/pharmagen.qmd){.btn .btn-primary role="button" id="explore-button"}
 
 ---
 
+### Durin — Software Clínico para Polifarmacia *(desarrollo temprano)*
+
+Herramienta para apoyar el cuidado de **pacientes geriátricos polimedicados**, donde el riesgo de interacciones y efectos adversos crece de forma combinatoria con cada fármaco añadido. Ingiere la lista de medicación y el perfil clínico y busca **surfacear los riesgos que merecen la atención del clínico**.
+
+Base ya construida: modelos de dominio tipados (**Pydantic v2**), catálogo **ATC/DDD** propio vía scraper, e internacionalización (ES/EN). En hoja de ruta: motor de interacciones/riesgo y capa de IA para priorizar y explicar. *No es un producto médico; sin uso clínico.*
+
+**Stack:** Python 3.14 · Pydantic v2 · FastAPI · BeautifulSoup · Polars
+
+[**Ver en GitHub →**](https://github.com/Aderfi/Durin){.btn .btn-primary role="button" id="explore-button"}
+
+---
+
 ### Otros Repositorios
 
-* **Pgen_dev** — Repositorio de desarrollo activo de Pharmagen. Experimentación con arquitecturas y datasets.
+* **Portfolio (este sitio)** — Web bilingüe construida en Quarto sobre Debian; ver [repositorio](https://github.com/Aderfi/Aderfi.github.io).
 * **dotfiles_Aderfi** — Configuración de entorno Hyprland/Sway para Debian y WSL. Refleja dominio de administración Linux.
 
 :::

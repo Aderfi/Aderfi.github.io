@@ -18,6 +18,8 @@ website:
         menu:
           - text: "Pharmagen"
             href: es/proyectos/pharmagen.qmd
+          - text: "Durin"
+            href: es/proyectos/durin.qmd
       - text: "Blog"
         href: es/blog/index.qmd
 

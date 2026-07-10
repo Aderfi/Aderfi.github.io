@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 640" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .card { fill:#ffffff; stroke:#cbd5e1; stroke-width:1.5; rx:10; }
+      .lbl { fill:#0f172a; font-size:14px; font-weight:600; }
+      .sub { fill:#475569; font-size:11.5px; }
+      .sec { fill:#0f172a; font-size:15px; font-weight:700; }
+      .pipe { fill:#f1f5f9; stroke:#94a3b8; stroke-width:1.2; }
+      .drug { fill:#ecfeff; stroke:#0e9488; stroke-width:1.6; }
+      .gene { fill:#eef2ff; stroke:#4f46e5; stroke-width:1.6; }
+      .fuse { fill:#fef3c7; stroke:#d97706; stroke-width:1.6; }
+      .head { fill:#f0fdf4; stroke:#16a34a; stroke-width:1.6; }
+      .edge { stroke:#64748b; stroke-width:1.6; fill:none; }
+      .tag  { fill:#0e9488; font-size:11px; font-weight:700; }
+      .tagg { fill:#4f46e5; font-size:11px; font-weight:700; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="940" height="640" fill="#f8fafc" rx="14"/>
+  <text x="30" y="38" class="sec">Pharmagen — architecture</text>
+  <text x="30" y="58" class="sub">Phase I: NGS pipeline (FASTQ → annotated variants)  ·  Phase II (v2): Two-Tower GATv2 graph model</text>
+
+  <!-- Phase I pipeline -->
+  <g>
+    <rect class="pipe" x="30"  y="80" width="118" height="46" rx="9"/>
+    <text x="89"  y="100" text-anchor="middle" class="lbl">FASTQ</text>
+    <text x="89"  y="116" text-anchor="middle" class="sub">raw reads</text>
+
+    <rect class="pipe" x="168" y="80" width="118" height="46" rx="9"/>
+    <text x="227" y="100" text-anchor="middle" class="lbl">QC</text>
+    <text x="227" y="116" text-anchor="middle" class="sub">FastQC · FastP</text>
+
+    <rect class="pipe" x="306" y="80" width="118" height="46" rx="9"/>
+    <text x="365" y="100" text-anchor="middle" class="lbl">Alignment</text>
+    <text x="365" y="116" text-anchor="middle" class="sub">BWA-MEM · GRCh38</text>
+
+    <rect class="pipe" x="444" y="80" width="118" height="46" rx="9"/>
+    <text x="503" y="100" text-anchor="middle" class="lbl">Dedup</text>
+    <text x="503" y="116" text-anchor="middle" class="sub">Picard</text>
+
+    <rect class="pipe" x="582" y="80" width="140" height="46" rx="9"/>
+    <text x="652" y="100" text-anchor="middle" class="lbl">Variant calling</text>
+    <text x="652" y="116" text-anchor="middle" class="sub">Freebayes · VCFtools</text>
+
+    <rect class="pipe" x="742" y="80" width="168" height="46" rx="9"/>
+    <text x="826" y="100" text-anchor="middle" class="lbl">Annotation</text>
+    <text x="826" y="116" text-anchor="middle" class="sub">Ensembl VEP → VCF</text>
+
+    <path class="edge" marker-end="url(#arrow)" d="M148,103 L166,103"/>
+    <path class="edge" marker-end="url(#arrow)" d="M286,103 L304,103"/>
+    <path class="edge" marker-end="url(#arrow)" d="M424,103 L442,103"/>
+    <path class="edge" marker-end="url(#arrow)" d="M562,103 L580,103"/>
+    <path class="edge" marker-end="url(#arrow)" d="M722,103 L740,103"/>
+  </g>
+
+  <!-- divider -->
+  <line x1="30" y1="150" x2="910" y2="150" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Drug tower -->
+  <text x="235" y="182" text-anchor="middle" class="tag">DRUG TOWER</text>
+  <rect class="drug" x="120" y="196" width="230" height="44" rx="9"/>
+  <text x="235" y="216" text-anchor="middle" class="lbl">Canonical SMILES</text>
+  <text x="235" y="232" text-anchor="middle" class="sub">PubChem CID</text>
+
+  <rect class="drug" x="120" y="262" width="230" height="52" rx="9"/>
+  <text x="235" y="284" text-anchor="middle" class="lbl">Molecular graph (RDKit)</text>
+  <text x="235" y="300" text-anchor="middle" class="sub">atoms = nodes · bonds = edges</text>
+
+  <rect class="drug" x="120" y="336" width="230" height="52" rx="9"/>
+  <text x="235" y="358" text-anchor="middle" class="lbl">GATv2 encoder</text>
+  <text x="235" y="374" text-anchor="middle" class="sub">PyTorch Geometric</text>
+
+  <path class="edge" marker-end="url(#arrow)" d="M235,240 L235,260"/>
+  <path class="edge" marker-end="url(#arrow)" d="M235,314 L235,334"/>
+
+  <!-- Genotype tower -->
+  <text x="705" y="182" text-anchor="middle" class="tagg">GENOTYPE TOWER</text>
+  <rect class="gene" x="590" y="196" width="230" height="44" rx="9"/>
+  <text x="705" y="216" text-anchor="middle" class="lbl">Variant · star allele</text>
+  <text x="705" y="232" text-anchor="middle" class="sub">rsID + HGVS (validated vs GRCh38)</text>
+
+  <rect class="gene" x="590" y="262" width="230" height="52" rx="9"/>
+  <text x="705" y="284" text-anchor="middle" class="lbl">Positional genomic graph</text>
+  <text x="705" y="300" text-anchor="middle" class="sub">variant-topology context</text>
+
+  <rect class="gene" x="590" y="336" width="230" height="52" rx="9"/>
+  <text x="705" y="358" text-anchor="middle" class="lbl">GATv2 encoder</text>
+  <text x="705" y="374" text-anchor="middle" class="sub">PyTorch Geometric</text>
+
+  <path class="edge" marker-end="url(#arrow)" d="M705,240 L705,260"/>
+  <path class="edge" marker-end="url(#arrow)" d="M705,314 L705,334"/>
+
+  <!-- Fusion -->
+  <rect class="fuse" x="360" y="430" width="220" height="52" rx="10"/>
+  <text x="470" y="452" text-anchor="middle" class="lbl">Fusion + shared trunk</text>
+  <text x="470" y="468" text-anchor="middle" class="sub">concat → MLP (multi-task)</text>
+
+  <path class="edge" marker-end="url(#arrow)" d="M235,388 L235,456 L358,456"/>
+  <path class="edge" marker-end="url(#arrow)" d="M705,388 L705,456 L582,456"/>
+
+  <!-- Heads -->
+  <rect class="head" x="70"  y="528" width="240" height="52" rx="9"/>
+  <text x="190" y="550" text-anchor="middle" class="lbl">Phenotype category</text>
+  <text x="190" y="566" text-anchor="middle" class="sub">toxicity · efficacy · PK</text>
+
+  <rect class="head" x="350" y="528" width="240" height="52" rx="9"/>
+  <text x="470" y="550" text-anchor="middle" class="lbl">Effect direction</text>
+  <text x="470" y="566" text-anchor="middle" class="sub">increased · decreased</text>
+
+  <rect class="head" x="630" y="528" width="240" height="52" rx="9"/>
+  <text x="750" y="550" text-anchor="middle" class="lbl">ADR type</text>
+  <text x="750" y="566" text-anchor="middle" class="sub">adverse-reaction class</text>
+
+  <path class="edge" marker-end="url(#arrow)" d="M420,482 L190,482 L190,526"/>
+  <path class="edge" marker-end="url(#arrow)" d="M470,482 L470,526"/>
+  <path class="edge" marker-end="url(#arrow)" d="M520,482 L750,482 L750,526"/>
+
+  <!-- annotated variants feeds genotype tower -->
+  <path class="edge" marker-end="url(#arrow)" d="M826,126 L826,168 L705,168 L705,194"/>
+</svg>

@@ -1,55 +1,62 @@
 ---
-title: "Análisis de la Arquitectura DeepFM en Farmacogenómica"
-subtitle: "Decisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen"
+title: "Analysis of the DeepFM Architecture in Pharmacogenomics"
+subtitle: "Design decisions, results and lessons learned building Pharmagen's predictive model"
 date: "2026-03-15"
-categories: [Deep Learning, Farmacogenómica, PyTorch]
+categories: [Deep Learning, Pharmacogenomics, PyTorch]
 image: "../../media/dna.gif"
 ---
 
-## Por qué DeepFM y no un modelo tabular clásico
+::: {.callout-warning title="Update — honesty note"}
+This article documents **v1** of Pharmagen. A later review found assumptions in data preparation and splitting that likely introduced **information leakage** and **inflated** the metrics shown below: I treat them as **preliminary and optimistic**, not a final result. **v2** rebuilds the evaluation with leakage-free splits and metrics reported alongside their methodology. Full context in the post [*From prototype to production*](from-prototype-to-production.qmd) and on the [project page](../projects/pharmagen.qmd).
+:::
 
-La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son **combinatorias y no lineales**. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.
+## Why DeepFM and not a classic tabular model
 
-La arquitectura **DeepFM** combina lo mejor de dos mundos:
+Pharmacogenomics poses a problem that is unusual in machine learning: the interactions between genetic variants and drugs are **combinatorial and non-linear**. A model like XGBoost captures first-order relationships well, but epistasis (the interaction between multiple genetic loci) requires explicitly modeling second-order and higher interactions.
 
-- **Máquinas de Factorización (FM):** Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.
-- **Red Neuronal Profunda (DNN):** Aprende patrones de orden superior que las FM no alcanzan.
+The **DeepFM** architecture combines the best of two worlds:
+
+- **Factorization Machines (FM):** capture all second-order interactions between features efficiently, without manual feature engineering.
+- **Deep Neural Network (DNN):** learns higher-order patterns that FMs cannot reach.
 
 $$\hat{y} = \sigma \left( w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \langle v_i, v_j \rangle x_i x_j + y_{DNN} \right)$$
 
 ---
 
-## Ingeniería de características: las decisiones que importan
+## Feature engineering: the decisions that matter
 
-### PubChem CID en lugar de ATC
+### PubChem CID instead of ATC
 
-La clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar **PubChem CID**, el modelo trabaja con identidades químicas reales.
+ATC classification groups drugs by therapeutic use, not by molecular structure. Two drugs in the same ATC group can have completely different genomic-interaction profiles. Using **PubChem CID**, the model works with real chemical identities.
 
-### La variable sintética Genalle
+### The synthetic "Genalle" variable
 
-Fusionar el `rsID` con la notación `HGVS` en un solo identificador (`Genalle`) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.
+Fusing the `rsID` with `HGVS` notation into a single identifier (`Genalle`) normalizes the allelic representation and avoids ambiguities when the same variant has multiple nomenclatures.
 
-### Gestión del desbalance con Focal Loss
+### Handling imbalance with Focal Loss
 
-En farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La **Adaptive Focal Loss** penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global.
+In pharmacogenomics, rare phenotypes (ultrarapid metabolizers, severe adverse reactions) are the most clinically critical yet least represented in the data. **Adaptive Focal Loss** penalizes errors on these minority classes more heavily, prioritizing patient safety over global accuracy.
 
 ---
 
-## Resultados
+## Preliminary results (v1) *(see the honesty note above)*
 
-| Tarea | Métrica |
+These figures come from v1's internal splits and are **likely inflated by data leakage**. I keep them for transparency and traceability, not as a validated result:
+
+| Task | Metric (preliminary) |
 | :--- | :--- |
-| Categoría Fenotípica | **86.89%** Precisión |
-| Ajuste de Dosis | **0.8328** Balanced Accuracy |
-| Farmacocinética | **0.8037** Balanced Accuracy |
-| Dirección del Efecto | **66.07%** Precisión |
+| Phenotypic Category | 86.89% Precision |
+| Dosage Adjustment | 0.8328 Balanced Accuracy |
+| Pharmacokinetics | 0.8037 Balanced Accuracy |
+| Effect Direction | 66.07% Precision |
 
-La tarea de **dirección del efecto** (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas.
+The **effect-direction** task (increased/decreased) is the hardest because it depends on clinical contexts that are not always encoded in pure genomic data. It is an area where future GNNs could bring significant improvements.
 
 ---
 
-## Lecciones aprendidas
+## Lessons learned
 
-1. **La ingeniería de características importa más que la arquitectura.** Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.
-2. **El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.** Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.
-3. **Optuna + validación cruzada estratificada** es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.
+1. **Feature engineering matters more than architecture.** Moving from ATC to PubChem CID improved performance more than any hyperparameter tuning.
+2. **Class imbalance in clinical domains is not a technical problem, it is an ethical one.** Optimizing for global accuracy can mask a model that fails systematically on the most dangerous cases.
+3. **Optuna + stratified cross-validation** is the right combination for small datasets with many classes. 40 trials were enough to converge.
+4. **Evaluation matters as much as the model.** A high metric is worthless if the protocol allows data leakage. Catching this myself and rebuilding the validation in v2 has been the most valuable lesson of the whole project: it is what separates an experiment from a reliable tool.

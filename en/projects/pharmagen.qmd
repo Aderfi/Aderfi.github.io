@@ -14,6 +14,19 @@ Traditional medicine often relies on one-size-fits-all population statistics, as
 
 ---
 
+## Project status
+
+Pharmagen is moving from a **research prototype** to **maintainable, deployable software**. Two fronts run in parallel:
+
+- **v1 — research prototype (complete).** A hybrid DeepFM + Transformer network trained on ClinPGx and dbSNP. It validated the hypothesis and defined the problem. A later self-audit found data-handling and train/test-split assumptions that likely introduced **information leakage** and made the early metrics **optimistic** — so I treat them as preliminary and do not use them as final results.
+- **v2 — in progress.** Two concurrent tracks: **(1) scientific**, migration to a **Two-Tower GATv2** graph architecture (PyTorch Geometric); **(2) engineering**, a full refactor to industry standards (Pydantic v2 at every boundary, a FastAPI service, CI with ruff + pytest, `uv`-managed dependencies) plus a **rigorous, leakage-aware evaluation** protocol (clean splits, an explicit baseline, honest balanced metrics).
+
+> The v1 prototype proved the idea works; v2 is about making it robust, reproducible, and rigorously evaluated.
+
+![Pharmagen architecture: the NGS pipeline (Phase I) and the Two-Tower GATv2 graph model (Phase II, v2).](../../media/pharmagen-architecture.svg){fig-alt="Diagram of the Pharmagen architecture"}
+
+---
+
 ## Phase I: Orchestrated Bioinformatics Pipeline
 
 I designed a modular bioinformatics pipeline orchestrated in **Python 3.10** on **Debian 13 (Trixie)**. The system automates the processing of massive reads (NGS), ensuring reproducibility through the `uv` environment manager.
@@ -43,32 +56,34 @@ $$\hat{y} = \sigma \left( w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}
 
 ---
 
-## Results and Predictive Capacity
+## Results and an honest methodological note
 
-After stochastic optimization of 40 studies with **Optuna** and **5-fold Cross-Validation**, the model achieved translational-level metrics:
+v1 was tuned with **Optuna** (40 studies) and **5-fold cross-validation**, and on the internal splits the network learned the multi-label task consistently — a valid **proof of concept** that the gene–drug signal is learnable with this representation.
 
-| Clinical Task | Metric (Precision / Balanced Accuracy) |
-| :--- | :--- |
-| **Phenotypic Category** | **86.89%** (Global Precision) |
-| **Dosage Adjustment** | **0.8328** (Balanced Accuracy) |
-| **Pharmacokinetics (PK)** | **0.8037** (Balanced Accuracy) |
-| **Effect Direction** | **66.07%** (Increased/Decreased) |
+On closer review, however, I found **assumptions in data preparation and splitting** (in the allelic normalization and the train/test separation) that likely **leaked information** across sets and **inflated** the metrics. That is why I **do not publish those numbers as a result**: presenting them as final would be misleading.
+
+What v1 does establish is solid: the representation choices (PubChem CID over ATC, the `Genalle` identifier) and the imbalance-aware losses work. **v2 rebuilds the evaluation from scratch** with leakage-free splits, an explicit baseline, and balanced metrics reported alongside the methodology that produced them. Once those figures are validated, they will be published here with their protocol.
 
 ### The Clinical "Red Light"
-The system integrates a binary **therapeutic success/failure** variable. For instance, if the model detects a combination of `Toxicity + Increased + Risk`, it automatically assigns a therapeutic failure, functioning as a **Clinical Decision Support System (CDSS)**.
+The system integrates a binary **therapeutic success/failure** variable. For instance, given a combination of `Toxicity + Increased + Risk`, it automatically assigns a therapeutic failure, functioning as a **Clinical Decision Support System (CDSS)**. It is an interpretation layer, not a medical device.
 
 ---
 
-## Future: Towards Graph Neural Networks (GNN)
+## v2: Graphs and industry standards
 
-The project evolves towards a 2.0 version (**Twin-Tower** architecture) using **PyTorch Geometric**. The goal is to represent drugs as molecular graphs (atoms as nodes, bonds as edges) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.
+**Scientific front.** Migration to a **Two-Tower GATv2** architecture with **PyTorch Geometric**: drugs are represented as molecular graphs (atoms as nodes, bonds as edges, built with **RDKit**) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.
+
+**Engineering front.** A full refactor to the standards v1 lacked: **Pydantic v2** typing every data boundary, a **FastAPI inference service** (OpenAPI, health/readiness probes), **CI** (ruff + pytest, ~240 unit tests), reproducible dependencies with **`uv`**, and the **leakage-aware evaluation** protocol above. The goal: turn a working experiment into software others can build on.
 
 ---
 
 ### Detailed Tech Stack
-* **Orchestration:** Python 3.11, Bash.
-* **Deep Learning:** PyTorch, AdamW, Optuna, GELU.
-* **Infrastructure:** Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).
-* **Bioinformatics:** BWA, Picard, Freebayes, VCFtools, Ensembl VEP.
+* **Language:** Python 3.14 (managed with `uv`), Bash.
+* **Deep Learning:** PyTorch, PyTorch Geometric (GATv2), Optuna, AdamW, GELU.
+* **Cheminformatics:** RDKit (SMILES → molecular graphs).
+* **Engineering:** Pydantic v2, FastAPI, pytest, ruff, CI (GitHub Actions).
+* **Bioinformatics:** BWA-MEM, Picard, Freebayes, VCFtools, Ensembl VEP.
+* **Infrastructure:** Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16 GB VRAM).
 
 [Access full source code on GitHub](https://github.com/Aderfi/Pharmagen)
+
