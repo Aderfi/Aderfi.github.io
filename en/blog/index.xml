@@ -9,10 +9,72 @@
 <link>https://Aderfi.github.io/en/blog/</link>
 <atom:link href="https://Aderfi.github.io/en/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Pharmacist &amp; Bioinformatics Researcher | AI in Precision Medicine</description>
-<generator>quarto-1.9.36</generator>
-<lastBuildDate>Sun, 15 Mar 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Fri, 10 Jul 2026 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>Análisis de la Arquitectura DeepFM en Farmacogenómica</title>
+  <title>From prototype to production: what I learned hardening Pharmagen</title>
+  <link>https://Aderfi.github.io/en/blog/from-prototype-to-production.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>When I started <strong>Pharmagen</strong> I was a pharmacist learning to code models. v1 worked: a DeepFM + Transformer that learned to predict phenotypic drug response from genetic variants. But a prototype that runs on your machine and software others can trust are two different things. This post is about the road between them — including the uncomfortable part.</p>
+<section id="the-metric-i-chose-not-to-use" class="level2">
+<h2 class="anchored" data-anchor-id="the-metric-i-chose-not-to-use">The metric I chose not to use</h2>
+<p>v1 produced high numbers. And precisely because they were high, they made me suspicious. Reviewing the pipeline with more judgment than I had when I designed it, I found <strong>assumptions in data preparation and splitting</strong> — in the allelic normalization and in how I separated training from test — that, in all likelihood, let information leak between sets. This is classic <em>data leakage</em>: the model looks brilliant because, unintentionally, it has already seen part of the answer.</p>
+<p>I could have left the 86.89% on the portfolio and nobody would have blinked. I decided not to. <strong>A metric I can’t defend methodologically isn’t an achievement, it’s a liability.</strong> Publishing it as final would be not only incorrect but exactly the kind of practice I want to avoid in a clinical domain where an error translates into a decision about a patient.</p>
+<p>What v1 did prove still stands: the gene–drug signal is learnable with this representation, and choices like using PubChem CID over ATC or the <code>Genalle</code> identifier work. That’s what I keep. The number, I don’t.</p>
+</section>
+<section id="why-graphs-v2-scientific-front" class="level2">
+<h2 class="anchored" data-anchor-id="why-graphs-v2-scientific-front">Why graphs (v2, scientific front)</h2>
+<p>v1 represented drugs and variants as tabular vectors. But a molecule <strong>is</strong> a graph (atoms, bonds), and genomic context has topology too. Forcing that structure into a table loses information.</p>
+<p>v2 adopts a <strong>Two-Tower GATv2</strong> architecture with PyTorch Geometric:</p>
+<ul>
+<li><strong>Drug tower:</strong> molecular graphs built with RDKit from canonical SMILES.</li>
+<li><strong>Genotype tower:</strong> positional variant graphs, validated against GRCh38.</li>
+<li>Both towers are fused into multi-task heads.</li>
+</ul>
+<p>Attention over graphs (GATv2) lets the model learn which parts of the molecule and the genomic context matter for each interaction, instead of me assuming it through manual feature engineering.</p>
+</section>
+<section id="why-industry-standards-v2-engineering-front" class="level2">
+<h2 class="anchored" data-anchor-id="why-industry-standards-v2-engineering-front">Why industry standards (v2, engineering front)</h2>
+<p>When I designed v1 I didn’t know what I didn’t know. No type validation, no tests, no inference service, no CI. It worked, but it was fragile: a change in one place broke another silently.</p>
+<p>v2 brings in what the first version lacked:</p>
+<ul>
+<li><strong>Pydantic v2</strong> typing every data boundary (<code>Drug</code>, <code>Variant</code>, <code>Genotype</code>, API requests…). If bad data enters, it fails loudly and early, not three layers down.</li>
+<li><strong>FastAPI</strong> as the inference service, with OpenAPI and health/readiness probes.</li>
+<li><strong>CI with ruff + pytest</strong> (~240 unit tests) on every push and PR.</li>
+<li><strong><code>uv</code></strong> for reproducible dependencies, with a lockfile as the source of truth.</li>
+</ul>
+<p>None of this improves the model’s metric. What it improves is <strong>trust</strong>: that the project can be maintained, audited, and deployed, and that another person — or an examiner, or a supervisor — can read the code and believe in it.</p>
+</section>
+<section id="rebuilding-the-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="rebuilding-the-evaluation">Rebuilding the evaluation</h2>
+<p>The centerpiece of v2 is not the architecture, it’s the <strong>evaluation protocol</strong>. Leakage-free splits, an explicit baseline to compare against, and balanced metrics always reported alongside the methodology that produced them. When I have figures I can defend, they’ll be published here with that protocol next to them. Not before, and not without it.</p>
+</section>
+<section id="what-i-take-away" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-take-away">What I take away</h2>
+<p>I’ve learned more fixing v1 than building it. Catching the evaluation problem myself, accepting that the pretty numbers didn’t hold, and rebuilding the project with rigor has been the most formative part of all of Pharmagen. If anything defines a good researcher or engineer, it isn’t never being wrong — it’s <strong>seeing the error, owning it, and correcting it with method.</strong> That’s where I am.</p>
+<hr>
+<p><em>Comments, or want to follow the development? The code is on <a href="https://github.com/Aderfi/Pharmagen">GitHub</a> and you can reach me on <a href="https://linkedin.com/in/adrim-hamed-outmani-047491290">LinkedIn</a>.</em></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Engineering</category>
+  <category>Deep Learning</category>
+  <category>GNN</category>
+  <category>Best practices</category>
+  <category>Pharmacogenomics</category>
+  <guid>https://Aderfi.github.io/en/blog/from-prototype-to-production.html</guid>
+  <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://Aderfi.github.io/media/pharmagen-architecture.svg" medium="image" type="image/svg+xml"/>
+</item>
+<item>
+  <title>Analysis of the DeepFM Architecture in Pharmacogenomics</title>
   <link>https://Aderfi.github.io/en/blog/analisis-deepfm.html</link>
   <description><![CDATA[ 
 
@@ -20,70 +82,85 @@
 
 
 
-<section id="por-qué-deepfm-y-no-un-modelo-tabular-clásico" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-deepfm-y-no-un-modelo-tabular-clásico">Por qué DeepFM y no un modelo tabular clásico</h2>
-<p>La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son <strong>combinatorias y no lineales</strong>. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.</p>
-<p>La arquitectura <strong>DeepFM</strong> combina lo mejor de dos mundos:</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Update — honesty note">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Update — honesty note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This article documents <strong>v1</strong> of Pharmagen. A later review found assumptions in data preparation and splitting that likely introduced <strong>information leakage</strong> and <strong>inflated</strong> the metrics shown below: I treat them as <strong>preliminary and optimistic</strong>, not a final result. <strong>v2</strong> rebuilds the evaluation with leakage-free splits and metrics reported alongside their methodology. Full context in the post <a href="../../en/blog/from-prototype-to-production.html"><em>From prototype to production</em></a> and on the <a href="../../en/projects/pharmagen.html">project page</a>.</p>
+</div>
+</div>
+<section id="why-deepfm-and-not-a-classic-tabular-model" class="level2">
+<h2 class="anchored" data-anchor-id="why-deepfm-and-not-a-classic-tabular-model">Why DeepFM and not a classic tabular model</h2>
+<p>Pharmacogenomics poses a problem that is unusual in machine learning: the interactions between genetic variants and drugs are <strong>combinatorial and non-linear</strong>. A model like XGBoost captures first-order relationships well, but epistasis (the interaction between multiple genetic loci) requires explicitly modeling second-order and higher interactions.</p>
+<p>The <strong>DeepFM</strong> architecture combines the best of two worlds:</p>
 <ul>
-<li><strong>Máquinas de Factorización (FM):</strong> Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.</li>
-<li><strong>Red Neuronal Profunda (DNN):</strong> Aprende patrones de orden superior que las FM no alcanzan.</li>
+<li><strong>Factorization Machines (FM):</strong> capture all second-order interactions between features efficiently, without manual feature engineering.</li>
+<li><strong>Deep Neural Network (DNN):</strong> learns higher-order patterns that FMs cannot reach.</li>
 </ul>
 <p><img src="https://latex.codecogs.com/png.latex?%5Chat%7By%7D%20=%20%5Csigma%20%5Cleft(%20w_0%20+%20%5Csum_%7Bi=1%7D%5En%20w_i%20x_i%20+%20%5Csum_%7Bi=1%7D%5En%20%5Csum_%7Bj=i+1%7D%5En%20%5Clangle%20v_i,%20v_j%20%5Crangle%20x_i%20x_j%20+%20y_%7BDNN%7D%20%5Cright)"></p>
 <hr>
 </section>
-<section id="ingeniería-de-características-las-decisiones-que-importan" class="level2">
-<h2 class="anchored" data-anchor-id="ingeniería-de-características-las-decisiones-que-importan">Ingeniería de características: las decisiones que importan</h2>
-<section id="pubchem-cid-en-lugar-de-atc" class="level3">
-<h3 class="anchored" data-anchor-id="pubchem-cid-en-lugar-de-atc">PubChem CID en lugar de ATC</h3>
-<p>La clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar <strong>PubChem CID</strong>, el modelo trabaja con identidades químicas reales.</p>
+<section id="feature-engineering-the-decisions-that-matter" class="level2">
+<h2 class="anchored" data-anchor-id="feature-engineering-the-decisions-that-matter">Feature engineering: the decisions that matter</h2>
+<section id="pubchem-cid-instead-of-atc" class="level3">
+<h3 class="anchored" data-anchor-id="pubchem-cid-instead-of-atc">PubChem CID instead of ATC</h3>
+<p>ATC classification groups drugs by therapeutic use, not by molecular structure. Two drugs in the same ATC group can have completely different genomic-interaction profiles. Using <strong>PubChem CID</strong>, the model works with real chemical identities.</p>
 </section>
-<section id="la-variable-sintética-genalle" class="level3">
-<h3 class="anchored" data-anchor-id="la-variable-sintética-genalle">La variable sintética Genalle</h3>
-<p>Fusionar el <code>rsID</code> con la notación <code>HGVS</code> en un solo identificador (<code>Genalle</code>) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.</p>
+<section id="the-synthetic-genalle-variable" class="level3">
+<h3 class="anchored" data-anchor-id="the-synthetic-genalle-variable">The synthetic “Genalle” variable</h3>
+<p>Fusing the <code>rsID</code> with <code>HGVS</code> notation into a single identifier (<code>Genalle</code>) normalizes the allelic representation and avoids ambiguities when the same variant has multiple nomenclatures.</p>
 </section>
-<section id="gestión-del-desbalance-con-focal-loss" class="level3">
-<h3 class="anchored" data-anchor-id="gestión-del-desbalance-con-focal-loss">Gestión del desbalance con Focal Loss</h3>
-<p>En farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La <strong>Adaptive Focal Loss</strong> penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global.</p>
+<section id="handling-imbalance-with-focal-loss" class="level3">
+<h3 class="anchored" data-anchor-id="handling-imbalance-with-focal-loss">Handling imbalance with Focal Loss</h3>
+<p>In pharmacogenomics, rare phenotypes (ultrarapid metabolizers, severe adverse reactions) are the most clinically critical yet least represented in the data. <strong>Adaptive Focal Loss</strong> penalizes errors on these minority classes more heavily, prioritizing patient safety over global accuracy.</p>
 <hr>
 </section>
 </section>
-<section id="resultados" class="level2">
-<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<section id="preliminary-results-v1-see-the-honesty-note-above" class="level2">
+<h2 class="anchored" data-anchor-id="preliminary-results-v1-see-the-honesty-note-above">Preliminary results (v1) <em>(see the honesty note above)</em></h2>
+<p>These figures come from v1’s internal splits and are <strong>likely inflated by data leakage</strong>. I keep them for transparency and traceability, not as a validated result:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Tarea</th>
-<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Task</th>
+<th style="text-align: left;">Metric (preliminary)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Categoría Fenotípica</td>
-<td style="text-align: left;"><strong>86.89%</strong> Precisión</td>
+<td style="text-align: left;">Phenotypic Category</td>
+<td style="text-align: left;">86.89% Precision</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Ajuste de Dosis</td>
-<td style="text-align: left;"><strong>0.8328</strong> Balanced Accuracy</td>
+<td style="text-align: left;">Dosage Adjustment</td>
+<td style="text-align: left;">0.8328 Balanced Accuracy</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Farmacocinética</td>
-<td style="text-align: left;"><strong>0.8037</strong> Balanced Accuracy</td>
+<td style="text-align: left;">Pharmacokinetics</td>
+<td style="text-align: left;">0.8037 Balanced Accuracy</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dirección del Efecto</td>
-<td style="text-align: left;"><strong>66.07%</strong> Precisión</td>
+<td style="text-align: left;">Effect Direction</td>
+<td style="text-align: left;">66.07% Precision</td>
 </tr>
 </tbody>
 </table>
-<p>La tarea de <strong>dirección del efecto</strong> (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas.</p>
+<p>The <strong>effect-direction</strong> task (increased/decreased) is the hardest because it depends on clinical contexts that are not always encoded in pure genomic data. It is an area where future GNNs could bring significant improvements.</p>
 <hr>
 </section>
-<section id="lecciones-aprendidas" class="level2">
-<h2 class="anchored" data-anchor-id="lecciones-aprendidas">Lecciones aprendidas</h2>
+<section id="lessons-learned" class="level2">
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons learned</h2>
 <ol type="1">
-<li><strong>La ingeniería de características importa más que la arquitectura.</strong> Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.</li>
-<li><strong>El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.</strong> Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.</li>
-<li><strong>Optuna + validación cruzada estratificada</strong> es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.</li>
+<li><strong>Feature engineering matters more than architecture.</strong> Moving from ATC to PubChem CID improved performance more than any hyperparameter tuning.</li>
+<li><strong>Class imbalance in clinical domains is not a technical problem, it is an ethical one.</strong> Optimizing for global accuracy can mask a model that fails systematically on the most dangerous cases.</li>
+<li><strong>Optuna + stratified cross-validation</strong> is the right combination for small datasets with many classes. 40 trials were enough to converge.</li>
+<li><strong>Evaluation matters as much as the model.</strong> A high metric is worthless if the protocol allows data leakage. Catching this myself and rebuilding the validation in v2 has been the most valuable lesson of the whole project: it is what separates an experiment from a reliable tool.</li>
 </ol>
 
 
@@ -91,7 +168,7 @@
 
  ]]></description>
   <category>Deep Learning</category>
-  <category>Farmacogenómica</category>
+  <category>Pharmacogenomics</category>
   <category>PyTorch</category>
   <guid>https://Aderfi.github.io/en/blog/analisis-deepfm.html</guid>
   <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>

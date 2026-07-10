@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,14 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-55735554db3194970353684968bf7fd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-3bc0b9f76aaf0c0faaf5e9e26e3fcdc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -304,6 +304,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../es/proyectos/pharmagen.html">
  <span class="dropdown-text">Pharmagen</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../es/proyectos/durin.html">
+ <span class="dropdown-text">Durin</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -395,6 +399,24 @@ window.Quarto = {
 <p><strong>Pharmagen</strong> nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial.</p>
 <hr>
 </section>
+<section id="estado-del-proyecto" class="level2">
+<h2 class="anchored" data-anchor-id="estado-del-proyecto">🗺️ Estado del proyecto</h2>
+<p>Pharmagen está pasando de <strong>prototipo de investigación</strong> a <strong>software mantenible y desplegable</strong>. Avanzan dos frentes en paralelo:</p>
+<ul>
+<li><strong>v1 — prototipo de investigación (completado).</strong> Red híbrida DeepFM + Transformer entrenada sobre ClinPGx y dbSNP. Validó la hipótesis y definió el problema. Una autoevaluación posterior detectó asunciones en el tratamiento y la partición de los datos que probablemente introdujeron <strong>fuga de información</strong> y volvieron <strong>optimistas</strong> las primeras métricas: por eso las considero preliminares y no las uso como resultado definitivo.</li>
+<li><strong>v2 — en curso.</strong> Dos líneas simultáneas: <strong>(1) científica</strong>, migración a una arquitectura <strong>Two-Tower GATv2</strong> de grafos (PyTorch Geometric); <strong>(2) ingeniería</strong>, refactorización completa a estándares de industria (Pydantic v2 en cada frontera, servicio FastAPI, CI con ruff + pytest, dependencias con <code>uv</code>) y un <strong>protocolo de evaluación riguroso y sin fugas</strong> (particiones limpias, línea base y métricas balanceadas honestas).</li>
+</ul>
+<blockquote class="blockquote">
+<p>El prototipo v1 demostró que la idea funciona; la v2 se centra en hacerla robusta, reproducible y evaluada con rigor.</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../media/pharmagen-architecture.svg" class="img-fluid figure-img" alt="Diagrama de la arquitectura de Pharmagen"></p>
+<figcaption>Arquitectura de Pharmagen: pipeline NGS (Fase I) y modelo de grafos Two-Tower GATv2 (Fase II, v2).</figcaption>
+</figure>
+</div>
+<hr>
+</section>
 <section id="fase-i-pipeline-bioinformático-orquestado" class="level2">
 <h2 class="anchored" data-anchor-id="fase-i-pipeline-bioinformático-orquestado">🧬 Fase I: Pipeline Bioinformático Orquestado</h2>
 <p>He diseñado un pipeline bioinformático modular orquestado en <strong>Python 3.10</strong> sobre <strong>Debian 13 (Trixie)</strong>. El sistema automatiza el procesamiento de lecturas masivas (NGS) garantizando la reproducibilidad mediante el gestor de entornos <code>uv</code>.</p>
@@ -428,52 +450,31 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="resultados-y-capacidad-predictiva" class="level2">
-<h2 class="anchored" data-anchor-id="resultados-y-capacidad-predictiva">📊 Resultados y Capacidad Predictiva</h2>
-<p>Tras una optimización estocástica de 40 estudios con <strong>Optuna</strong> y una <strong>Validación Cruzada de 5 iteraciones</strong>, el modelo alcanzó métricas de nivel traslacional:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Tarea Clínica</th>
-<th style="text-align: left;">Métrica (Precisión / Balanced Accuracy)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Categoría Fenotípica</strong></td>
-<td style="text-align: left;"><strong>86.89%</strong> (Precisión Global)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Ajuste de Dosis (Dosage)</strong></td>
-<td style="text-align: left;"><strong>0.8328</strong> (Balanced Accuracy)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Farmacocinética (PK)</strong></td>
-<td style="text-align: left;"><strong>0.8037</strong> (Balanced Accuracy)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Dirección del Efecto</strong></td>
-<td style="text-align: left;"><strong>66.07%</strong> (Increased/Decreased)</td>
-</tr>
-</tbody>
-</table>
+<section id="resultados-y-una-nota-metodológica-honesta" class="level2">
+<h2 class="anchored" data-anchor-id="resultados-y-una-nota-metodológica-honesta">📊 Resultados y una nota metodológica honesta</h2>
+<p>La v1 se optimizó con <strong>Optuna</strong> (40 estudios) y <strong>validación cruzada de 5 iteraciones</strong>, y en las particiones internas la red aprendía la tarea multi-etiqueta de forma consistente: era una <strong>prueba de concepto</strong> válida de que la señal gen–fármaco es aprendible con esta representación.</p>
+<p>Sin embargo, al revisar el flujo con más criterio detecté <strong>asunciones en la preparación y partición de los datos</strong> (en la normalización alélica y en la separación train/test) que probablemente <strong>filtraron información</strong> entre conjuntos e <strong>inflaron</strong> las métricas. Por eso <strong>no publico esos números como resultado</strong>: presentarlos como definitivos sería engañoso.</p>
+<p>Lo que sí extraigo de la v1 es sólido: la elección de representación (PubChem CID frente a ATC, identificador <code>Genalle</code>) y el enfoque de pérdidas sensibles al desbalance funcionan. La <strong>v2 rehace la evaluación desde cero</strong> con particiones sin fugas, una línea base explícita y métricas balanceadas reportadas con su metodología. Cuando esas cifras estén validadas, se publicarán aquí acompañadas del protocolo que las produjo.</p>
 <section id="el-semáforo-rojo-clínico" class="level3">
 <h3 class="anchored" data-anchor-id="el-semáforo-rojo-clínico">El “Semáforo Rojo” Clínico</h3>
-<p>El sistema integra una variable binaria de <strong>éxito/fracaso terapéutico</strong>. Por ejemplo, si el modelo detecta una combinación de <code>Toxicity + Increased + Risk</code>, asigna automáticamente un fallo terapéutico, funcionando como un <strong>Sistema de Soporte a la Decisión Clínica (CDSS)</strong>.</p>
+<p>El sistema integra una variable binaria de <strong>éxito/fracaso terapéutico</strong>. Por ejemplo, ante una combinación de <code>Toxicity + Increased + Risk</code>, asigna automáticamente un fallo terapéutico, funcionando como un <strong>Sistema de Soporte a la Decisión Clínica (CDSS)</strong>. Es una capa de interpretación, no un dispositivo médico.</p>
 <hr>
 </section>
 </section>
-<section id="futuro-hacia-las-redes-neuronales-de-grafos-gnn" class="level2">
-<h2 class="anchored" data-anchor-id="futuro-hacia-las-redes-neuronales-de-grafos-gnn">🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)</h2>
-<p>El proyecto evoluciona hacia una versión 2.0 (arquitectura <strong>Twin-Tower</strong>) utilizando <strong>PyTorch Geometric</strong>. El objetivo es representar los fármacos como grafos moleculares (átomos como nodos y enlaces como aristas) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan a procesar.</p>
+<section id="v2-grafos-y-estándares-de-industria" class="level2">
+<h2 class="anchored" data-anchor-id="v2-grafos-y-estándares-de-industria">🚀 v2: Grafos y estándares de industria</h2>
+<p><strong>Frente científico.</strong> Migración a una arquitectura <strong>Two-Tower GATv2</strong> con <strong>PyTorch Geometric</strong>: los fármacos se representan como grafos moleculares (átomos como nodos, enlaces como aristas, construidos con <strong>RDKit</strong>) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan.</p>
+<p><strong>Frente de ingeniería.</strong> Refactorización completa hacia los estándares que la v1 no tenía: <strong>Pydantic v2</strong> tipando cada frontera de datos, un <strong>servicio de inferencia con FastAPI</strong> (OpenAPI, health/readiness probes), <strong>CI</strong> (ruff + pytest, ~240 tests unitarios), dependencias reproducibles con <strong><code>uv</code></strong> y el <strong>protocolo de evaluación sin fugas</strong> ya descrito. El objetivo: convertir un experimento funcional en software sobre el que otros puedan construir.</p>
 <hr>
 <section id="stack-técnico-detallado" class="level3">
 <h3 class="anchored" data-anchor-id="stack-técnico-detallado">🛠️ Stack Técnico Detallado</h3>
 <ul>
-<li><strong>Orquestación:</strong> Python 3.11, Bash.</li>
-<li><strong>Deep Learning:</strong> PyTorch, AdamW, Optuna, GELU.</li>
-<li><strong>Infraestructura:</strong> Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).</li>
-<li><strong>Bioinformática:</strong> BWA, Picard, Freebayes, VCFtools, Ensembl VEP.</li>
+<li><strong>Lenguaje:</strong> Python 3.14 (gestionado con <code>uv</code>), Bash.</li>
+<li><strong>Deep Learning:</strong> PyTorch, PyTorch Geometric (GATv2), Optuna, AdamW, GELU.</li>
+<li><strong>Cheminformática:</strong> RDKit (SMILES → grafos moleculares).</li>
+<li><strong>Ingeniería:</strong> Pydantic v2, FastAPI, pytest, ruff, CI (GitHub Actions).</li>
+<li><strong>Bioinformática:</strong> BWA-MEM, Picard, Freebayes, VCFtools, Ensembl VEP.</li>
+<li><strong>Infraestructura:</strong> Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16 GB VRAM).</li>
 </ul>
 <p><a href="https://github.com/Aderfi/Pharmagen">Acceder al código íntegro en GitHub</a></p>
 

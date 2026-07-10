@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog – Adrim Portfolio</title>
+<title>Durin: Clinical Software for Polypharmacy – Adrim Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,8 +34,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../media/logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -77,69 +75,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
+</head>
 
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Adrim Portfolio" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -386,24 +326,34 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QmVzdCUyMHByYWN0aWNlcw==">Best practices <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RW5naW5lZXJpbmc=">Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R05O">GNN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UGhhcm1hY29nZW5vbWljcw==">Pharmacogenomics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UHlUb3JjaA==">PyTorch <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
-<p class="subtitle lead">Reflections, analysis and notes on bioinformatics, AI and precision medicine</p>
-</div>
+<h1 class="title">Durin: Clinical Software for Polypharmacy</h1>
+<p class="subtitle lead">Risk and interaction detection for polymedicated geriatric patients</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Clinical Software</div>
+    <div class="quarto-category">Pharmacology</div>
+    <div class="quarto-category">Pydantic</div>
+    <div class="quarto-category">FastAPI</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1 de julio de 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -413,81 +363,66 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="RW5naW5lZXJpbmclMkNEZWVwJTIwTGVhcm5pbmclMkNHTk4lMkNCZXN0JTIwcHJhY3RpY2VzJTJDUGhhcm1hY29nZW5vbWljcw==" data-listing-date-sort="1783641600000" data-listing-file-modified-sort="1783654688328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="614">
-<div class="thumbnail"><a href="../../en/blog/from-prototype-to-production.html" class="no-external">
-
-<img loading="lazy" src="../../media/pharmagen-architecture.svg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../en/blog/from-prototype-to-production.html" class="no-external">From prototype to production: what I learned hardening Pharmagen</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../en/blog/from-prototype-to-production.html" class="no-external">Why I’m migrating to graphs, adopting industry standards, and rebuilding the evaluation from scratch</a>
+<div class="callout callout-style-default callout-note callout-titled" title="Status: early development">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RW5naW5lZXJpbmc='); return false;">Engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R05O'); return false;">GNN</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QmVzdCUyMHByYWN0aWNlcw=='); return false;">Best practices</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGhhcm1hY29nZW5vbWljcw=='); return false;">Pharmacogenomics</div>
-
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Status: early development
 </div>
 </div>
-<div class="metadata">
-<a href="../../en/blog/from-prototype-to-production.html" class="no-external">
-<div class="listing-date">
-10 jul 2026
-</div>
-</a>
+<div class="callout-body-container callout-body">
+<p>Durin is at an early stage. APIs, data models and scope are still moving. It is <strong>not a medical device</strong>, provides no clinical advice, and must not be used to make treatment decisions. All outputs are experimental and unvalidated.</p>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="RGVlcCUyMExlYXJuaW5nJTJDUGhhcm1hY29nZW5vbWljcyUyQ1B5VG9yY2g=" data-listing-date-sort="1773532800000" data-listing-file-modified-sort="1783654688328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="497">
-<div class="thumbnail"><a href="../../en/blog/analisis-deepfm.html" class="no-external">
+<section id="the-problem-geriatric-polypharmacy" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-geriatric-polypharmacy">The problem: geriatric polypharmacy</h2>
+<p><strong>Polypharmacy</strong> in older adults is a leading — and largely preventable — source of hospitalization. The number of possible interactions grows <strong>combinatorially</strong> with each added drug, and much of the relevant knowledge is scattered across references that are hard to apply quickly at the bedside.</p>
+<p><strong>Durin</strong> is an attempt to make that knowledge <strong>structured, queryable and actionable</strong>: it ingests a patient’s medication list and clinical profile and aims to surface the <strong>risks worth a clinician’s attention</strong> — dangerous interactions, dosing concerns, and cumulative adverse-effect burden.</p>
+<hr>
+</section>
+<section id="what-already-exists" class="level2">
+<h2 class="anchored" data-anchor-id="what-already-exists">What already exists</h2>
+<p>The current focus is a <strong>solid, well-typed data foundation</strong>, not the finished tool:</p>
+<ul>
+<li><strong>Domain models (Pydantic v2)</strong> for drugs and patients, with validation: ATC codes, dosages, adverse effects, interactions and medication profiles.</li>
+<li><strong>ATC/DDD catalog</strong> built by a custom scraper (<code>scripts/atc_scraper.py</code>), mapping each drug to its anatomical/therapeutic/pharmacological classes.</li>
+<li><strong>Internationalization</strong> via JSON5 locale catalogs (Spanish / English).</li>
+<li>Scaffolding for a <strong>FastAPI</strong> service layer.</li>
+</ul>
+<hr>
+</section>
+<section id="roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="roadmap">Roadmap</h2>
+<p>Not yet built:</p>
+<ul>
+<li><strong>Interaction and risk engine:</strong> the logic that evaluates drug combinations and quantifies risk.</li>
+<li><strong>AI layer:</strong> models to <strong>prioritize and explain</strong> risks, helping the clinician decide where to look first.</li>
+<li><strong>User interface.</strong></li>
+</ul>
+<hr>
+</section>
+<section id="why-this-project" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-project">Why this project</h2>
+<p>Durin grows out of my dual profile: a <strong>pharmacist</strong> who knows the clinical side of medication and a <strong>developer</strong> who can build the software to exploit it. It is the applied, clinical counterpart to <a href="../../en/projects/pharmagen.html">Pharmagen</a>: where Pharmagen researches gene–drug prediction, Durin aims to turn pharmacological knowledge into a usable safety tool.</p>
+<hr>
+<section id="tech-stack" class="level3">
+<h3 class="anchored" data-anchor-id="tech-stack">Tech stack</h3>
+<ul>
+<li><strong>Language:</strong> Python 3.14 (managed with <code>uv</code>).</li>
+<li><strong>Data and validation:</strong> Pydantic v2.</li>
+<li><strong>Service:</strong> FastAPI.</li>
+<li><strong>Scraping:</strong> BeautifulSoup.</li>
+<li><strong>Analysis (planned):</strong> Polars, scikit-learn.</li>
+</ul>
+<p><a href="https://github.com/Aderfi/Durin">View the project on GitHub</a></p>
 
-<img loading="lazy" src="../../media/dna.gif" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../en/blog/analisis-deepfm.html" class="no-external">Analysis of the DeepFM Architecture in Pharmacogenomics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../en/blog/analisis-deepfm.html" class="no-external">Design decisions, results and lessons learned building Pharmagen’s predictive model</a>
-</div>
-<div class="listing-categories">
+</section>
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGhhcm1hY29nZW5vbWljcw=='); return false;">Pharmacogenomics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHlUb3JjaA=='); return false;">PyTorch</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../../en/blog/analisis-deepfm.html" class="no-external">
-<div class="listing-date">
-15 mar 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No hay resultados</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

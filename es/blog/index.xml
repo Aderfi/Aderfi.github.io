@@ -9,8 +9,70 @@
 <link>https://Aderfi.github.io/es/blog/</link>
 <atom:link href="https://Aderfi.github.io/es/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Pharmacist &amp; Bioinformatics Researcher | AI in Precision Medicine</description>
-<generator>quarto-1.9.36</generator>
-<lastBuildDate>Sun, 15 Mar 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Fri, 10 Jul 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>De prototipo a producción: lo que aprendí endureciendo Pharmagen</title>
+  <link>https://Aderfi.github.io/es/blog/de-prototipo-a-produccion.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Cuando empecé <strong>Pharmagen</strong> era farmacéutico aprendiendo a programar modelos. La v1 funcionó: un DeepFM + Transformer que aprendía a predecir la respuesta fenotípica a fármacos a partir de variantes genéticas. Pero un prototipo que funciona en tu máquina y un software en el que otros pueden confiar son dos cosas distintas. Este post trata del camino entre ambas, incluida la parte incómoda.</p>
+<section id="la-métrica-que-decidí-no-usar" class="level2">
+<h2 class="anchored" data-anchor-id="la-métrica-que-decidí-no-usar">La métrica que decidí no usar</h2>
+<p>La v1 daba números altos. Y precisamente por altos me hicieron desconfiar. Al revisar el flujo con más criterio del que tenía cuando lo diseñé, encontré <strong>asunciones en la preparación y partición de los datos</strong> —en la normalización alélica y en cómo separaba entrenamiento de test— que, con toda probabilidad, dejaban filtrar información entre conjuntos. Es el clásico <em>data leakage</em>: el modelo parece brillante porque, sin quererlo, ha visto parte de la respuesta.</p>
+<p>Podría haber dejado el 86,89% en el portfolio y a nadie le habría extrañado. Decidí no hacerlo. <strong>Una métrica que no puedo defender metodológicamente no es un logro, es un riesgo.</strong> Publicarla como definitiva sería, además de incorrecto, exactamente el tipo de práctica que quiero evitar en un dominio clínico donde un error se traduce en una decisión sobre un paciente.</p>
+<p>Lo que la v1 sí demostró se mantiene: la señal gen–fármaco es aprendible con esta representación, y decisiones como usar PubChem CID en lugar de ATC o el identificador <code>Genalle</code> funcionan. Eso es lo que me llevo. La cifra, no.</p>
+</section>
+<section id="por-qué-grafos-v2-frente-científico" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-grafos-v2-frente-científico">Por qué grafos (v2, frente científico)</h2>
+<p>La v1 representaba fármacos y variantes como vectores tabulares. Pero una molécula <strong>es</strong> un grafo (átomos, enlaces) y el contexto genómico también tiene topología. Forzar esa estructura dentro de una tabla pierde información.</p>
+<p>La v2 adopta una arquitectura <strong>Two-Tower GATv2</strong> con PyTorch Geometric:</p>
+<ul>
+<li><strong>Torre del fármaco:</strong> grafos moleculares construidos con RDKit desde SMILES canónicos.</li>
+<li><strong>Torre del genotipo:</strong> grafos posicionales de variantes, validados contra GRCh38.</li>
+<li>Ambas torres se fusionan en cabezas multi-tarea.</li>
+</ul>
+<p>La atención sobre grafos (GATv2) permite que el modelo aprenda qué partes de la molécula y del contexto genómico importan para cada interacción, en lugar de asumirlo yo con <em>feature engineering</em> manual.</p>
+</section>
+<section id="por-qué-estándares-de-industria-v2-frente-de-ingeniería" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-estándares-de-industria-v2-frente-de-ingeniería">Por qué estándares de industria (v2, frente de ingeniería)</h2>
+<p>Cuando diseñé la v1 no sabía lo que no sabía. No usaba validación de tipos, ni tests, ni un servicio de inferencia, ni CI. Funcionaba, pero era frágil: un cambio en un sitio rompía otro en silencio.</p>
+<p>La v2 incorpora lo que la primera versión no tenía:</p>
+<ul>
+<li><strong>Pydantic v2</strong> tipando cada frontera de datos (<code>Drug</code>, <code>Variant</code>, <code>Genotype</code>, peticiones de la API…). Si un dato entra mal, falla fuerte y pronto, no tres capas más abajo.</li>
+<li><strong>FastAPI</strong> como servicio de inferencia, con OpenAPI y <em>health/readiness probes</em>.</li>
+<li><strong>CI con ruff + pytest</strong> (~240 tests unitarios) en cada push y PR.</li>
+<li><strong><code>uv</code></strong> para dependencias reproducibles, con <em>lockfile</em> como fuente de verdad.</li>
+</ul>
+<p>Nada de esto mejora la métrica del modelo. Lo que mejora es la <strong>confianza</strong>: que el proyecto se pueda mantener, auditar y desplegar, y que otra persona —o un tribunal, o un supervisor— pueda leer el código y creer en él.</p>
+</section>
+<section id="rehacer-la-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="rehacer-la-evaluación">Rehacer la evaluación</h2>
+<p>La pieza central de la v2 no es la arquitectura, es el <strong>protocolo de evaluación</strong>. Particiones sin fugas, una línea base explícita contra la que comparar, y métricas balanceadas reportadas siempre junto a la metodología que las produjo. Cuando tenga cifras que pueda defender, se publicarán aquí con ese protocolo al lado. Ni antes, ni sin él.</p>
+</section>
+<section id="lo-que-me-llevo" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-me-llevo">Lo que me llevo</h2>
+<p>He aprendido más corrigiendo la v1 que construyéndola. Detectar el problema de evaluación por mí mismo, aceptar que las cifras bonitas no valían, y reconstruir el proyecto con rigor ha sido la parte más formativa de todo Pharmagen. Si algo define a un buen investigador o ingeniero no es no equivocarse nunca, sino <strong>ver el error, admitirlo y corregirlo con método</strong>. En eso estoy.</p>
+<hr>
+<p><em>¿Comentarios o quieres seguir el desarrollo? El código está en <a href="https://github.com/Aderfi/Pharmagen">GitHub</a> y puedes escribirme por <a href="https://linkedin.com/in/adrim-hamed-outmani-047491290">LinkedIn</a>.</em></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Ingeniería</category>
+  <category>Deep Learning</category>
+  <category>GNN</category>
+  <category>Buenas prácticas</category>
+  <category>Farmacogenómica</category>
+  <guid>https://Aderfi.github.io/es/blog/de-prototipo-a-produccion.html</guid>
+  <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://Aderfi.github.io/media/pharmagen-architecture.svg" medium="image" type="image/svg+xml"/>
+</item>
 <item>
   <title>Análisis de la Arquitectura DeepFM en Farmacogenómica</title>
   <link>https://Aderfi.github.io/es/blog/analisis-deepfm.html</link>
@@ -20,6 +82,19 @@
 
 
 
+<div class="callout callout-style-default callout-warning callout-titled" title="Actualización — nota de honestidad">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Actualización — nota de honestidad
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este artículo documenta la <strong>v1</strong> de Pharmagen. Una revisión posterior detectó asunciones en la preparación y partición de los datos que probablemente introdujeron <strong>fuga de información</strong> e <strong>inflaron</strong> las métricas que aparecen más abajo: las considero <strong>preliminares y optimistas</strong>, no un resultado definitivo. La <strong>v2</strong> rehace la evaluación con particiones sin fugas y métricas reportadas junto a su metodología. El contexto completo está en el post <a href="../../es/blog/de-prototipo-a-produccion.html"><em>De prototipo a producción</em></a> y en la <a href="../../es/proyectos/pharmagen.html">página del proyecto</a>.</p>
+</div>
+</div>
 <section id="por-qué-deepfm-y-no-un-modelo-tabular-clásico" class="level2">
 <h2 class="anchored" data-anchor-id="por-qué-deepfm-y-no-un-modelo-tabular-clásico">Por qué DeepFM y no un modelo tabular clásico</h2>
 <p>La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son <strong>combinatorias y no lineales</strong>. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.</p>
@@ -47,31 +122,32 @@
 <hr>
 </section>
 </section>
-<section id="resultados" class="level2">
-<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<section id="resultados-preliminares-v1-ver-nota-de-honestidad-arriba" class="level2">
+<h2 class="anchored" data-anchor-id="resultados-preliminares-v1-ver-nota-de-honestidad-arriba">Resultados preliminares (v1) <em>(ver nota de honestidad arriba)</em></h2>
+<p>Estas cifras corresponden a las particiones internas de la v1 y <strong>probablemente están infladas por fuga de datos</strong>. Las dejo por transparencia y trazabilidad, no como resultado validado:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tarea</th>
-<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Métrica (preliminar)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Categoría Fenotípica</td>
-<td style="text-align: left;"><strong>86.89%</strong> Precisión</td>
+<td style="text-align: left;">86.89% Precisión</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Ajuste de Dosis</td>
-<td style="text-align: left;"><strong>0.8328</strong> Balanced Accuracy</td>
+<td style="text-align: left;">0.8328 Balanced Accuracy</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Farmacocinética</td>
-<td style="text-align: left;"><strong>0.8037</strong> Balanced Accuracy</td>
+<td style="text-align: left;">0.8037 Balanced Accuracy</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Dirección del Efecto</td>
-<td style="text-align: left;"><strong>66.07%</strong> Precisión</td>
+<td style="text-align: left;">66.07% Precisión</td>
 </tr>
 </tbody>
 </table>
@@ -84,6 +160,7 @@
 <li><strong>La ingeniería de características importa más que la arquitectura.</strong> Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.</li>
 <li><strong>El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.</strong> Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.</li>
 <li><strong>Optuna + validación cruzada estratificada</strong> es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.</li>
+<li><strong>La evaluación es tan importante como el modelo.</strong> Una métrica alta no vale nada si el protocolo permite fuga de datos. Detectarlo yo mismo y rehacer la validación en la v2 ha sido la lección más valiosa de todo el proyecto: es lo que separa un experimento de una herramienta fiable.</li>
 </ol>
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,14 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-55735554db3194970353684968bf7fd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-3bc0b9f76aaf0c0faaf5e9e26e3fcdc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -304,6 +304,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../es/proyectos/pharmagen.html">
  <span class="dropdown-text">Pharmagen</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../es/proyectos/durin.html">
+ <span class="dropdown-text">Durin</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -387,6 +391,19 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-default callout-warning callout-titled" title="Actualización — nota de honestidad">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Actualización — nota de honestidad
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este artículo documenta la <strong>v1</strong> de Pharmagen. Una revisión posterior detectó asunciones en la preparación y partición de los datos que probablemente introdujeron <strong>fuga de información</strong> e <strong>inflaron</strong> las métricas que aparecen más abajo: las considero <strong>preliminares y optimistas</strong>, no un resultado definitivo. La <strong>v2</strong> rehace la evaluación con particiones sin fugas y métricas reportadas junto a su metodología. El contexto completo está en el post <a href="../../es/blog/de-prototipo-a-produccion.html"><em>De prototipo a producción</em></a> y en la <a href="../../es/proyectos/pharmagen.html">página del proyecto</a>.</p>
+</div>
+</div>
 <section id="por-qué-deepfm-y-no-un-modelo-tabular-clásico" class="level2">
 <h2 class="anchored" data-anchor-id="por-qué-deepfm-y-no-un-modelo-tabular-clásico">Por qué DeepFM y no un modelo tabular clásico</h2>
 <p>La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son <strong>combinatorias y no lineales</strong>. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.</p>
@@ -414,31 +431,32 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="resultados" class="level2">
-<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<section id="resultados-preliminares-v1-ver-nota-de-honestidad-arriba" class="level2">
+<h2 class="anchored" data-anchor-id="resultados-preliminares-v1-ver-nota-de-honestidad-arriba">Resultados preliminares (v1) <em>(ver nota de honestidad arriba)</em></h2>
+<p>Estas cifras corresponden a las particiones internas de la v1 y <strong>probablemente están infladas por fuga de datos</strong>. Las dejo por transparencia y trazabilidad, no como resultado validado:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tarea</th>
-<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Métrica (preliminar)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Categoría Fenotípica</td>
-<td style="text-align: left;"><strong>86.89%</strong> Precisión</td>
+<td style="text-align: left;">86.89% Precisión</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Ajuste de Dosis</td>
-<td style="text-align: left;"><strong>0.8328</strong> Balanced Accuracy</td>
+<td style="text-align: left;">0.8328 Balanced Accuracy</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Farmacocinética</td>
-<td style="text-align: left;"><strong>0.8037</strong> Balanced Accuracy</td>
+<td style="text-align: left;">0.8037 Balanced Accuracy</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Dirección del Efecto</td>
-<td style="text-align: left;"><strong>66.07%</strong> Precisión</td>
+<td style="text-align: left;">66.07% Precisión</td>
 </tr>
 </tbody>
 </table>
@@ -451,6 +469,7 @@ window.Quarto = {
 <li><strong>La ingeniería de características importa más que la arquitectura.</strong> Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.</li>
 <li><strong>El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.</strong> Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.</li>
 <li><strong>Optuna + validación cruzada estratificada</strong> es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.</li>
+<li><strong>La evaluación es tan importante como el modelo.</strong> Una métrica alta no vale nada si el protocolo permite fuga de datos. Detectarlo yo mismo y rehacer la validación en la v2 ha sido la lección más valiosa de todo el proyecto: es lo que separa un experimento de una herramienta fiable.</li>
 </ol>
 
 

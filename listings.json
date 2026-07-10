@@ -2,12 +2,14 @@
   {
     "listing": "/es/blog/index.html",
     "items": [
+      "/es/blog/de-prototipo-a-produccion.html",
       "/es/blog/analisis-deepfm.html"
     ]
   },
   {
     "listing": "/en/blog/index.html",
     "items": [
+      "/en/blog/from-prototype-to-production.html",
       "/en/blog/analisis-deepfm.html"
     ]
   }

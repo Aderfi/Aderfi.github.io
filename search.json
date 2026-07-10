@@ -4,14 +4,14 @@
     "href": "en/index.html#about-me",
     "title": "Adrim Hamed Outmani",
     "section": "About Me",
-    "text": "About Me\nPharmacist by training with specialization in Bioinformatics and Machine Learning applied to the pharmaceutical sector. My profile combines clinical drug knowledge with the technical ability to design genomic analysis pipelines, train predictive models and work with large-scale datasets.\nI aim to contribute to pharmaceutical R&D, clinical bioinformatics or computational drug development teams, bringing a cross-disciplinary perspective between biology, chemistry and data science."
+    "text": "About Me\nPharmacist by training who codes Machine Learning for drug discovery and pharmacogenomics. My profile combines clinical drug knowledge with the technical ability to design genomic analysis pipelines, model gene–drug interactions with graph neural networks (GNNs), and build the software that supports them.\nI aim to contribute to pharmaceutical R&D, clinical bioinformatics or computational drug development teams, bringing a cross-disciplinary perspective between biology, chemistry and data science. Self-taught, always learning, and open to research and PhD/CDT collaborations."
   },
   {
     "objectID": "en/index.html#technical-skills",
     "href": "en/index.html#technical-skills",
     "title": "Adrim Hamed Outmani",
     "section": "Technical Skills",
-    "text": "Technical Skills\n\nProgramming & Data Python · PyTorch · Pandas · Polars · NumPy · Scikit-learn · C++ · Bash · SQL · Git\nMachine Learning & Deep Learning Neural Networks · DeepFM · Transformers · Multi-Task Learning · Optuna · Cross-Validation · Focal Loss · GNN (in development)\nBioinformatics & Genomics BWA-MEM · GATK · Samtools · Picard · Freebayes · VCFtools · Ensembl VEP · FastQC · FastP · NGS Pipelines\nComputational Pharmacology Pharmacogenomics · PharmGKB · ClinPGx · dbSNP · Molecular Docking · ADMET · Structure-Activity Relationship\nInfrastructure GNU/Linux (Debian) · WSL · Hyprland/Sway · Quarto · Streamlit · uv"
+    "text": "Technical Skills\n\nProgramming & Data Python · PyTorch · Pandas · Polars · NumPy · Scikit-learn · C++ · Bash · SQL · Git\nMachine Learning & Deep Learning Neural Networks · GNN (GATv2) · PyTorch Geometric · DeepFM · Transformers · Multi-Task Learning · Optuna · Cross-Validation · Focal Loss\nBioinformatics & Genomics BWA-MEM · GATK · Samtools · Picard · Freebayes · VCFtools · Ensembl VEP · FastQC · FastP · NGS Pipelines\nComputational Pharmacology Pharmacogenomics · PharmGKB · ClinPGx · dbSNP · RDKit · Molecular Graphs · Molecular Docking · ADMET · Structure-Activity Relationship\nSoftware Engineering & MLOps Pydantic v2 · FastAPI · pytest · ruff · CI (GitHub Actions) · Typed design · REST APIs\nInfrastructure GNU/Linux (Debian) · WSL · Hyprland/Sway · Quarto · uv · Git"
   },
   {
     "objectID": "en/index.html#education",
@@ -25,7 +25,7 @@
     "href": "en/index.html#featured-projects",
     "title": "Adrim Hamed Outmani",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\nPharmagen — AI for Pharmacogenomic Prediction\nEnd-to-end platform integrating a complete bioinformatics pipeline (FASTQ → VCF → Annotation) with a hybrid Deep Learning model (DeepFM + Transformer) to predict a patient’s phenotypic response to specific drugs.\n\n\n\nClinical Task\nResult\n\n\n\n\nPhenotypic Classification\n86.89% Precision\n\n\nDosage Adjustment\n0.8328 Balanced Accuracy\n\n\nPharmacokinetics\n0.8037 Balanced Accuracy\n\n\n\nStack: Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit\nView Full Project →\n\n\n\nOther Repositories\n\nPgen_dev — Active development repository for Pharmagen. Architecture and dataset experimentation.\ndotfiles_Aderfi — Hyprland/Sway environment configuration for Debian and WSL. Reflects Linux administration proficiency."
+    "text": "Featured Projects\n\nPharmagen — AI for Pharmacogenomic Prediction\nEnd-to-end platform integrating a complete bioinformatics pipeline (FASTQ → VCF → Annotation) with a Deep Learning model to predict a patient’s phenotypic response to specific drugs.\nThe project is evolving on two fronts: v1 (a research prototype, DeepFM + Transformer) that validated the hypothesis, and v2 (in progress), migrating to a Two-Tower GATv2 graph architecture and hardening the codebase to industry standards (Pydantic v2, FastAPI, CI) with a rigorous, leakage-aware evaluation protocol.\nStack: Python 3.14 · PyTorch · PyTorch Geometric (GATv2) · RDKit · Optuna · FastAPI · Pydantic v2 · BWA · Freebayes · Ensembl VEP\nView Full Project →\n\n\n\nDurin — Clinical Software for Polypharmacy (early development)\nTooling to support the care of polymedicated geriatric patients, where the risk of drug–drug interactions and adverse effects grows combinatorially with each added medication. It ingests a medication list and clinical profile and aims to surface the risks worth a clinician’s attention.\nFoundation already built: typed domain models (Pydantic v2), a custom ATC/DDD catalog via scraper, and internationalization (ES/EN). On the roadmap: the interaction/risk engine and an AI layer to prioritize and explain risks. Not a medical device; no clinical use.\nStack: Python 3.14 · Pydantic v2 · FastAPI · BeautifulSoup · Polars\nView on GitHub →\n\n\n\nOther Repositories\n\nPortfolio (this site) — Bilingual website built with Quarto on Debian; see the repository.\ndotfiles_Aderfi — Hyprland/Sway environment configuration for Debian and WSL. Reflects Linux administration proficiency."
   },
   {
     "objectID": "en/index.html#blog",
@@ -35,39 +35,158 @@
     "text": "Blog\nPosts on engineering decisions, deep learning architecture analysis and reflections on applied bioinformatics.\nRead Posts →"
   },
   {
+    "objectID": "en/projects/durin.html",
+    "href": "en/projects/durin.html",
+    "title": "Durin: Clinical Software for Polypharmacy",
+    "section": "",
+    "text": "NotaStatus: early development\n\n\n\nDurin is at an early stage. APIs, data models and scope are still moving. It is not a medical device, provides no clinical advice, and must not be used to make treatment decisions. All outputs are experimental and unvalidated."
+  },
+  {
+    "objectID": "en/projects/durin.html#the-problem-geriatric-polypharmacy",
+    "href": "en/projects/durin.html#the-problem-geriatric-polypharmacy",
+    "title": "Durin: Clinical Software for Polypharmacy",
+    "section": "The problem: geriatric polypharmacy",
+    "text": "The problem: geriatric polypharmacy\nPolypharmacy in older adults is a leading — and largely preventable — source of hospitalization. The number of possible interactions grows combinatorially with each added drug, and much of the relevant knowledge is scattered across references that are hard to apply quickly at the bedside.\nDurin is an attempt to make that knowledge structured, queryable and actionable: it ingests a patient’s medication list and clinical profile and aims to surface the risks worth a clinician’s attention — dangerous interactions, dosing concerns, and cumulative adverse-effect burden."
+  },
+  {
+    "objectID": "en/projects/durin.html#what-already-exists",
+    "href": "en/projects/durin.html#what-already-exists",
+    "title": "Durin: Clinical Software for Polypharmacy",
+    "section": "What already exists",
+    "text": "What already exists\nThe current focus is a solid, well-typed data foundation, not the finished tool:\n\nDomain models (Pydantic v2) for drugs and patients, with validation: ATC codes, dosages, adverse effects, interactions and medication profiles.\nATC/DDD catalog built by a custom scraper (scripts/atc_scraper.py), mapping each drug to its anatomical/therapeutic/pharmacological classes.\nInternationalization via JSON5 locale catalogs (Spanish / English).\nScaffolding for a FastAPI service layer."
+  },
+  {
+    "objectID": "en/projects/durin.html#roadmap",
+    "href": "en/projects/durin.html#roadmap",
+    "title": "Durin: Clinical Software for Polypharmacy",
+    "section": "Roadmap",
+    "text": "Roadmap\nNot yet built:\n\nInteraction and risk engine: the logic that evaluates drug combinations and quantifies risk.\nAI layer: models to prioritize and explain risks, helping the clinician decide where to look first.\nUser interface."
+  },
+  {
+    "objectID": "en/projects/durin.html#why-this-project",
+    "href": "en/projects/durin.html#why-this-project",
+    "title": "Durin: Clinical Software for Polypharmacy",
+    "section": "Why this project",
+    "text": "Why this project\nDurin grows out of my dual profile: a pharmacist who knows the clinical side of medication and a developer who can build the software to exploit it. It is the applied, clinical counterpart to Pharmagen: where Pharmagen researches gene–drug prediction, Durin aims to turn pharmacological knowledge into a usable safety tool.\n\n\nTech stack\n\nLanguage: Python 3.14 (managed with uv).\nData and validation: Pydantic v2.\nService: FastAPI.\nScraping: BeautifulSoup.\nAnalysis (planned): Polars, scikit-learn.\n\nView the project on GitHub"
+  },
+  {
     "objectID": "en/blog/analisis-deepfm.html",
     "href": "en/blog/analisis-deepfm.html",
-    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "title": "Analysis of the DeepFM Architecture in Pharmacogenomics",
     "section": "",
-    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+    "text": "AdvertenciaUpdate — honesty note\n\n\n\nThis article documents v1 of Pharmagen. A later review found assumptions in data preparation and splitting that likely introduced information leakage and inflated the metrics shown below: I treat them as preliminary and optimistic, not a final result. v2 rebuilds the evaluation with leakage-free splits and metrics reported alongside their methodology. Full context in the post From prototype to production and on the project page."
   },
   {
-    "objectID": "en/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
-    "href": "en/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
-    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
+    "objectID": "en/blog/analisis-deepfm.html#why-deepfm-and-not-a-classic-tabular-model",
+    "href": "en/blog/analisis-deepfm.html#why-deepfm-and-not-a-classic-tabular-model",
+    "title": "Analysis of the DeepFM Architecture in Pharmacogenomics",
+    "section": "Why DeepFM and not a classic tabular model",
+    "text": "Why DeepFM and not a classic tabular model\nPharmacogenomics poses a problem that is unusual in machine learning: the interactions between genetic variants and drugs are combinatorial and non-linear. A model like XGBoost captures first-order relationships well, but epistasis (the interaction between multiple genetic loci) requires explicitly modeling second-order and higher interactions.\nThe DeepFM architecture combines the best of two worlds:\n\nFactorization Machines (FM): capture all second-order interactions between features efficiently, without manual feature engineering.\nDeep Neural Network (DNN): learns higher-order patterns that FMs cannot reach.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#feature-engineering-the-decisions-that-matter",
+    "href": "en/blog/analisis-deepfm.html#feature-engineering-the-decisions-that-matter",
+    "title": "Analysis of the DeepFM Architecture in Pharmacogenomics",
+    "section": "Feature engineering: the decisions that matter",
+    "text": "Feature engineering: the decisions that matter\n\nPubChem CID instead of ATC\nATC classification groups drugs by therapeutic use, not by molecular structure. Two drugs in the same ATC group can have completely different genomic-interaction profiles. Using PubChem CID, the model works with real chemical identities.\n\n\nThe synthetic “Genalle” variable\nFusing the rsID with HGVS notation into a single identifier (Genalle) normalizes the allelic representation and avoids ambiguities when the same variant has multiple nomenclatures.\n\n\nHandling imbalance with Focal Loss\nIn pharmacogenomics, rare phenotypes (ultrarapid metabolizers, severe adverse reactions) are the most clinically critical yet least represented in the data. Adaptive Focal Loss penalizes errors on these minority classes more heavily, prioritizing patient safety over global accuracy."
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#preliminary-results-v1-see-the-honesty-note-above",
+    "href": "en/blog/analisis-deepfm.html#preliminary-results-v1-see-the-honesty-note-above",
+    "title": "Analysis of the DeepFM Architecture in Pharmacogenomics",
+    "section": "Preliminary results (v1) (see the honesty note above)",
+    "text": "Preliminary results (v1) (see the honesty note above)\nThese figures come from v1’s internal splits and are likely inflated by data leakage. I keep them for transparency and traceability, not as a validated result:\n\n\n\nTask\nMetric (preliminary)\n\n\n\n\nPhenotypic Category\n86.89% Precision\n\n\nDosage Adjustment\n0.8328 Balanced Accuracy\n\n\nPharmacokinetics\n0.8037 Balanced Accuracy\n\n\nEffect Direction\n66.07% Precision\n\n\n\nThe effect-direction task (increased/decreased) is the hardest because it depends on clinical contexts that are not always encoded in pure genomic data. It is an area where future GNNs could bring significant improvements."
+  },
+  {
+    "objectID": "en/blog/analisis-deepfm.html#lessons-learned",
+    "href": "en/blog/analisis-deepfm.html#lessons-learned",
+    "title": "Analysis of the DeepFM Architecture in Pharmacogenomics",
+    "section": "Lessons learned",
+    "text": "Lessons learned\n\nFeature engineering matters more than architecture. Moving from ATC to PubChem CID improved performance more than any hyperparameter tuning.\nClass imbalance in clinical domains is not a technical problem, it is an ethical one. Optimizing for global accuracy can mask a model that fails systematically on the most dangerous cases.\nOptuna + stratified cross-validation is the right combination for small datasets with many classes. 40 trials were enough to converge.\nEvaluation matters as much as the model. A high metric is worthless if the protocol allows data leakage. Catching this myself and rebuilding the validation in v2 has been the most valuable lesson of the whole project: it is what separates an experiment from a reliable tool."
+  },
+  {
+    "objectID": "es/blog/index.html",
+    "href": "es/blog/index.html",
+    "title": "Blog",
     "section": "",
-    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+    "text": "De prototipo a producción: lo que aprendí endureciendo Pharmagen\n\n\nPor qué migro a grafos, adopto estándares de industria y rehago la evaluación desde cero\n\n\n\nIngeniería\n\nDeep Learning\n\nGNN\n\nBuenas prácticas\n\nFarmacogenómica\n\n\n\n\n\n\n10 jul 2026\n\n\n\n\n\n\n\n\n\n\n\n\nAnálisis de la Arquitectura DeepFM en Farmacogenómica\n\n\nDecisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen\n\n\n\nDeep Learning\n\nFarmacogenómica\n\nPyTorch\n\n\n\n\n\n\n15 mar 2026\n\n\n\n\n\nNo hay resultados"
   },
   {
-    "objectID": "en/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
-    "href": "en/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
-    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
-    "section": "Ingeniería de características: las decisiones que importan",
-    "text": "Ingeniería de características: las decisiones que importan\n\nPubChem CID en lugar de ATC\nLa clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar PubChem CID, el modelo trabaja con identidades químicas reales.\n\n\nLa variable sintética Genalle\nFusionar el rsID con la notación HGVS en un solo identificador (Genalle) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.\n\n\nGestión del desbalance con Focal Loss\nEn farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La Adaptive Focal Loss penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global."
+    "objectID": "es/blog/de-prototipo-a-produccion.html",
+    "href": "es/blog/de-prototipo-a-produccion.html",
+    "title": "De prototipo a producción: lo que aprendí endureciendo Pharmagen",
+    "section": "",
+    "text": "Cuando empecé Pharmagen era farmacéutico aprendiendo a programar modelos. La v1 funcionó: un DeepFM + Transformer que aprendía a predecir la respuesta fenotípica a fármacos a partir de variantes genéticas. Pero un prototipo que funciona en tu máquina y un software en el que otros pueden confiar son dos cosas distintas. Este post trata del camino entre ambas, incluida la parte incómoda."
   },
   {
-    "objectID": "en/blog/analisis-deepfm.html#resultados",
-    "href": "en/blog/analisis-deepfm.html#resultados",
-    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
-    "section": "Resultados",
-    "text": "Resultados\n\n\n\nTarea\nMétrica\n\n\n\n\nCategoría Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\nDirección del Efecto\n66.07% Precisión\n\n\n\nLa tarea de dirección del efecto (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas."
+    "objectID": "es/blog/de-prototipo-a-produccion.html#la-métrica-que-decidí-no-usar",
+    "href": "es/blog/de-prototipo-a-produccion.html#la-métrica-que-decidí-no-usar",
+    "title": "De prototipo a producción: lo que aprendí endureciendo Pharmagen",
+    "section": "La métrica que decidí no usar",
+    "text": "La métrica que decidí no usar\nLa v1 daba números altos. Y precisamente por altos me hicieron desconfiar. Al revisar el flujo con más criterio del que tenía cuando lo diseñé, encontré asunciones en la preparación y partición de los datos —en la normalización alélica y en cómo separaba entrenamiento de test— que, con toda probabilidad, dejaban filtrar información entre conjuntos. Es el clásico data leakage: el modelo parece brillante porque, sin quererlo, ha visto parte de la respuesta.\nPodría haber dejado el 86,89% en el portfolio y a nadie le habría extrañado. Decidí no hacerlo. Una métrica que no puedo defender metodológicamente no es un logro, es un riesgo. Publicarla como definitiva sería, además de incorrecto, exactamente el tipo de práctica que quiero evitar en un dominio clínico donde un error se traduce en una decisión sobre un paciente.\nLo que la v1 sí demostró se mantiene: la señal gen–fármaco es aprendible con esta representación, y decisiones como usar PubChem CID en lugar de ATC o el identificador Genalle funcionan. Eso es lo que me llevo. La cifra, no."
   },
   {
-    "objectID": "en/blog/analisis-deepfm.html#lecciones-aprendidas",
-    "href": "en/blog/analisis-deepfm.html#lecciones-aprendidas",
-    "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
-    "section": "Lecciones aprendidas",
-    "text": "Lecciones aprendidas\n\nLa ingeniería de características importa más que la arquitectura. Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.\nEl desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético. Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.\nOptuna + validación cruzada estratificada es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger."
+    "objectID": "es/blog/de-prototipo-a-produccion.html#por-qué-grafos-v2-frente-científico",
+    "href": "es/blog/de-prototipo-a-produccion.html#por-qué-grafos-v2-frente-científico",
+    "title": "De prototipo a producción: lo que aprendí endureciendo Pharmagen",
+    "section": "Por qué grafos (v2, frente científico)",
+    "text": "Por qué grafos (v2, frente científico)\nLa v1 representaba fármacos y variantes como vectores tabulares. Pero una molécula es un grafo (átomos, enlaces) y el contexto genómico también tiene topología. Forzar esa estructura dentro de una tabla pierde información.\nLa v2 adopta una arquitectura Two-Tower GATv2 con PyTorch Geometric:\n\nTorre del fármaco: grafos moleculares construidos con RDKit desde SMILES canónicos.\nTorre del genotipo: grafos posicionales de variantes, validados contra GRCh38.\nAmbas torres se fusionan en cabezas multi-tarea.\n\nLa atención sobre grafos (GATv2) permite que el modelo aprenda qué partes de la molécula y del contexto genómico importan para cada interacción, en lugar de asumirlo yo con feature engineering manual."
+  },
+  {
+    "objectID": "es/blog/de-prototipo-a-produccion.html#por-qué-estándares-de-industria-v2-frente-de-ingeniería",
+    "href": "es/blog/de-prototipo-a-produccion.html#por-qué-estándares-de-industria-v2-frente-de-ingeniería",
+    "title": "De prototipo a producción: lo que aprendí endureciendo Pharmagen",
+    "section": "Por qué estándares de industria (v2, frente de ingeniería)",
+    "text": "Por qué estándares de industria (v2, frente de ingeniería)\nCuando diseñé la v1 no sabía lo que no sabía. No usaba validación de tipos, ni tests, ni un servicio de inferencia, ni CI. Funcionaba, pero era frágil: un cambio en un sitio rompía otro en silencio.\nLa v2 incorpora lo que la primera versión no tenía:\n\nPydantic v2 tipando cada frontera de datos (Drug, Variant, Genotype, peticiones de la API…). Si un dato entra mal, falla fuerte y pronto, no tres capas más abajo.\nFastAPI como servicio de inferencia, con OpenAPI y health/readiness probes.\nCI con ruff + pytest (~240 tests unitarios) en cada push y PR.\nuv para dependencias reproducibles, con lockfile como fuente de verdad.\n\nNada de esto mejora la métrica del modelo. Lo que mejora es la confianza: que el proyecto se pueda mantener, auditar y desplegar, y que otra persona —o un tribunal, o un supervisor— pueda leer el código y creer en él."
+  },
+  {
+    "objectID": "es/blog/de-prototipo-a-produccion.html#rehacer-la-evaluación",
+    "href": "es/blog/de-prototipo-a-produccion.html#rehacer-la-evaluación",
+    "title": "De prototipo a producción: lo que aprendí endureciendo Pharmagen",
+    "section": "Rehacer la evaluación",
+    "text": "Rehacer la evaluación\nLa pieza central de la v2 no es la arquitectura, es el protocolo de evaluación. Particiones sin fugas, una línea base explícita contra la que comparar, y métricas balanceadas reportadas siempre junto a la metodología que las produjo. Cuando tenga cifras que pueda defender, se publicarán aquí con ese protocolo al lado. Ni antes, ni sin él."
+  },
+  {
+    "objectID": "es/blog/de-prototipo-a-produccion.html#lo-que-me-llevo",
+    "href": "es/blog/de-prototipo-a-produccion.html#lo-que-me-llevo",
+    "title": "De prototipo a producción: lo que aprendí endureciendo Pharmagen",
+    "section": "Lo que me llevo",
+    "text": "Lo que me llevo\nHe aprendido más corrigiendo la v1 que construyéndola. Detectar el problema de evaluación por mí mismo, aceptar que las cifras bonitas no valían, y reconstruir el proyecto con rigor ha sido la parte más formativa de todo Pharmagen. Si algo define a un buen investigador o ingeniero no es no equivocarse nunca, sino ver el error, admitirlo y corregirlo con método. En eso estoy.\n\n¿Comentarios o quieres seguir el desarrollo? El código está en GitHub y puedes escribirme por LinkedIn."
+  },
+  {
+    "objectID": "es/proyectos/durin.html",
+    "href": "es/proyectos/durin.html",
+    "title": "Durin: Software Clínico para Polifarmacia",
+    "section": "",
+    "text": "NotaEstado: desarrollo temprano\n\n\n\nDurin está en fase inicial. Las APIs, los modelos de datos y el alcance aún se mueven. No es un dispositivo médico, no ofrece consejo clínico y no debe usarse para tomar decisiones terapéuticas. Todas las salidas son experimentales y no validadas."
+  },
+  {
+    "objectID": "es/proyectos/durin.html#el-problema-la-polifarmacia-geriátrica",
+    "href": "es/proyectos/durin.html#el-problema-la-polifarmacia-geriátrica",
+    "title": "Durin: Software Clínico para Polifarmacia",
+    "section": "💊 El problema: la polifarmacia geriátrica",
+    "text": "💊 El problema: la polifarmacia geriátrica\nLa polifarmacia en personas mayores es una de las causas principales —y en buena medida prevenibles— de hospitalización. El número de interacciones posibles crece de forma combinatoria con cada fármaco añadido, y buena parte del conocimiento relevante está disperso en referencias difíciles de aplicar con rapidez a pie de cama.\nDurin es un intento de hacer ese conocimiento estructurado, consultable y accionable: ingiere la lista de medicación y el perfil clínico de un paciente y busca surfacear los riesgos que merecen la atención del clínico —interacciones peligrosas, problemas de dosificación y carga acumulada de efectos adversos."
+  },
+  {
+    "objectID": "es/proyectos/durin.html#lo-que-ya-existe",
+    "href": "es/proyectos/durin.html#lo-que-ya-existe",
+    "title": "Durin: Software Clínico para Polifarmacia",
+    "section": "🧱 Lo que ya existe",
+    "text": "🧱 Lo que ya existe\nEl foco actual es una base de datos sólida y bien tipada, no la herramienta terminada:\n\nModelos de dominio (Pydantic v2) para fármacos y pacientes, con validación: códigos ATC, dosis, efectos adversos, interacciones y perfiles de medicación.\nCatálogo ATC/DDD construido por un scraper propio (scripts/atc_scraper.py), que mapea cada fármaco a sus clases anatómica/terapéutica/farmacológica.\nInternacionalización mediante catálogos de idioma JSON5 (español / inglés).\nAndamiaje de un servicio FastAPI para la capa de servicio."
+  },
+  {
+    "objectID": "es/proyectos/durin.html#hoja-de-ruta",
+    "href": "es/proyectos/durin.html#hoja-de-ruta",
+    "title": "Durin: Software Clínico para Polifarmacia",
+    "section": "🗺️ Hoja de ruta",
+    "text": "🗺️ Hoja de ruta\nAún por construir:\n\nMotor de interacciones y riesgo: la lógica que evalúa combinaciones de fármacos y cuantifica el riesgo.\nCapa de IA: modelos para priorizar y explicar los riesgos, ayudando al clínico a decidir dónde mirar primero.\nInterfaz de usuario."
+  },
+  {
+    "objectID": "es/proyectos/durin.html#por-qué-este-proyecto",
+    "href": "es/proyectos/durin.html#por-qué-este-proyecto",
+    "title": "Durin: Software Clínico para Polifarmacia",
+    "section": "🎯 Por qué este proyecto",
+    "text": "🎯 Por qué este proyecto\nDurin nace de mi doble perfil: farmacéutico que conoce la clínica del medicamento y desarrollador que sabe construir el software para explotarla. Es la contraparte aplicada y clínica de Pharmagen: donde Pharmagen investiga la predicción gen–fármaco, Durin busca convertir conocimiento farmacológico en una herramienta de seguridad utilizable.\n\n\n🛠️ Stack técnico\n\nLenguaje: Python 3.14 (gestionado con uv).\nDatos y validación: Pydantic v2.\nServicio: FastAPI.\nScraping: BeautifulSoup.\nAnálisis (previsto): Polars, scikit-learn.\n\nVer el proyecto en GitHub"
   },
   {
     "objectID": "es/proyectos/pharmagen.html",
@@ -84,6 +203,13 @@
     "text": "La medicina tradicional se basa a menudo en la estadística poblacional de “talla única”, asumiendo curvas de Gauss en el metabolismo que ignoran fenotipos extremos como los metabolizadores pobres o ultrarrápidos. En fármacos de estrecho margen terapéutico, como el acenocumarol o el 5-Fluorouracilo (5-FU), esta falta de personalización se traduce en fracasos terapéuticos o toxicidades letales.\nPharmagen nace para cerrar esta brecha, integrando un flujo completo desde el dato genómico crudo hasta la predicción clínica asistencial."
   },
   {
+    "objectID": "es/proyectos/pharmagen.html#estado-del-proyecto",
+    "href": "es/proyectos/pharmagen.html#estado-del-proyecto",
+    "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
+    "section": "🗺️ Estado del proyecto",
+    "text": "🗺️ Estado del proyecto\nPharmagen está pasando de prototipo de investigación a software mantenible y desplegable. Avanzan dos frentes en paralelo:\n\nv1 — prototipo de investigación (completado). Red híbrida DeepFM + Transformer entrenada sobre ClinPGx y dbSNP. Validó la hipótesis y definió el problema. Una autoevaluación posterior detectó asunciones en el tratamiento y la partición de los datos que probablemente introdujeron fuga de información y volvieron optimistas las primeras métricas: por eso las considero preliminares y no las uso como resultado definitivo.\nv2 — en curso. Dos líneas simultáneas: (1) científica, migración a una arquitectura Two-Tower GATv2 de grafos (PyTorch Geometric); (2) ingeniería, refactorización completa a estándares de industria (Pydantic v2 en cada frontera, servicio FastAPI, CI con ruff + pytest, dependencias con uv) y un protocolo de evaluación riguroso y sin fugas (particiones limpias, línea base y métricas balanceadas honestas).\n\n\nEl prototipo v1 demostró que la idea funciona; la v2 se centra en hacerla robusta, reproducible y evaluada con rigor.\n\n\n\n\nArquitectura de Pharmagen: pipeline NGS (Fase I) y modelo de grafos Two-Tower GATv2 (Fase II, v2)."
+  },
+  {
     "objectID": "es/proyectos/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
     "href": "es/proyectos/pharmagen.html#fase-i-pipeline-bioinformático-orquestado",
     "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
@@ -98,39 +224,32 @@
     "text": "🧠 Fase II: Arquitectura DeepFM y Multi-Task Learning\nPara la inferencia clínica, desarrollé una arquitectura de red neuronal híbrida entrenada sobre datos curados de ClinPGx y dbSNP.\n\nDecisiones Críticas de Ingeniería de Características:\n\nIdentificadores Químicos Puros: Sustituí la clasificación ATC por PubChem CID. Los modelos requieren representar interacciones fisicoquímicas reales, no categorías terapéuticas abstractas.\nVariable “Genalle”: Creación de un identificador sintético que fusiona el rsID con la notación HGVS, permitiendo una normalización alélica estricta.\nGestión del Desbalance: Implementación de Adaptive Focal Loss y Asymmetric Loss para penalizar errores en efectos adversos raros pero críticos, priorizando la seguridad del paciente.\n\n\n\nEl Modelo Matemático\nLa arquitectura combina Máquinas de Factorización (FM) para interacciones de segundo orden y un Transformer Encoder con mecanismos de Self-Attention para capturar fenómenos complejos como la epistasia.\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
   },
   {
-    "objectID": "es/proyectos/pharmagen.html#resultados-y-capacidad-predictiva",
-    "href": "es/proyectos/pharmagen.html#resultados-y-capacidad-predictiva",
+    "objectID": "es/proyectos/pharmagen.html#resultados-y-una-nota-metodológica-honesta",
+    "href": "es/proyectos/pharmagen.html#resultados-y-una-nota-metodológica-honesta",
     "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "📊 Resultados y Capacidad Predictiva",
-    "text": "📊 Resultados y Capacidad Predictiva\nTras una optimización estocástica de 40 estudios con Optuna y una Validación Cruzada de 5 iteraciones, el modelo alcanzó métricas de nivel traslacional:\n\n\n\nTarea Clínica\nMétrica (Precisión / Balanced Accuracy)\n\n\n\n\nCategoría Fenotípica\n86.89% (Precisión Global)\n\n\nAjuste de Dosis (Dosage)\n0.8328 (Balanced Accuracy)\n\n\nFarmacocinética (PK)\n0.8037 (Balanced Accuracy)\n\n\nDirección del Efecto\n66.07% (Increased/Decreased)\n\n\n\n\nEl “Semáforo Rojo” Clínico\nEl sistema integra una variable binaria de éxito/fracaso terapéutico. Por ejemplo, si el modelo detecta una combinación de Toxicity + Increased + Risk, asigna automáticamente un fallo terapéutico, funcionando como un Sistema de Soporte a la Decisión Clínica (CDSS)."
+    "section": "📊 Resultados y una nota metodológica honesta",
+    "text": "📊 Resultados y una nota metodológica honesta\nLa v1 se optimizó con Optuna (40 estudios) y validación cruzada de 5 iteraciones, y en las particiones internas la red aprendía la tarea multi-etiqueta de forma consistente: era una prueba de concepto válida de que la señal gen–fármaco es aprendible con esta representación.\nSin embargo, al revisar el flujo con más criterio detecté asunciones en la preparación y partición de los datos (en la normalización alélica y en la separación train/test) que probablemente filtraron información entre conjuntos e inflaron las métricas. Por eso no publico esos números como resultado: presentarlos como definitivos sería engañoso.\nLo que sí extraigo de la v1 es sólido: la elección de representación (PubChem CID frente a ATC, identificador Genalle) y el enfoque de pérdidas sensibles al desbalance funcionan. La v2 rehace la evaluación desde cero con particiones sin fugas, una línea base explícita y métricas balanceadas reportadas con su metodología. Cuando esas cifras estén validadas, se publicarán aquí acompañadas del protocolo que las produjo.\n\nEl “Semáforo Rojo” Clínico\nEl sistema integra una variable binaria de éxito/fracaso terapéutico. Por ejemplo, ante una combinación de Toxicity + Increased + Risk, asigna automáticamente un fallo terapéutico, funcionando como un Sistema de Soporte a la Decisión Clínica (CDSS). Es una capa de interpretación, no un dispositivo médico."
   },
   {
-    "objectID": "es/proyectos/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
-    "href": "es/proyectos/pharmagen.html#futuro-hacia-las-redes-neuronales-de-grafos-gnn",
+    "objectID": "es/proyectos/pharmagen.html#v2-grafos-y-estándares-de-industria",
+    "href": "es/proyectos/pharmagen.html#v2-grafos-y-estándares-de-industria",
     "title": "Pharmagen: Inteligencia Artificial y Medicina Personalizada",
-    "section": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)",
-    "text": "🚀 Futuro: Hacia las Redes Neuronales de Grafos (GNN)\nEl proyecto evoluciona hacia una versión 2.0 (arquitectura Twin-Tower) utilizando PyTorch Geometric. El objetivo es representar los fármacos como grafos moleculares (átomos como nodos y enlaces como aristas) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan a procesar.\n\n\n🛠️ Stack Técnico Detallado\n\nOrquestación: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfraestructura: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformática: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\nAcceder al código íntegro en GitHub"
-  },
-  {
-    "objectID": "es/blog/index.html",
-    "href": "es/blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Análisis de la Arquitectura DeepFM en Farmacogenómica\n\n\nDecisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen\n\n\n\nDeep Learning\n\nFarmacogenómica\n\nPyTorch\n\n\n\n\n\n\n15 mar 2026\n\n\n\n\n\nNo hay resultados"
+    "section": "🚀 v2: Grafos y estándares de industria",
+    "text": "🚀 v2: Grafos y estándares de industria\nFrente científico. Migración a una arquitectura Two-Tower GATv2 con PyTorch Geometric: los fármacos se representan como grafos moleculares (átomos como nodos, enlaces como aristas, construidos con RDKit) y el genoma como grafos posicionales contextuales, capturando de forma nativa la topología biológica que los embeddings tabulares no alcanzan.\nFrente de ingeniería. Refactorización completa hacia los estándares que la v1 no tenía: Pydantic v2 tipando cada frontera de datos, un servicio de inferencia con FastAPI (OpenAPI, health/readiness probes), CI (ruff + pytest, ~240 tests unitarios), dependencias reproducibles con uv y el protocolo de evaluación sin fugas ya descrito. El objetivo: convertir un experimento funcional en software sobre el que otros puedan construir.\n\n\n🛠️ Stack Técnico Detallado\n\nLenguaje: Python 3.14 (gestionado con uv), Bash.\nDeep Learning: PyTorch, PyTorch Geometric (GATv2), Optuna, AdamW, GELU.\nCheminformática: RDKit (SMILES → grafos moleculares).\nIngeniería: Pydantic v2, FastAPI, pytest, ruff, CI (GitHub Actions).\nBioinformática: BWA-MEM, Picard, Freebayes, VCFtools, Ensembl VEP.\nInfraestructura: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16 GB VRAM).\n\nAcceder al código íntegro en GitHub"
   },
   {
     "objectID": "es/blog/analisis-deepfm.html",
     "href": "es/blog/analisis-deepfm.html",
     "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
     "section": "",
-    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+    "text": "AdvertenciaActualización — nota de honestidad\n\n\n\nEste artículo documenta la v1 de Pharmagen. Una revisión posterior detectó asunciones en la preparación y partición de los datos que probablemente introdujeron fuga de información e inflaron las métricas que aparecen más abajo: las considero preliminares y optimistas, no un resultado definitivo. La v2 rehace la evaluación con particiones sin fugas y métricas reportadas junto a su metodología. El contexto completo está en el post De prototipo a producción y en la página del proyecto."
   },
   {
     "objectID": "es/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
     "href": "es/blog/analisis-deepfm.html#por-qué-deepfm-y-no-un-modelo-tabular-clásico",
     "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
-    "section": "",
-    "text": "La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
+    "section": "Por qué DeepFM y no un modelo tabular clásico",
+    "text": "Por qué DeepFM y no un modelo tabular clásico\nLa farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son combinatorias y no lineales. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.\nLa arquitectura DeepFM combina lo mejor de dos mundos:\n\nMáquinas de Factorización (FM): Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.\nRed Neuronal Profunda (DNN): Aprende patrones de orden superior que las FM no alcanzan.\n\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
   },
   {
     "objectID": "es/blog/analisis-deepfm.html#ingeniería-de-características-las-decisiones-que-importan",
@@ -140,32 +259,32 @@
     "text": "Ingeniería de características: las decisiones que importan\n\nPubChem CID en lugar de ATC\nLa clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar PubChem CID, el modelo trabaja con identidades químicas reales.\n\n\nLa variable sintética Genalle\nFusionar el rsID con la notación HGVS en un solo identificador (Genalle) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.\n\n\nGestión del desbalance con Focal Loss\nEn farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La Adaptive Focal Loss penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global."
   },
   {
-    "objectID": "es/blog/analisis-deepfm.html#resultados",
-    "href": "es/blog/analisis-deepfm.html#resultados",
+    "objectID": "es/blog/analisis-deepfm.html#resultados-preliminares-v1-ver-nota-de-honestidad-arriba",
+    "href": "es/blog/analisis-deepfm.html#resultados-preliminares-v1-ver-nota-de-honestidad-arriba",
     "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
-    "section": "Resultados",
-    "text": "Resultados\n\n\n\nTarea\nMétrica\n\n\n\n\nCategoría Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\nDirección del Efecto\n66.07% Precisión\n\n\n\nLa tarea de dirección del efecto (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas."
+    "section": "Resultados preliminares (v1) (ver nota de honestidad arriba)",
+    "text": "Resultados preliminares (v1) (ver nota de honestidad arriba)\nEstas cifras corresponden a las particiones internas de la v1 y probablemente están infladas por fuga de datos. Las dejo por transparencia y trazabilidad, no como resultado validado:\n\n\n\nTarea\nMétrica (preliminar)\n\n\n\n\nCategoría Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\nDirección del Efecto\n66.07% Precisión\n\n\n\nLa tarea de dirección del efecto (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas."
   },
   {
     "objectID": "es/blog/analisis-deepfm.html#lecciones-aprendidas",
     "href": "es/blog/analisis-deepfm.html#lecciones-aprendidas",
     "title": "Análisis de la Arquitectura DeepFM en Farmacogenómica",
     "section": "Lecciones aprendidas",
-    "text": "Lecciones aprendidas\n\nLa ingeniería de características importa más que la arquitectura. Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.\nEl desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético. Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.\nOptuna + validación cruzada estratificada es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger."
+    "text": "Lecciones aprendidas\n\nLa ingeniería de características importa más que la arquitectura. Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.\nEl desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético. Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.\nOptuna + validación cruzada estratificada es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.\nLa evaluación es tan importante como el modelo. Una métrica alta no vale nada si el protocolo permite fuga de datos. Detectarlo yo mismo y rehacer la validación en la v2 ha sido la lección más valiosa de todo el proyecto: es lo que separa un experimento de una herramienta fiable."
   },
   {
     "objectID": "es/index.html#sobre-mí",
     "href": "es/index.html#sobre-mí",
     "title": "Adrim Hamed Outmani",
     "section": "Sobre mí",
-    "text": "Sobre mí\nFarmacéutico de formación con especialización en Bioinformática y Machine Learning aplicado al sector farmacéutico. Mi perfil combina el conocimiento clínico del medicamento con la capacidad técnica para diseñar pipelines de análisis genómico, entrenar modelos predictivos y trabajar con datasets a gran escala.\nBusco contribuir en equipos de I+D farmacéutico, bioinformática clínica o desarrollo computacional de fármacos, aportando una visión transversal entre la biología, la química y la ciencia de datos."
+    "text": "Sobre mí\nFarmacéutico de formación que programa Machine Learning para descubrimiento de fármacos y farmacogenómica. Mi perfil combina el conocimiento clínico del medicamento con la capacidad técnica para diseñar pipelines de análisis genómico, modelar interacciones gen–fármaco con redes neuronales de grafos (GNN) y construir el software que las sostiene.\nBusco contribuir en equipos de I+D farmacéutico, bioinformática clínica o desarrollo computacional de fármacos, aportando una visión transversal entre biología, química y ciencia de datos. Autodidacta, en aprendizaje continuo y abierto a colaboraciones de investigación y programas de doctorado (PhD/CDT)."
   },
   {
     "objectID": "es/index.html#competencias-técnicas",
     "href": "es/index.html#competencias-técnicas",
     "title": "Adrim Hamed Outmani",
     "section": "Competencias Técnicas",
-    "text": "Competencias Técnicas\n\nProgramación & Datos Python · PyTorch · Pandas · Polars · NumPy · Scikit-learn · C++ · Bash · SQL · Git\nMachine Learning & Deep Learning Redes Neuronales · DeepFM · Transformers · Multi-Task Learning · Optuna · Validación Cruzada · Focal Loss · GNN (en desarrollo)\nBioinformática & Genómica BWA-MEM · GATK · Samtools · Picard · Freebayes · VCFtools · Ensembl VEP · FastQC · FastP · Pipelines NGS\nFarmacología Computacional Farmacogenómica · PharmGKB · ClinPGx · dbSNP · Docking Molecular · ADMET · Relación Estructura-Actividad\nInfraestructura GNU/Linux (Debian) · WSL · Hyprland/Sway · Quarto · Streamlit · uv"
+    "text": "Competencias Técnicas\n\nProgramación & Datos Python · PyTorch · Pandas · Polars · NumPy · Scikit-learn · C++ · Bash · SQL · Git\nMachine Learning & Deep Learning Redes Neuronales · GNN (GATv2) · PyTorch Geometric · DeepFM · Transformers · Multi-Task Learning · Optuna · Validación Cruzada · Focal Loss\nBioinformática & Genómica BWA-MEM · GATK · Samtools · Picard · Freebayes · VCFtools · Ensembl VEP · FastQC · FastP · Pipelines NGS\nFarmacología Computacional Farmacogenómica · PharmGKB · ClinPGx · dbSNP · RDKit · Grafos moleculares · Docking Molecular · ADMET · Relación Estructura-Actividad\nIngeniería de Software & MLOps Pydantic v2 · FastAPI · pytest · ruff · CI (GitHub Actions) · Diseño tipado · APIs REST\nInfraestructura GNU/Linux (Debian) · WSL · Hyprland/Sway · Quarto · uv · Git"
   },
   {
     "objectID": "es/index.html#formación-académica",
@@ -179,7 +298,7 @@
     "href": "es/index.html#proyectos-destacados",
     "title": "Adrim Hamed Outmani",
     "section": "Proyectos Destacados",
-    "text": "Proyectos Destacados\n\nPharmagen — IA para Predicción Farmacogenómica\nPlataforma end-to-end que integra un pipeline bioinformático completo (FASTQ → VCF → Anotación) con un modelo de Deep Learning híbrido (DeepFM + Transformer) para predecir la respuesta fenotípica de un paciente a fármacos específicos.\n\n\n\nTarea Clínica\nResultado\n\n\n\n\nClasificación Fenotípica\n86.89% Precisión\n\n\nAjuste de Dosis\n0.8328 Balanced Accuracy\n\n\nFarmacocinética\n0.8037 Balanced Accuracy\n\n\n\nStack: Python · PyTorch · Optuna · BWA · Freebayes · VCFtools · Ensembl VEP · Streamlit\nVer Proyecto Completo →\n\n\n\nOtros Repositorios\n\nPgen_dev — Repositorio de desarrollo activo de Pharmagen. Experimentación con arquitecturas y datasets.\ndotfiles_Aderfi — Configuración de entorno Hyprland/Sway para Debian y WSL. Refleja dominio de administración Linux."
+    "text": "Proyectos Destacados\n\nPharmagen — IA para Predicción Farmacogenómica\nPlataforma end-to-end que integra un pipeline bioinformático completo (FASTQ → VCF → Anotación) con un modelo de Deep Learning para predecir la respuesta fenotípica de un paciente a fármacos concretos.\nEl proyecto evoluciona en dos frentes: v1 (prototipo de investigación, DeepFM + Transformer) que validó la hipótesis, y v2 (en curso), que migra a una arquitectura Two-Tower GATv2 de grafos y endurece el código a estándares de industria (Pydantic v2, FastAPI, CI) con un protocolo de evaluación riguroso y sin fugas de datos.\nStack: Python 3.14 · PyTorch · PyTorch Geometric (GATv2) · RDKit · Optuna · FastAPI · Pydantic v2 · BWA · Freebayes · Ensembl VEP\nVer Proyecto Completo →\n\n\n\nDurin — Software Clínico para Polifarmacia (desarrollo temprano)\nHerramienta para apoyar el cuidado de pacientes geriátricos polimedicados, donde el riesgo de interacciones y efectos adversos crece de forma combinatoria con cada fármaco añadido. Ingiere la lista de medicación y el perfil clínico y busca surfacear los riesgos que merecen la atención del clínico.\nBase ya construida: modelos de dominio tipados (Pydantic v2), catálogo ATC/DDD propio vía scraper, e internacionalización (ES/EN). En hoja de ruta: motor de interacciones/riesgo y capa de IA para priorizar y explicar. No es un producto médico; sin uso clínico.\nStack: Python 3.14 · Pydantic v2 · FastAPI · BeautifulSoup · Polars\nVer en GitHub →\n\n\n\nOtros Repositorios\n\nPortfolio (este sitio) — Web bilingüe construida en Quarto sobre Debian; ver repositorio.\ndotfiles_Aderfi — Configuración de entorno Hyprland/Sway para Debian y WSL. Refleja dominio de administración Linux."
   },
   {
     "objectID": "es/index.html#blog",
@@ -187,6 +306,55 @@
     "title": "Adrim Hamed Outmani",
     "section": "Blog",
     "text": "Blog\nPublicaciones sobre decisiones de ingeniería, análisis de arquitecturas de deep learning y reflexiones sobre bioinformática aplicada.\nLeer Publicaciones →"
+  },
+  {
+    "objectID": "en/blog/from-prototype-to-production.html",
+    "href": "en/blog/from-prototype-to-production.html",
+    "title": "From prototype to production: what I learned hardening Pharmagen",
+    "section": "",
+    "text": "When I started Pharmagen I was a pharmacist learning to code models. v1 worked: a DeepFM + Transformer that learned to predict phenotypic drug response from genetic variants. But a prototype that runs on your machine and software others can trust are two different things. This post is about the road between them — including the uncomfortable part."
+  },
+  {
+    "objectID": "en/blog/from-prototype-to-production.html#the-metric-i-chose-not-to-use",
+    "href": "en/blog/from-prototype-to-production.html#the-metric-i-chose-not-to-use",
+    "title": "From prototype to production: what I learned hardening Pharmagen",
+    "section": "The metric I chose not to use",
+    "text": "The metric I chose not to use\nv1 produced high numbers. And precisely because they were high, they made me suspicious. Reviewing the pipeline with more judgment than I had when I designed it, I found assumptions in data preparation and splitting — in the allelic normalization and in how I separated training from test — that, in all likelihood, let information leak between sets. This is classic data leakage: the model looks brilliant because, unintentionally, it has already seen part of the answer.\nI could have left the 86.89% on the portfolio and nobody would have blinked. I decided not to. A metric I can’t defend methodologically isn’t an achievement, it’s a liability. Publishing it as final would be not only incorrect but exactly the kind of practice I want to avoid in a clinical domain where an error translates into a decision about a patient.\nWhat v1 did prove still stands: the gene–drug signal is learnable with this representation, and choices like using PubChem CID over ATC or the Genalle identifier work. That’s what I keep. The number, I don’t."
+  },
+  {
+    "objectID": "en/blog/from-prototype-to-production.html#why-graphs-v2-scientific-front",
+    "href": "en/blog/from-prototype-to-production.html#why-graphs-v2-scientific-front",
+    "title": "From prototype to production: what I learned hardening Pharmagen",
+    "section": "Why graphs (v2, scientific front)",
+    "text": "Why graphs (v2, scientific front)\nv1 represented drugs and variants as tabular vectors. But a molecule is a graph (atoms, bonds), and genomic context has topology too. Forcing that structure into a table loses information.\nv2 adopts a Two-Tower GATv2 architecture with PyTorch Geometric:\n\nDrug tower: molecular graphs built with RDKit from canonical SMILES.\nGenotype tower: positional variant graphs, validated against GRCh38.\nBoth towers are fused into multi-task heads.\n\nAttention over graphs (GATv2) lets the model learn which parts of the molecule and the genomic context matter for each interaction, instead of me assuming it through manual feature engineering."
+  },
+  {
+    "objectID": "en/blog/from-prototype-to-production.html#why-industry-standards-v2-engineering-front",
+    "href": "en/blog/from-prototype-to-production.html#why-industry-standards-v2-engineering-front",
+    "title": "From prototype to production: what I learned hardening Pharmagen",
+    "section": "Why industry standards (v2, engineering front)",
+    "text": "Why industry standards (v2, engineering front)\nWhen I designed v1 I didn’t know what I didn’t know. No type validation, no tests, no inference service, no CI. It worked, but it was fragile: a change in one place broke another silently.\nv2 brings in what the first version lacked:\n\nPydantic v2 typing every data boundary (Drug, Variant, Genotype, API requests…). If bad data enters, it fails loudly and early, not three layers down.\nFastAPI as the inference service, with OpenAPI and health/readiness probes.\nCI with ruff + pytest (~240 unit tests) on every push and PR.\nuv for reproducible dependencies, with a lockfile as the source of truth.\n\nNone of this improves the model’s metric. What it improves is trust: that the project can be maintained, audited, and deployed, and that another person — or an examiner, or a supervisor — can read the code and believe in it."
+  },
+  {
+    "objectID": "en/blog/from-prototype-to-production.html#rebuilding-the-evaluation",
+    "href": "en/blog/from-prototype-to-production.html#rebuilding-the-evaluation",
+    "title": "From prototype to production: what I learned hardening Pharmagen",
+    "section": "Rebuilding the evaluation",
+    "text": "Rebuilding the evaluation\nThe centerpiece of v2 is not the architecture, it’s the evaluation protocol. Leakage-free splits, an explicit baseline to compare against, and balanced metrics always reported alongside the methodology that produced them. When I have figures I can defend, they’ll be published here with that protocol next to them. Not before, and not without it."
+  },
+  {
+    "objectID": "en/blog/from-prototype-to-production.html#what-i-take-away",
+    "href": "en/blog/from-prototype-to-production.html#what-i-take-away",
+    "title": "From prototype to production: what I learned hardening Pharmagen",
+    "section": "What I take away",
+    "text": "What I take away\nI’ve learned more fixing v1 than building it. Catching the evaluation problem myself, accepting that the pretty numbers didn’t hold, and rebuilding the project with rigor has been the most formative part of all of Pharmagen. If anything defines a good researcher or engineer, it isn’t never being wrong — it’s seeing the error, owning it, and correcting it with method. That’s where I am.\n\nComments, or want to follow the development? The code is on GitHub and you can reach me on LinkedIn."
+  },
+  {
+    "objectID": "en/blog/index.html",
+    "href": "en/blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "From prototype to production: what I learned hardening Pharmagen\n\n\nWhy I’m migrating to graphs, adopting industry standards, and rebuilding the evaluation from scratch\n\n\n\nEngineering\n\nDeep Learning\n\nGNN\n\nBest practices\n\nPharmacogenomics\n\n\n\n\n\n\n10 jul 2026\n\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of the DeepFM Architecture in Pharmacogenomics\n\n\nDesign decisions, results and lessons learned building Pharmagen’s predictive model\n\n\n\nDeep Learning\n\nPharmacogenomics\n\nPyTorch\n\n\n\n\n\n\n15 mar 2026\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "en/projects/pharmagen.html",
@@ -203,6 +371,13 @@
     "text": "Traditional medicine often relies on one-size-fits-all population statistics, assuming Gaussian metabolism curves that ignore extreme phenotypes such as poor or ultrarapid metabolizers. For narrow therapeutic index drugs like acenocoumarol or 5-Fluorouracil (5-FU), this lack of personalization leads to therapeutic failures or lethal toxicities.\nPharmagen was created to close this gap, integrating a complete workflow from raw genomic data to clinical prediction."
   },
   {
+    "objectID": "en/projects/pharmagen.html#project-status",
+    "href": "en/projects/pharmagen.html#project-status",
+    "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
+    "section": "Project status",
+    "text": "Project status\nPharmagen is moving from a research prototype to maintainable, deployable software. Two fronts run in parallel:\n\nv1 — research prototype (complete). A hybrid DeepFM + Transformer network trained on ClinPGx and dbSNP. It validated the hypothesis and defined the problem. A later self-audit found data-handling and train/test-split assumptions that likely introduced information leakage and made the early metrics optimistic — so I treat them as preliminary and do not use them as final results.\nv2 — in progress. Two concurrent tracks: (1) scientific, migration to a Two-Tower GATv2 graph architecture (PyTorch Geometric); (2) engineering, a full refactor to industry standards (Pydantic v2 at every boundary, a FastAPI service, CI with ruff + pytest, uv-managed dependencies) plus a rigorous, leakage-aware evaluation protocol (clean splits, an explicit baseline, honest balanced metrics).\n\n\nThe v1 prototype proved the idea works; v2 is about making it robust, reproducible, and rigorously evaluated.\n\n\n\n\nPharmagen architecture: the NGS pipeline (Phase I) and the Two-Tower GATv2 graph model (Phase II, v2)."
+  },
+  {
     "objectID": "en/projects/pharmagen.html#phase-i-orchestrated-bioinformatics-pipeline",
     "href": "en/projects/pharmagen.html#phase-i-orchestrated-bioinformatics-pipeline",
     "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
@@ -217,24 +392,17 @@
     "text": "Phase II: DeepFM Architecture and Multi-Task Learning\nFor clinical inference, I developed a hybrid neural network architecture trained on curated data from ClinPGx and dbSNP.\n\nCritical Feature Engineering Decisions:\n\nPure Chemical Identifiers: Replaced ATC classification with PubChem CID. Models need to represent real physicochemical interactions, not abstract therapeutic categories.\n“Genalle” Variable: A synthetic identifier fusing the rsID with HGVS notation, enabling strict allelic normalization.\nImbalance Management: Implementation of Adaptive Focal Loss and Asymmetric Loss to penalize errors in rare but critical adverse effects, prioritizing patient safety.\n\n\n\nThe Mathematical Model\nThe architecture combines Factorization Machines (FM) for second-order interactions and a Transformer Encoder with Self-Attention mechanisms to capture complex phenomena such as epistasis.\n\\[\\hat{y} = \\sigma \\left( w_0 + \\sum_{i=1}^n w_i x_i + \\sum_{i=1}^n \\sum_{j=i+1}^n \\langle v_i, v_j \\rangle x_i x_j + y_{DNN} \\right)\\]"
   },
   {
-    "objectID": "en/projects/pharmagen.html#results-and-predictive-capacity",
-    "href": "en/projects/pharmagen.html#results-and-predictive-capacity",
+    "objectID": "en/projects/pharmagen.html#results-and-an-honest-methodological-note",
+    "href": "en/projects/pharmagen.html#results-and-an-honest-methodological-note",
     "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
-    "section": "Results and Predictive Capacity",
-    "text": "Results and Predictive Capacity\nAfter stochastic optimization of 40 studies with Optuna and 5-fold Cross-Validation, the model achieved translational-level metrics:\n\n\n\nClinical Task\nMetric (Precision / Balanced Accuracy)\n\n\n\n\nPhenotypic Category\n86.89% (Global Precision)\n\n\nDosage Adjustment\n0.8328 (Balanced Accuracy)\n\n\nPharmacokinetics (PK)\n0.8037 (Balanced Accuracy)\n\n\nEffect Direction\n66.07% (Increased/Decreased)\n\n\n\n\nThe Clinical “Red Light”\nThe system integrates a binary therapeutic success/failure variable. For instance, if the model detects a combination of Toxicity + Increased + Risk, it automatically assigns a therapeutic failure, functioning as a Clinical Decision Support System (CDSS)."
+    "section": "Results and an honest methodological note",
+    "text": "Results and an honest methodological note\nv1 was tuned with Optuna (40 studies) and 5-fold cross-validation, and on the internal splits the network learned the multi-label task consistently — a valid proof of concept that the gene–drug signal is learnable with this representation.\nOn closer review, however, I found assumptions in data preparation and splitting (in the allelic normalization and the train/test separation) that likely leaked information across sets and inflated the metrics. That is why I do not publish those numbers as a result: presenting them as final would be misleading.\nWhat v1 does establish is solid: the representation choices (PubChem CID over ATC, the Genalle identifier) and the imbalance-aware losses work. v2 rebuilds the evaluation from scratch with leakage-free splits, an explicit baseline, and balanced metrics reported alongside the methodology that produced them. Once those figures are validated, they will be published here with their protocol.\n\nThe Clinical “Red Light”\nThe system integrates a binary therapeutic success/failure variable. For instance, given a combination of Toxicity + Increased + Risk, it automatically assigns a therapeutic failure, functioning as a Clinical Decision Support System (CDSS). It is an interpretation layer, not a medical device."
   },
   {
-    "objectID": "en/projects/pharmagen.html#future-towards-graph-neural-networks-gnn",
-    "href": "en/projects/pharmagen.html#future-towards-graph-neural-networks-gnn",
+    "objectID": "en/projects/pharmagen.html#v2-graphs-and-industry-standards",
+    "href": "en/projects/pharmagen.html#v2-graphs-and-industry-standards",
     "title": "Pharmagen: Artificial Intelligence and Personalized Medicine",
-    "section": "Future: Towards Graph Neural Networks (GNN)",
-    "text": "Future: Towards Graph Neural Networks (GNN)\nThe project evolves towards a 2.0 version (Twin-Tower architecture) using PyTorch Geometric. The goal is to represent drugs as molecular graphs (atoms as nodes, bonds as edges) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.\n\n\nDetailed Tech Stack\n\nOrchestration: Python 3.11, Bash.\nDeep Learning: PyTorch, AdamW, Optuna, GELU.\nInfrastructure: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).\nBioinformatics: BWA, Picard, Freebayes, VCFtools, Ensembl VEP.\n\nAccess full source code on GitHub"
-  },
-  {
-    "objectID": "en/blog/index.html",
-    "href": "en/blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Análisis de la Arquitectura DeepFM en Farmacogenómica\n\n\nDecisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen\n\n\n\nDeep Learning\n\nFarmacogenómica\n\nPyTorch\n\n\n\n\n\n\n15 mar 2026\n\n\n\n\n\nNo hay resultados"
+    "section": "v2: Graphs and industry standards",
+    "text": "v2: Graphs and industry standards\nScientific front. Migration to a Two-Tower GATv2 architecture with PyTorch Geometric: drugs are represented as molecular graphs (atoms as nodes, bonds as edges, built with RDKit) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.\nEngineering front. A full refactor to the standards v1 lacked: Pydantic v2 typing every data boundary, a FastAPI inference service (OpenAPI, health/readiness probes), CI (ruff + pytest, ~240 unit tests), reproducible dependencies with uv, and the leakage-aware evaluation protocol above. The goal: turn a working experiment into software others can build on.\n\n\nDetailed Tech Stack\n\nLanguage: Python 3.14 (managed with uv), Bash.\nDeep Learning: PyTorch, PyTorch Geometric (GATv2), Optuna, AdamW, GELU.\nCheminformatics: RDKit (SMILES → molecular graphs).\nEngineering: Pydantic v2, FastAPI, pytest, ruff, CI (GitHub Actions).\nBioinformatics: BWA-MEM, Picard, Freebayes, VCFtools, Ensembl VEP.\nInfrastructure: Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16 GB VRAM).\n\nAccess full source code on GitHub"
   }
 ]

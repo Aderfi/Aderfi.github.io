@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog – Adrim Portfolio</title>
+<title>De prototipo a producción: lo que aprendí endureciendo Pharmagen – Adrim Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,8 +34,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../media/logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -77,69 +75,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
+</head>
 
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Adrim Portfolio" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -386,24 +326,35 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QmVzdCUyMHByYWN0aWNlcw==">Best practices <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RW5naW5lZXJpbmc=">Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R05O">GNN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UGhhcm1hY29nZW5vbWljcw==">Pharmacogenomics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UHlUb3JjaA==">PyTorch <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
-<p class="subtitle lead">Reflections, analysis and notes on bioinformatics, AI and precision medicine</p>
-</div>
+<h1 class="title">De prototipo a producción: lo que aprendí endureciendo Pharmagen</h1>
+<p class="subtitle lead">Por qué migro a grafos, adopto estándares de industria y rehago la evaluación desde cero</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Ingeniería</div>
+    <div class="quarto-category">Deep Learning</div>
+    <div class="quarto-category">GNN</div>
+    <div class="quarto-category">Buenas prácticas</div>
+    <div class="quarto-category">Farmacogenómica</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10 de julio de 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -413,81 +364,50 @@ window.Quarto = {
 </header>
 
 
+<p>Cuando empecé <strong>Pharmagen</strong> era farmacéutico aprendiendo a programar modelos. La v1 funcionó: un DeepFM + Transformer que aprendía a predecir la respuesta fenotípica a fármacos a partir de variantes genéticas. Pero un prototipo que funciona en tu máquina y un software en el que otros pueden confiar son dos cosas distintas. Este post trata del camino entre ambas, incluida la parte incómoda.</p>
+<section id="la-métrica-que-decidí-no-usar" class="level2">
+<h2 class="anchored" data-anchor-id="la-métrica-que-decidí-no-usar">La métrica que decidí no usar</h2>
+<p>La v1 daba números altos. Y precisamente por altos me hicieron desconfiar. Al revisar el flujo con más criterio del que tenía cuando lo diseñé, encontré <strong>asunciones en la preparación y partición de los datos</strong> —en la normalización alélica y en cómo separaba entrenamiento de test— que, con toda probabilidad, dejaban filtrar información entre conjuntos. Es el clásico <em>data leakage</em>: el modelo parece brillante porque, sin quererlo, ha visto parte de la respuesta.</p>
+<p>Podría haber dejado el 86,89% en el portfolio y a nadie le habría extrañado. Decidí no hacerlo. <strong>Una métrica que no puedo defender metodológicamente no es un logro, es un riesgo.</strong> Publicarla como definitiva sería, además de incorrecto, exactamente el tipo de práctica que quiero evitar en un dominio clínico donde un error se traduce en una decisión sobre un paciente.</p>
+<p>Lo que la v1 sí demostró se mantiene: la señal gen–fármaco es aprendible con esta representación, y decisiones como usar PubChem CID en lugar de ATC o el identificador <code>Genalle</code> funcionan. Eso es lo que me llevo. La cifra, no.</p>
+</section>
+<section id="por-qué-grafos-v2-frente-científico" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-grafos-v2-frente-científico">Por qué grafos (v2, frente científico)</h2>
+<p>La v1 representaba fármacos y variantes como vectores tabulares. Pero una molécula <strong>es</strong> un grafo (átomos, enlaces) y el contexto genómico también tiene topología. Forzar esa estructura dentro de una tabla pierde información.</p>
+<p>La v2 adopta una arquitectura <strong>Two-Tower GATv2</strong> con PyTorch Geometric:</p>
+<ul>
+<li><strong>Torre del fármaco:</strong> grafos moleculares construidos con RDKit desde SMILES canónicos.</li>
+<li><strong>Torre del genotipo:</strong> grafos posicionales de variantes, validados contra GRCh38.</li>
+<li>Ambas torres se fusionan en cabezas multi-tarea.</li>
+</ul>
+<p>La atención sobre grafos (GATv2) permite que el modelo aprenda qué partes de la molécula y del contexto genómico importan para cada interacción, en lugar de asumirlo yo con <em>feature engineering</em> manual.</p>
+</section>
+<section id="por-qué-estándares-de-industria-v2-frente-de-ingeniería" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-estándares-de-industria-v2-frente-de-ingeniería">Por qué estándares de industria (v2, frente de ingeniería)</h2>
+<p>Cuando diseñé la v1 no sabía lo que no sabía. No usaba validación de tipos, ni tests, ni un servicio de inferencia, ni CI. Funcionaba, pero era frágil: un cambio en un sitio rompía otro en silencio.</p>
+<p>La v2 incorpora lo que la primera versión no tenía:</p>
+<ul>
+<li><strong>Pydantic v2</strong> tipando cada frontera de datos (<code>Drug</code>, <code>Variant</code>, <code>Genotype</code>, peticiones de la API…). Si un dato entra mal, falla fuerte y pronto, no tres capas más abajo.</li>
+<li><strong>FastAPI</strong> como servicio de inferencia, con OpenAPI y <em>health/readiness probes</em>.</li>
+<li><strong>CI con ruff + pytest</strong> (~240 tests unitarios) en cada push y PR.</li>
+<li><strong><code>uv</code></strong> para dependencias reproducibles, con <em>lockfile</em> como fuente de verdad.</li>
+</ul>
+<p>Nada de esto mejora la métrica del modelo. Lo que mejora es la <strong>confianza</strong>: que el proyecto se pueda mantener, auditar y desplegar, y que otra persona —o un tribunal, o un supervisor— pueda leer el código y creer en él.</p>
+</section>
+<section id="rehacer-la-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="rehacer-la-evaluación">Rehacer la evaluación</h2>
+<p>La pieza central de la v2 no es la arquitectura, es el <strong>protocolo de evaluación</strong>. Particiones sin fugas, una línea base explícita contra la que comparar, y métricas balanceadas reportadas siempre junto a la metodología que las produjo. Cuando tenga cifras que pueda defender, se publicarán aquí con ese protocolo al lado. Ni antes, ni sin él.</p>
+</section>
+<section id="lo-que-me-llevo" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-me-llevo">Lo que me llevo</h2>
+<p>He aprendido más corrigiendo la v1 que construyéndola. Detectar el problema de evaluación por mí mismo, aceptar que las cifras bonitas no valían, y reconstruir el proyecto con rigor ha sido la parte más formativa de todo Pharmagen. Si algo define a un buen investigador o ingeniero no es no equivocarse nunca, sino <strong>ver el error, admitirlo y corregirlo con método</strong>. En eso estoy.</p>
+<hr>
+<p><em>¿Comentarios o quieres seguir el desarrollo? El código está en <a href="https://github.com/Aderfi/Pharmagen">GitHub</a> y puedes escribirme por <a href="https://linkedin.com/in/adrim-hamed-outmani-047491290">LinkedIn</a>.</em></p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="RW5naW5lZXJpbmclMkNEZWVwJTIwTGVhcm5pbmclMkNHTk4lMkNCZXN0JTIwcHJhY3RpY2VzJTJDUGhhcm1hY29nZW5vbWljcw==" data-listing-date-sort="1783641600000" data-listing-file-modified-sort="1783654688328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="614">
-<div class="thumbnail"><a href="../../en/blog/from-prototype-to-production.html" class="no-external">
-
-<img loading="lazy" src="../../media/pharmagen-architecture.svg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../en/blog/from-prototype-to-production.html" class="no-external">From prototype to production: what I learned hardening Pharmagen</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../en/blog/from-prototype-to-production.html" class="no-external">Why I’m migrating to graphs, adopting industry standards, and rebuilding the evaluation from scratch</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RW5naW5lZXJpbmc='); return false;">Engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R05O'); return false;">GNN</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QmVzdCUyMHByYWN0aWNlcw=='); return false;">Best practices</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGhhcm1hY29nZW5vbWljcw=='); return false;">Pharmacogenomics</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../../en/blog/from-prototype-to-production.html" class="no-external">
-<div class="listing-date">
-10 jul 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="RGVlcCUyMExlYXJuaW5nJTJDUGhhcm1hY29nZW5vbWljcyUyQ1B5VG9yY2g=" data-listing-date-sort="1773532800000" data-listing-file-modified-sort="1783654688328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="497">
-<div class="thumbnail"><a href="../../en/blog/analisis-deepfm.html" class="no-external">
-
-<img loading="lazy" src="../../media/dna.gif" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../en/blog/analisis-deepfm.html" class="no-external">Analysis of the DeepFM Architecture in Pharmacogenomics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../en/blog/analisis-deepfm.html" class="no-external">Design decisions, results and lessons learned building Pharmagen’s predictive model</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGhhcm1hY29nZW5vbWljcw=='); return false;">Pharmacogenomics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHlUb3JjaA=='); return false;">PyTorch</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../../en/blog/analisis-deepfm.html" class="no-external">
-<div class="listing-date">
-15 mar 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No hay resultados</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,14 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-55735554db3194970353684968bf7fd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-3bc0b9f76aaf0c0faaf5e9e26e3fcdc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -304,6 +304,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../es/proyectos/pharmagen.html">
  <span class="dropdown-text">Pharmagen</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../es/proyectos/durin.html">
+ <span class="dropdown-text">Durin</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -395,6 +399,24 @@ window.Quarto = {
 <p><strong>Pharmagen</strong> was created to close this gap, integrating a complete workflow from raw genomic data to clinical prediction.</p>
 <hr>
 </section>
+<section id="project-status" class="level2">
+<h2 class="anchored" data-anchor-id="project-status">Project status</h2>
+<p>Pharmagen is moving from a <strong>research prototype</strong> to <strong>maintainable, deployable software</strong>. Two fronts run in parallel:</p>
+<ul>
+<li><strong>v1 — research prototype (complete).</strong> A hybrid DeepFM + Transformer network trained on ClinPGx and dbSNP. It validated the hypothesis and defined the problem. A later self-audit found data-handling and train/test-split assumptions that likely introduced <strong>information leakage</strong> and made the early metrics <strong>optimistic</strong> — so I treat them as preliminary and do not use them as final results.</li>
+<li><strong>v2 — in progress.</strong> Two concurrent tracks: <strong>(1) scientific</strong>, migration to a <strong>Two-Tower GATv2</strong> graph architecture (PyTorch Geometric); <strong>(2) engineering</strong>, a full refactor to industry standards (Pydantic v2 at every boundary, a FastAPI service, CI with ruff + pytest, <code>uv</code>-managed dependencies) plus a <strong>rigorous, leakage-aware evaluation</strong> protocol (clean splits, an explicit baseline, honest balanced metrics).</li>
+</ul>
+<blockquote class="blockquote">
+<p>The v1 prototype proved the idea works; v2 is about making it robust, reproducible, and rigorously evaluated.</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../media/pharmagen-architecture.svg" class="img-fluid figure-img" alt="Diagram of the Pharmagen architecture"></p>
+<figcaption>Pharmagen architecture: the NGS pipeline (Phase I) and the Two-Tower GATv2 graph model (Phase II, v2).</figcaption>
+</figure>
+</div>
+<hr>
+</section>
 <section id="phase-i-orchestrated-bioinformatics-pipeline" class="level2">
 <h2 class="anchored" data-anchor-id="phase-i-orchestrated-bioinformatics-pipeline">Phase I: Orchestrated Bioinformatics Pipeline</h2>
 <p>I designed a modular bioinformatics pipeline orchestrated in <strong>Python 3.10</strong> on <strong>Debian 13 (Trixie)</strong>. The system automates the processing of massive reads (NGS), ensuring reproducibility through the <code>uv</code> environment manager.</p>
@@ -428,52 +450,31 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="results-and-predictive-capacity" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-predictive-capacity">Results and Predictive Capacity</h2>
-<p>After stochastic optimization of 40 studies with <strong>Optuna</strong> and <strong>5-fold Cross-Validation</strong>, the model achieved translational-level metrics:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Clinical Task</th>
-<th style="text-align: left;">Metric (Precision / Balanced Accuracy)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Phenotypic Category</strong></td>
-<td style="text-align: left;"><strong>86.89%</strong> (Global Precision)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Dosage Adjustment</strong></td>
-<td style="text-align: left;"><strong>0.8328</strong> (Balanced Accuracy)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Pharmacokinetics (PK)</strong></td>
-<td style="text-align: left;"><strong>0.8037</strong> (Balanced Accuracy)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Effect Direction</strong></td>
-<td style="text-align: left;"><strong>66.07%</strong> (Increased/Decreased)</td>
-</tr>
-</tbody>
-</table>
+<section id="results-and-an-honest-methodological-note" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-an-honest-methodological-note">Results and an honest methodological note</h2>
+<p>v1 was tuned with <strong>Optuna</strong> (40 studies) and <strong>5-fold cross-validation</strong>, and on the internal splits the network learned the multi-label task consistently — a valid <strong>proof of concept</strong> that the gene–drug signal is learnable with this representation.</p>
+<p>On closer review, however, I found <strong>assumptions in data preparation and splitting</strong> (in the allelic normalization and the train/test separation) that likely <strong>leaked information</strong> across sets and <strong>inflated</strong> the metrics. That is why I <strong>do not publish those numbers as a result</strong>: presenting them as final would be misleading.</p>
+<p>What v1 does establish is solid: the representation choices (PubChem CID over ATC, the <code>Genalle</code> identifier) and the imbalance-aware losses work. <strong>v2 rebuilds the evaluation from scratch</strong> with leakage-free splits, an explicit baseline, and balanced metrics reported alongside the methodology that produced them. Once those figures are validated, they will be published here with their protocol.</p>
 <section id="the-clinical-red-light" class="level3">
 <h3 class="anchored" data-anchor-id="the-clinical-red-light">The Clinical “Red Light”</h3>
-<p>The system integrates a binary <strong>therapeutic success/failure</strong> variable. For instance, if the model detects a combination of <code>Toxicity + Increased + Risk</code>, it automatically assigns a therapeutic failure, functioning as a <strong>Clinical Decision Support System (CDSS)</strong>.</p>
+<p>The system integrates a binary <strong>therapeutic success/failure</strong> variable. For instance, given a combination of <code>Toxicity + Increased + Risk</code>, it automatically assigns a therapeutic failure, functioning as a <strong>Clinical Decision Support System (CDSS)</strong>. It is an interpretation layer, not a medical device.</p>
 <hr>
 </section>
 </section>
-<section id="future-towards-graph-neural-networks-gnn" class="level2">
-<h2 class="anchored" data-anchor-id="future-towards-graph-neural-networks-gnn">Future: Towards Graph Neural Networks (GNN)</h2>
-<p>The project evolves towards a 2.0 version (<strong>Twin-Tower</strong> architecture) using <strong>PyTorch Geometric</strong>. The goal is to represent drugs as molecular graphs (atoms as nodes, bonds as edges) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.</p>
+<section id="v2-graphs-and-industry-standards" class="level2">
+<h2 class="anchored" data-anchor-id="v2-graphs-and-industry-standards">v2: Graphs and industry standards</h2>
+<p><strong>Scientific front.</strong> Migration to a <strong>Two-Tower GATv2</strong> architecture with <strong>PyTorch Geometric</strong>: drugs are represented as molecular graphs (atoms as nodes, bonds as edges, built with <strong>RDKit</strong>) and the genome as contextual positional graphs, natively capturing the biological topology that tabular embeddings cannot process.</p>
+<p><strong>Engineering front.</strong> A full refactor to the standards v1 lacked: <strong>Pydantic v2</strong> typing every data boundary, a <strong>FastAPI inference service</strong> (OpenAPI, health/readiness probes), <strong>CI</strong> (ruff + pytest, ~240 unit tests), reproducible dependencies with <strong><code>uv</code></strong>, and the <strong>leakage-aware evaluation</strong> protocol above. The goal: turn a working experiment into software others can build on.</p>
 <hr>
 <section id="detailed-tech-stack" class="level3">
 <h3 class="anchored" data-anchor-id="detailed-tech-stack">Detailed Tech Stack</h3>
 <ul>
-<li><strong>Orchestration:</strong> Python 3.11, Bash.</li>
-<li><strong>Deep Learning:</strong> PyTorch, AdamW, Optuna, GELU.</li>
-<li><strong>Infrastructure:</strong> Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16GB VRAM).</li>
-<li><strong>Bioinformatics:</strong> BWA, Picard, Freebayes, VCFtools, Ensembl VEP.</li>
+<li><strong>Language:</strong> Python 3.14 (managed with <code>uv</code>), Bash.</li>
+<li><strong>Deep Learning:</strong> PyTorch, PyTorch Geometric (GATv2), Optuna, AdamW, GELU.</li>
+<li><strong>Cheminformatics:</strong> RDKit (SMILES → molecular graphs).</li>
+<li><strong>Engineering:</strong> Pydantic v2, FastAPI, pytest, ruff, CI (GitHub Actions).</li>
+<li><strong>Bioinformatics:</strong> BWA-MEM, Picard, Freebayes, VCFtools, Ensembl VEP.</li>
+<li><strong>Infrastructure:</strong> Debian 13 (Trixie), NVIDIA RTX 4070 Ti Super (16 GB VRAM).</li>
 </ul>
 <p><a href="https://github.com/Aderfi/Pharmagen">Access full source code on GitHub</a></p>
 

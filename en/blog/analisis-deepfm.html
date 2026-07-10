@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Análisis de la Arquitectura DeepFM en Farmacogenómica – Adrim Portfolio</title>
+<title>Analysis of the DeepFM Architecture in Pharmacogenomics – Adrim Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -40,14 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6dcc56a8c6867436b7b6d5202f23e733.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-94fb3b4d2173f84e9231ce3b8fcb160e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-55735554db3194970353684968bf7fd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c4724620609ea8650146bac510151605.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-3bc0b9f76aaf0c0faaf5e9e26e3fcdc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fde2520c5c028705b4590e280912f8d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -304,6 +304,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../es/proyectos/pharmagen.html">
  <span class="dropdown-text">Pharmagen</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../es/proyectos/durin.html">
+ <span class="dropdown-text">Durin</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -358,11 +362,11 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Análisis de la Arquitectura DeepFM en Farmacogenómica</h1>
-<p class="subtitle lead">Decisiones de diseño, resultados y lecciones aprendidas en la construcción del modelo predictivo de Pharmagen</p>
+<h1 class="title">Analysis of the DeepFM Architecture in Pharmacogenomics</h1>
+<p class="subtitle lead">Design decisions, results and lessons learned building Pharmagen’s predictive model</p>
   <div class="quarto-categories">
     <div class="quarto-category">Deep Learning</div>
-    <div class="quarto-category">Farmacogenómica</div>
+    <div class="quarto-category">Pharmacogenomics</div>
     <div class="quarto-category">PyTorch</div>
   </div>
   </div>
@@ -387,70 +391,85 @@ window.Quarto = {
 </header>
 
 
-<section id="por-qué-deepfm-y-no-un-modelo-tabular-clásico" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-deepfm-y-no-un-modelo-tabular-clásico">Por qué DeepFM y no un modelo tabular clásico</h2>
-<p>La farmacogenómica presenta un problema poco habitual en machine learning: las interacciones entre variantes genéticas y fármacos son <strong>combinatorias y no lineales</strong>. Un modelo como XGBoost captura bien las relaciones de primer orden, pero la epistasia (la interacción entre múltiples loci genéticos) requiere modelar explícitamente las interacciones de segundo orden y superiores.</p>
-<p>La arquitectura <strong>DeepFM</strong> combina lo mejor de dos mundos:</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Update — honesty note">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Update — honesty note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This article documents <strong>v1</strong> of Pharmagen. A later review found assumptions in data preparation and splitting that likely introduced <strong>information leakage</strong> and <strong>inflated</strong> the metrics shown below: I treat them as <strong>preliminary and optimistic</strong>, not a final result. <strong>v2</strong> rebuilds the evaluation with leakage-free splits and metrics reported alongside their methodology. Full context in the post <a href="../../en/blog/from-prototype-to-production.html"><em>From prototype to production</em></a> and on the <a href="../../en/projects/pharmagen.html">project page</a>.</p>
+</div>
+</div>
+<section id="why-deepfm-and-not-a-classic-tabular-model" class="level2">
+<h2 class="anchored" data-anchor-id="why-deepfm-and-not-a-classic-tabular-model">Why DeepFM and not a classic tabular model</h2>
+<p>Pharmacogenomics poses a problem that is unusual in machine learning: the interactions between genetic variants and drugs are <strong>combinatorial and non-linear</strong>. A model like XGBoost captures first-order relationships well, but epistasis (the interaction between multiple genetic loci) requires explicitly modeling second-order and higher interactions.</p>
+<p>The <strong>DeepFM</strong> architecture combines the best of two worlds:</p>
 <ul>
-<li><strong>Máquinas de Factorización (FM):</strong> Capturan todas las interacciones de segundo orden entre features de forma eficiente, sin necesidad de feature engineering manual.</li>
-<li><strong>Red Neuronal Profunda (DNN):</strong> Aprende patrones de orden superior que las FM no alcanzan.</li>
+<li><strong>Factorization Machines (FM):</strong> capture all second-order interactions between features efficiently, without manual feature engineering.</li>
+<li><strong>Deep Neural Network (DNN):</strong> learns higher-order patterns that FMs cannot reach.</li>
 </ul>
 <p><span class="math display">\[\hat{y} = \sigma \left( w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \langle v_i, v_j \rangle x_i x_j + y_{DNN} \right)\]</span></p>
 <hr>
 </section>
-<section id="ingeniería-de-características-las-decisiones-que-importan" class="level2">
-<h2 class="anchored" data-anchor-id="ingeniería-de-características-las-decisiones-que-importan">Ingeniería de características: las decisiones que importan</h2>
-<section id="pubchem-cid-en-lugar-de-atc" class="level3">
-<h3 class="anchored" data-anchor-id="pubchem-cid-en-lugar-de-atc">PubChem CID en lugar de ATC</h3>
-<p>La clasificación ATC agrupa fármacos por uso terapéutico, no por estructura molecular. Dos fármacos del mismo grupo ATC pueden tener perfiles de interacción genómica completamente distintos. Al usar <strong>PubChem CID</strong>, el modelo trabaja con identidades químicas reales.</p>
+<section id="feature-engineering-the-decisions-that-matter" class="level2">
+<h2 class="anchored" data-anchor-id="feature-engineering-the-decisions-that-matter">Feature engineering: the decisions that matter</h2>
+<section id="pubchem-cid-instead-of-atc" class="level3">
+<h3 class="anchored" data-anchor-id="pubchem-cid-instead-of-atc">PubChem CID instead of ATC</h3>
+<p>ATC classification groups drugs by therapeutic use, not by molecular structure. Two drugs in the same ATC group can have completely different genomic-interaction profiles. Using <strong>PubChem CID</strong>, the model works with real chemical identities.</p>
 </section>
-<section id="la-variable-sintética-genalle" class="level3">
-<h3 class="anchored" data-anchor-id="la-variable-sintética-genalle">La variable sintética Genalle</h3>
-<p>Fusionar el <code>rsID</code> con la notación <code>HGVS</code> en un solo identificador (<code>Genalle</code>) permite normalizar la representación alélica y evitar ambigüedades cuando una misma variante tiene múltiples nomenclaturas.</p>
+<section id="the-synthetic-genalle-variable" class="level3">
+<h3 class="anchored" data-anchor-id="the-synthetic-genalle-variable">The synthetic “Genalle” variable</h3>
+<p>Fusing the <code>rsID</code> with <code>HGVS</code> notation into a single identifier (<code>Genalle</code>) normalizes the allelic representation and avoids ambiguities when the same variant has multiple nomenclatures.</p>
 </section>
-<section id="gestión-del-desbalance-con-focal-loss" class="level3">
-<h3 class="anchored" data-anchor-id="gestión-del-desbalance-con-focal-loss">Gestión del desbalance con Focal Loss</h3>
-<p>En farmacogenómica, los fenotipos raros (metabolizadores ultrarrápidos, reacciones adversas graves) son los más críticos clínicamente pero los menos representados en los datos. La <strong>Adaptive Focal Loss</strong> penaliza más los errores en estas clases minoritarias, priorizando la seguridad del paciente sobre la precisión global.</p>
+<section id="handling-imbalance-with-focal-loss" class="level3">
+<h3 class="anchored" data-anchor-id="handling-imbalance-with-focal-loss">Handling imbalance with Focal Loss</h3>
+<p>In pharmacogenomics, rare phenotypes (ultrarapid metabolizers, severe adverse reactions) are the most clinically critical yet least represented in the data. <strong>Adaptive Focal Loss</strong> penalizes errors on these minority classes more heavily, prioritizing patient safety over global accuracy.</p>
 <hr>
 </section>
 </section>
-<section id="resultados" class="level2">
-<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<section id="preliminary-results-v1-see-the-honesty-note-above" class="level2">
+<h2 class="anchored" data-anchor-id="preliminary-results-v1-see-the-honesty-note-above">Preliminary results (v1) <em>(see the honesty note above)</em></h2>
+<p>These figures come from v1’s internal splits and are <strong>likely inflated by data leakage</strong>. I keep them for transparency and traceability, not as a validated result:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Tarea</th>
-<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Task</th>
+<th style="text-align: left;">Metric (preliminary)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Categoría Fenotípica</td>
-<td style="text-align: left;"><strong>86.89%</strong> Precisión</td>
+<td style="text-align: left;">Phenotypic Category</td>
+<td style="text-align: left;">86.89% Precision</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Ajuste de Dosis</td>
-<td style="text-align: left;"><strong>0.8328</strong> Balanced Accuracy</td>
+<td style="text-align: left;">Dosage Adjustment</td>
+<td style="text-align: left;">0.8328 Balanced Accuracy</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Farmacocinética</td>
-<td style="text-align: left;"><strong>0.8037</strong> Balanced Accuracy</td>
+<td style="text-align: left;">Pharmacokinetics</td>
+<td style="text-align: left;">0.8037 Balanced Accuracy</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dirección del Efecto</td>
-<td style="text-align: left;"><strong>66.07%</strong> Precisión</td>
+<td style="text-align: left;">Effect Direction</td>
+<td style="text-align: left;">66.07% Precision</td>
 </tr>
 </tbody>
 </table>
-<p>La tarea de <strong>dirección del efecto</strong> (increased/decreased) es la más difícil porque depende de contextos clínicos que no siempre están codificados en los datos genómicos puros. Es un área donde las futuras GNN podrían aportar mejoras significativas.</p>
+<p>The <strong>effect-direction</strong> task (increased/decreased) is the hardest because it depends on clinical contexts that are not always encoded in pure genomic data. It is an area where future GNNs could bring significant improvements.</p>
 <hr>
 </section>
-<section id="lecciones-aprendidas" class="level2">
-<h2 class="anchored" data-anchor-id="lecciones-aprendidas">Lecciones aprendidas</h2>
+<section id="lessons-learned" class="level2">
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons learned</h2>
 <ol type="1">
-<li><strong>La ingeniería de características importa más que la arquitectura.</strong> Cambiar de ATC a PubChem CID mejoró más el rendimiento que cualquier ajuste de hiperparámetros.</li>
-<li><strong>El desbalance de clases en dominios clínicos no es un problema técnico, es un problema ético.</strong> Optimizar por accuracy global puede enmascarar un modelo que falla sistemáticamente en los casos más peligrosos.</li>
-<li><strong>Optuna + validación cruzada estratificada</strong> es la combinación correcta para datasets pequeños con muchas clases. 40 trials fueron suficientes para converger.</li>
+<li><strong>Feature engineering matters more than architecture.</strong> Moving from ATC to PubChem CID improved performance more than any hyperparameter tuning.</li>
+<li><strong>Class imbalance in clinical domains is not a technical problem, it is an ethical one.</strong> Optimizing for global accuracy can mask a model that fails systematically on the most dangerous cases.</li>
+<li><strong>Optuna + stratified cross-validation</strong> is the right combination for small datasets with many classes. 40 trials were enough to converge.</li>
+<li><strong>Evaluation matters as much as the model.</strong> A high metric is worthless if the protocol allows data leakage. Catching this myself and rebuilding the validation in v2 has been the most valuable lesson of the whole project: it is what separates an experiment from a reliable tool.</li>
 </ol>
 
 
