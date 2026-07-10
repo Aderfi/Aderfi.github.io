@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - media/
 
 website:
   title: Adrim Portfolio
@@ -56,6 +58,9 @@ format:
     highlight-style: media/themes/onedark.theme
     number-sections: false
     lang: es-ES
+    include-after-body:
+      text: |
+        <script src="/media/i18n-nav.js"></script>
 
 execute:
   freeze: auto
